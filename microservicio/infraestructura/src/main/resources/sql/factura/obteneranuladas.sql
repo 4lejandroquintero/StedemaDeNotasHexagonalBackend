@@ -1,3 +1,3 @@
-select  id, valor_total, estado
+select  id_factura, fecha_factura, estado
 from factura
-where estado = 'ANULADA'
+where estado_factura = 'CANCELADO'

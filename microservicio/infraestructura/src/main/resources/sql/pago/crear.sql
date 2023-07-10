@@ -1,0 +1,1 @@
+insert into pago(id_factura, valor_a_pagar, devuelta) values (:id_factura, :valor_a_pagar, :devuelta)
