@@ -5,16 +5,13 @@ import cine.dominio.ValidadorArgumento;
 import java.util.Date;
 
 public class Cliente {
-    private Long idCliente;
-    private String nombre;
-    private String apellido;
-    private String email;
-    private String contrasena;
-    private String documentoIdentidad;
-    private Date fechaNacimiento;
-    private String numeroTelefonico;
-    private Membresia tipoMembresia;
-    private boolean estadoClienteActivo;
+    private  Long idCliente;
+    private  String nombre;
+    private  String email;
+    private  String contrasena;
+    private  String documentoIdentidad;
+    private  Membresia tipoMembresia;
+
 
     public Cliente(Long idCliente, String nombre, String email, String contrasena, String documentoIdentidad, Membresia tipoMembresia) {
         this.idCliente = idCliente;
@@ -35,28 +32,8 @@ public class Cliente {
         return new Cliente(idCliente,nombre, email, contrasena, documentoIdentidad, tipoMembresia);
     }
 
-    public void setFechaNacimiento(Date fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
-    }
-
-    public void setNumeroTelefonico(String numeroTelefonico) {
-        this.numeroTelefonico = numeroTelefonico;
-    }
-
-    public void setEstadoClienteActivo(boolean estadoClienteActivo) {
-        this.estadoClienteActivo = estadoClienteActivo;
-    }
-
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
-
     public String getNombre() {
         return nombre;
-    }
-
-    public String getApellido() {
-        return apellido;
     }
 
     public String getEmail() {
@@ -71,20 +48,8 @@ public class Cliente {
         return documentoIdentidad;
     }
 
-    public Date getFechaNacimiento() {
-        return fechaNacimiento;
-    }
-
-    public String getNumeroTelefonico() {
-        return numeroTelefonico;
-    }
-
     public Membresia getTipoMembresia() {
         return tipoMembresia;
-    }
-
-    public boolean isEstadoClienteActivo() {
-        return estadoClienteActivo;
     }
 
     public boolean esMembresiaEsmeralda(){
