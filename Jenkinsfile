@@ -14,7 +14,7 @@ pipeline {
 
       //Una sección que define las herramientas “preinstaladas” en Jenkins
       tools {
-        jdk 'Java17' //Versión preinstalada en la Configuración del Master
+        jdk 'JDK17_Centos' //Versión preinstalada en la Configuración del Master
         nodejs 'NodeJS15'
       }
   //Aquí comienzan los “ítems” del Pipeline
