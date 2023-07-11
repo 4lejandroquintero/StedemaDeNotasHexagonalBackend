@@ -14,11 +14,16 @@ pipeline {
 
       //Una sección que define las herramientas “preinstaladas” en Jenkins
       tools {
-        jdk 'JDK8_Centos' //Versión preinstalada en la Configuración del Master
+        jdk 'Java17' //Versión preinstalada en la Configuración del Master
         nodejs 'NodeJS15'
       }
   //Aquí comienzan los “ítems” del Pipeline
   stages{
+  stage('Which Java?'){
+    steps{
+            sh 'java --version'
+        }
+    }
     stage('Checkout') {
       steps{
         echo "------------>Checkout<------------"
