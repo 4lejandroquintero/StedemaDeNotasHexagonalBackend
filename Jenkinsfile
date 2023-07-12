@@ -19,11 +19,6 @@ pipeline {
       }
   //Aquí comienzan los “ítems” del Pipeline
   stages{
-  stage('Which Java?'){
-    steps{
-            sh 'java --version'
-        }
-    }
     stage('Checkout') {
       steps{
         echo "------------>Checkout<------------"
