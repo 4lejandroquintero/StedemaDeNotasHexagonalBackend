@@ -6,12 +6,14 @@ import cine.infraestructura.jdbc.sqlstatement.SqlStatement;
 import cine.pelicula.entidad.Pelicula;
 import cine.pelicula.puerto.RepositorioPelicula;
 import cine.pelicula.servicio.ServicioCrearPelicula;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public class RepositorioPeliculaMariaDB implements RepositorioPelicula {
     private final CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate;
+    @Autowired
     private final MapeoPelicula mapeoPelicula;
 
     public RepositorioPeliculaMariaDB(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate, MapeoPelicula mapeoPelicula) {

@@ -46,23 +46,12 @@ public class Pelicula {
         return sinopsisPelicula;
     }
 
-    public void setSinopsisPelicula(String sinopsisPelicula) {
-        this.sinopsisPelicula = sinopsisPelicula;
-    }
-
     public String getImagenPortada() {
         return imagenPortada;
-    }
-
-    public void setImagenPortada(String imagenPortada) {
-        this.imagenPortada = imagenPortada;
     }
 
     public String getCategoriaEdadPelicula() {
         return categoriaEdadPelicula;
     }
 
-    public void setCategoriaEdadPelicula(String categoriaEdadPelicula) {
-        this.categoriaEdadPelicula = categoriaEdadPelicula;
-    }
 }

@@ -55,52 +55,32 @@ public class Funcion {
     public Long getIdFuncion() {
         return idFuncion;
     }
-
     public String getNombreTeatro() {
         return nombreTeatro;
     }
-
     public Pelicula getPelicula() {
         return pelicula;
     }
-
     public String getSalaFuncion() {
         return salaFuncion;
     }
-
     public LocalDate getDiaFuncion() {
         return diaFuncion;
     }
-
     public LocalTime getHoraFuncion() {
         return horaFuncion;
     }
-
     public BigDecimal getValorFuncion() {
         return valorFuncion;
     }
-
     public String getCategoriaAudioFuncion() {
         return categoriaAudioFuncion;
     }
-
-    public void setCategoriaAudioFuncion(String categoriaAudioFuncion) {
-        this.categoriaAudioFuncion = categoriaAudioFuncion;
-    }
-
     public String getCategoriaSubtitulosFuncion() {
         return categoriaSubtitulosFuncion;
     }
-
-    public void setCategoriaSubtitulosFuncion(String categoriaSubtitulosFuncion) {
-        this.categoriaSubtitulosFuncion = categoriaSubtitulosFuncion;
-    }
-
     public String getCategoriaVisualFuncion() {
         return categoriaVisualFuncion;
     }
 
-    public void setCategoriaVisualFuncion(String categoriaVisualFuncion) {
-        this.categoriaVisualFuncion = categoriaVisualFuncion;
-    }
 }

@@ -33,7 +33,6 @@ public class Boleto {
     public LocalDate obtenerFechaFuncion(){
         return this.funcion.getDiaFuncion();
     }
-
     public Integer getCantidadAsientos() {
         return cantidadAsientos;
     }
@@ -43,7 +42,6 @@ public class Boleto {
     public Funcion getFuncion() {
         return funcion;
     }
-
     public String getNumeroAsientos() {
         return numeroAsientos;
     }

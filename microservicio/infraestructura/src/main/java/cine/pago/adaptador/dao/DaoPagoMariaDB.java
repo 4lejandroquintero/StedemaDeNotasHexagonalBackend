@@ -6,12 +6,14 @@ import cine.infraestructura.jdbc.sqlstatement.SqlStatement;
 import cine.pago.adaptador.repositorio.MapeoPago;
 import cine.pago.entidad.Pago;
 import cine.pago.entidad.dao.DaoPago;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public class DaoPagoMariaDB implements DaoPago {
 
+    @Autowired
     private MapeoPago mapeoPago;
     private final CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate;
 

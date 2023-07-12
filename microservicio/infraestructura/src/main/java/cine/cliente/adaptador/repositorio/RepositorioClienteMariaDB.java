@@ -7,6 +7,7 @@ import cine.cliente.servicio.ServicioCrearCliente;
 import cine.infraestructura.jdbc.CustomNamedParameterJdbcTemplate;
 import cine.infraestructura.jdbc.EjecucionBaseDeDatos;
 import cine.infraestructura.jdbc.sqlstatement.SqlStatement;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.stereotype.Repository;
 
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Repository;
 public class RepositorioClienteMariaDB implements RepositorioCliente {
     private final CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate;
     private final MapeoCliente mapeoCliente;
+    @Autowired
     ServicioCrearCliente servicioCrearCliente;
 
     @SqlStatement(namespace = "cliente", value = "crearcliente")

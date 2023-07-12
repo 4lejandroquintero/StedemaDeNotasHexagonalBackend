@@ -37,23 +37,15 @@ public class Pago {
         return new Pago(solicitudRealizarPago.getFactura(), solicitudRealizarPago.getValorAPagar());
     }
 
-
-    public Long getIdPago() {
-        return idPago;
-    }
-
     public Factura getFactura() {
         return factura;
     }
-
     public BigDecimal getValorAPagar() {
         return valorAPagar;
     }
-
     public BigDecimal getDevuelta() {
         return devuelta;
     }
-
     private void obtenerDevuelta(){
         this.devuelta = getValorAPagar().subtract(this.factura.getValorTotal());
     }
