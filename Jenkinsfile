@@ -40,8 +40,8 @@ pipeline {
     stage('Static Code Analysis') {
     steps{
         echo '------------>Análisis de código estático<------------'
-            sonarqubeMasQualityGatesP(sonarKey:'co.com.ceiba.adn:[bolestosdecine-jose.diaz]',
-                sonarName:'ADN-BoletosDeCine[jose.diaz]',
+            sonarqubeMasQualityGatesP(sonarKey:'co.com.ceiba.adn:bolestosdecine.jose.diaz]',
+                sonarName:'ADN-BoletosDeCine-jose.diaz',
                 sonarPathProperties:'./sonar-project.properties')
 
             }
