@@ -13,7 +13,16 @@ import java.util.List;
 
 @Repository
 public class DaoBoletoMariaDB implements DaoBoleto {
-    private final CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate;
+    @Override
+    public List<Boleto> obtenerBoletosDeFuncion(Long id) {
+        return null;
+    }
+
+    @Override
+    public Boleto obtenerBoleto(Long id) {
+        return null;
+    }
+    /*private final CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate;
     private final MapeoBoleto mapeoBoleto;
 
     public DaoBoletoMariaDB(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate, MapeoBoleto mapeoBoleto) {
@@ -40,5 +49,5 @@ public class DaoBoletoMariaDB implements DaoBoleto {
         parameterSource.addValue("id_boleto", id);
         return EjecucionBaseDeDatos.obtenerUnObjetoONull(() -> this.customNamedParameterJdbcTemplate
                 .getNamedParameterJdbcTemplate().queryForObject(sqlObtenerBoleto, parameterSource, mapeoBoleto));
-    }
+    }*/
 }
