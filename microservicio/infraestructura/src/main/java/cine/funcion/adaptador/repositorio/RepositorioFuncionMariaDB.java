@@ -50,23 +50,4 @@ public class RepositorioFuncionMariaDB implements RepositorioFuncion {
                 .getNamedParameterJdbcTemplate().queryForObject(sqlObtenerFuncion, parameterSource, mapeoFuncion));
     }
 
-    @Override
-    public boolean existe(String nombre) {
-        return false;
-    }
-
-    @Override
-    public void eliminar(Long id) {
-
-    }
-
-    @Override
-    public void actualizar(Funcion funcion) {
-
-    }
-
-    @Override
-    public boolean existePorId(Long id) {
-        return false;
-    }
 }

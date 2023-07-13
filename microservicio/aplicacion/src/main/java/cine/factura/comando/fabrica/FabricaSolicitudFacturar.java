@@ -1,14 +1,11 @@
 package cine.factura.comando.fabrica;
 
-import cine.boleto.entidad.Boleto;
 import cine.boleto.puerto.RepositorioBoleto;
 import cine.cliente.puerto.RepositorioCliente;
 import cine.factura.comando.ComandoSolicitudFacturar;
-import cine.factura.modelo.entidad.BoletoFacturar;
 import cine.factura.modelo.entidad.SolicitudFacturar;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
 
 @Component
 public class FabricaSolicitudFacturar {

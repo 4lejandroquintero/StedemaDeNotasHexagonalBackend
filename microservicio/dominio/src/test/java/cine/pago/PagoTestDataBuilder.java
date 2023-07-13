@@ -40,6 +40,11 @@ public class PagoTestDataBuilder {
         return this;
     }
 
+    public Pago crear(){
+        return Pago.crear(new SolicitudRealizarPagoTestDataBuilder().conFactura(factura).conValorAPagar(valorAPagar).construir());
+    }
+
+
     public Pago reconstruir(){
         return Pago.reconstruir(idPago, factura, valorAPagar, devuelta);
     }

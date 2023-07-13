@@ -26,7 +26,7 @@ public class Pago {
 
     public static Pago reconstruir(Long idPago, Factura factura, BigDecimal valorAPagar, BigDecimal devuelta) {
         ValidadorArgumento.validarObligatorio(idPago, "Debes ingresar el id del pago");
-        ValidadorArgumento.validarObligatorio(factura, "Debes ingresar el id del pago");
+        ValidadorArgumento.validarObligatorio(factura, "Debes una factura para pago");
         ValidadorArgumento.validarObligatorio(valorAPagar, "Debes ingresar el id del pago");
         return new Pago(idPago, factura, valorAPagar, devuelta);
     }

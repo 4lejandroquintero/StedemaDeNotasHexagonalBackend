@@ -7,14 +7,6 @@ public interface RepositorioCliente {
 
     Long crear(Cliente cliente);
 
-    boolean existe (String nombre);
-
     Cliente obtener(Long id);
 
-    ClienteDatosPrincipalesDTO obtenerDatosPrincipales(Long id);
-
-    void eliminar(Long id);
-    void actualizar(Cliente cliente);
-
-    boolean existePorId(Long id);
 }

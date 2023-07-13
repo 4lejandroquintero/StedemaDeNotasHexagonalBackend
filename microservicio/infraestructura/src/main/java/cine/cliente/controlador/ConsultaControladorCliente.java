@@ -27,7 +27,7 @@ public class ConsultaControladorCliente {
         this.manejadorConsultarClientes = manejadorConsultarClientes;
     }
 
-    @GetMapping("/all")
+    @GetMapping()
     @Operation(summary = "Visualizar todos", description = "Metodo utilizado para consultar los datos de los clientes")
     public List<ClienteDatosPrincipalesDTO> obtenerClientes(){
         return manejadorConsultarClientes.ejecutar();
