@@ -2,7 +2,6 @@ package cine.factura.adaptador.repositorio;
 
 import cine.boleto.puerto.RepositorioBoleto;
 import cine.cliente.puerto.RepositorioCliente;
-import cine.cliente.puerto.dao.DaoCliente;
 import cine.factura.modelo.entidad.EstadoFactura;
 import cine.factura.modelo.entidad.Factura;
 import cine.infraestructura.jdbc.MapperResult;

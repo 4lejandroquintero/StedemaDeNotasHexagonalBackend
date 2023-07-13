@@ -1,6 +1,5 @@
 package cine.pago.controlador;
 
-import cine.factura.modelo.entidad.Factura;
 import cine.pago.consulta.ManejadorConsultaPago;
 import cine.pago.entidad.Pago;
 import io.swagger.v3.oas.annotations.Operation;

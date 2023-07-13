@@ -12,7 +12,7 @@ public class BoletoFacturar {
         this.cantidad = cantidad;
         this.boleto = boleto;
     }
-    private BoletoFacturar(Long idBoleto, Integer cantidad, Boleto boleto) {
+    public BoletoFacturar(Long idBoleto, Integer cantidad, Boleto boleto) {
         this.idBoleto = idBoleto;
         this.cantidad = cantidad;
         this.boleto = boleto;

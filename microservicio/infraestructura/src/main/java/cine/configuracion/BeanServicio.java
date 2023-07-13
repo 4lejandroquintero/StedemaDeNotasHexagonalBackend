@@ -3,11 +3,8 @@ package cine.configuracion;
 import cine.boleto.puerto.RepositorioBoleto;
 import cine.boleto.servicio.ServicioCrearBoleto;
 import cine.cliente.puerto.RepositorioCliente;
-import cine.cliente.servicio.ServicioActualizarCliente;
 import cine.cliente.servicio.ServicioCrearCliente;
-import cine.cliente.servicio.ServicioEliminarCliente;
 import cine.factura.puerto.repositorio.RepositorioFactura;
-import cine.factura.servicio.ServicioAnular;
 import cine.factura.servicio.ServicioFacturar;
 import cine.funcion.puerto.RepositorioFuncion;
 import cine.funcion.servicio.ServicioCrearFuncion;
@@ -25,10 +22,7 @@ public class BeanServicio {
     public ServicioFacturar servicioFacturar(RepositorioFactura repositorioFactura) {
         return new ServicioFacturar(repositorioFactura);
     }
-    @Bean
-    public ServicioAnular servicioAnular(RepositorioFactura repositorioFactura) {
-        return new ServicioAnular(repositorioFactura);
-    }
+
     //endregion
 
     //region Cliente
@@ -37,15 +31,6 @@ public class BeanServicio {
         return new ServicioCrearCliente(repositorioCliente);
     }
 
-    @Bean
-    public ServicioEliminarCliente servicioEliminarCliente(RepositorioCliente repositorioCliente) {
-        return new ServicioEliminarCliente(repositorioCliente);
-    }
-
-    @Bean
-    public ServicioActualizarCliente servicioActualizarCliente(RepositorioCliente repositorioCliente) {
-        return new ServicioActualizarCliente(repositorioCliente);
-    }
     //endregion
 
     //region Pelicula

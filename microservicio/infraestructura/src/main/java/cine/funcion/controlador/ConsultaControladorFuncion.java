@@ -2,7 +2,6 @@ package cine.funcion.controlador;
 import cine.funcion.consulta.ManejadorConsultarFuncion;
 import cine.funcion.consulta.ManejadorConsultarTodasFunciones;
 import cine.funcion.modelo.entidad.Funcion;
-import cine.pelicula.entidad.dto.PeliculaDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.GetMapping;

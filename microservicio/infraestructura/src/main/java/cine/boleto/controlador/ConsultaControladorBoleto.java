@@ -2,7 +2,6 @@ package cine.boleto.controlador;
 import cine.boleto.consulta.ManejadorConsultaBoleto;
 import cine.boleto.consulta.ManejadorConsultarBoletoPorFuncion;
 import cine.boleto.entidad.Boleto;
-import cine.funcion.modelo.entidad.Funcion;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.GetMapping;

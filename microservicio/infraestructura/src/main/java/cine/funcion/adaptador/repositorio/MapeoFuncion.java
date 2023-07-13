@@ -2,7 +2,6 @@ package cine.funcion.adaptador.repositorio;
 
 import cine.funcion.modelo.entidad.Funcion;
 import cine.infraestructura.jdbc.MapperResult;
-import cine.pelicula.entidad.Pelicula;
 import cine.pelicula.puerto.RepositorioPelicula;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
@@ -30,8 +29,8 @@ public class MapeoFuncion implements RowMapper<Funcion>, MapperResult {
         String salaFuncion = resultSet.getString("sala_funcion");
         LocalDate diaFuncion = resultSet.getDate("dia_funcion").toLocalDate();
         LocalTime horaFuncion = resultSet.getTime("hora_funcion").toLocalTime();
-        BigDecimal valorFuncion = resultSet.getBigDecimal("valor_funcion");;
-        String categoriaAudioFuncion = resultSet.getString("categoria_audio_funcion");;
+        BigDecimal valorFuncion = resultSet.getBigDecimal("valor_funcion");
+        String categoriaAudioFuncion = resultSet.getString("categoria_audio_funcion");
         String categoriaSubtitulosFuncion = resultSet.getString("categoria_subtitulos_funcion");
         String categoriaVisualFuncion = resultSet.getString("categoria_dimension_visual_funcion");
         return Funcion.reconstruir(idFuncion, repositorioPelicula.obtener(idPelicula),nombreTeatro, salaFuncion, diaFuncion, horaFuncion,

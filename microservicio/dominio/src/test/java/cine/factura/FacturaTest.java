@@ -27,6 +27,7 @@ class FacturaTest {
         Assertions.assertEquals(LocalDate.of(2023, 2, 12), factura.getFechaFactura());
         Assertions.assertEquals(EstadoFactura.PENDIENTE, factura.getEstadoFactura());
         BigDecimal valorBoletos = BigDecimal.valueOf(boleto.getCantidadAsientos()).multiply(boleto.obtenerValorFuncion());
+        Assertions.assertEquals(valorBoletos, factura.getValorDeBoletos());
         BigDecimal descuento = valorBoletos.multiply(BigDecimal.valueOf(0.25)).setScale(0, RoundingMode.DOWN);
         Assertions.assertEquals(descuento , factura.getDescuento());
         Assertions.assertEquals(valorBoletos.subtract(descuento), factura.getValorTotal());

@@ -1,6 +1,5 @@
 package cine.funcion.comando;
 
-import cine.pelicula.entidad.Pelicula;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
