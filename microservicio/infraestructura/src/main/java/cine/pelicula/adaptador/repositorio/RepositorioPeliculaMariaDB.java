@@ -21,8 +21,6 @@ public class RepositorioPeliculaMariaDB implements RepositorioPelicula {
         this.mapeoPelicula = mapeoPelicula;
     }
 
-    ServicioCrearPelicula servicioCrearPelicula;
-
     @SqlStatement(namespace = "pelicula", value = "obtenerpornombre")
     private static String sqlObtenerPorNombre;
     @SqlStatement(namespace = "pelicula", value = "crearpelicula")

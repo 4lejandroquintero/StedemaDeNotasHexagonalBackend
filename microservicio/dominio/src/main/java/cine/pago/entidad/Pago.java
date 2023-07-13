@@ -49,4 +49,8 @@ public class Pago {
     private void obtenerDevuelta(){
         this.devuelta = getValorAPagar().subtract(this.factura.getValorTotal());
     }
+
+    public Long getIdPago() {
+        return idPago;
+    }
 }

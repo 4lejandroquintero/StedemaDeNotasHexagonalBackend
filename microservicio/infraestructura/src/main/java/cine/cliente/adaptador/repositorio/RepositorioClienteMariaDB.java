@@ -15,7 +15,7 @@ import org.springframework.stereotype.Repository;
 public class RepositorioClienteMariaDB implements RepositorioCliente {
     private final CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate;
     private final MapeoCliente mapeoCliente;
-    @Autowired
+
     ServicioCrearCliente servicioCrearCliente;
 
     @SqlStatement(namespace = "cliente", value = "crearcliente")
