@@ -5,6 +5,7 @@ import cine.boleto.servicio.ServicioCrearBoleto;
 import cine.cliente.puerto.RepositorioCliente;
 import cine.cliente.servicio.ServicioCrearCliente;
 import cine.factura.puerto.repositorio.RepositorioFactura;
+import cine.factura.servicio.ServicioFacturaPagada;
 import cine.factura.servicio.ServicioFacturar;
 import cine.funcion.puerto.RepositorioFuncion;
 import cine.funcion.servicio.ServicioCrearFuncion;
@@ -22,7 +23,10 @@ public class BeanServicio {
     public ServicioFacturar servicioFacturar(RepositorioFactura repositorioFactura) {
         return new ServicioFacturar(repositorioFactura);
     }
-
+    @Bean
+    public ServicioFacturaPagada servicioFacturaPagada(RepositorioFactura repositorioFactura){
+        return new ServicioFacturaPagada(repositorioFactura);
+    }
     //endregion
 
     //region Cliente

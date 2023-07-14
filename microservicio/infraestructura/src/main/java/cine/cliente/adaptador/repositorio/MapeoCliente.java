@@ -18,10 +18,7 @@ public class MapeoCliente implements RowMapper<Cliente>, MapperResult {
         Long idCliente = resultSet.getLong("id_cliente");
         String nombre  = resultSet.getString("nombre_cliente");
         String email= resultSet.getString("email_cliente");
-        String contrasena = resultSet.getString("contrasena_cliente");
-        String documentoIdentidad = resultSet.getString("documento_identidad_cliente");
         Membresia tipoMembresia = Membresia.valueOf(resultSet.getString("membresia_cliente"));
-
-        return Cliente.reconstruir(idCliente, nombre, email, contrasena, documentoIdentidad, tipoMembresia);
+        return Cliente.reconstruir(idCliente, nombre, email, tipoMembresia);
     }
 }

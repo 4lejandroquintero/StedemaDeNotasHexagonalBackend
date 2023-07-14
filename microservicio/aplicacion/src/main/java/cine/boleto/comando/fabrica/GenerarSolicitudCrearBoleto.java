@@ -22,7 +22,7 @@ public class GenerarSolicitudCrearBoleto {
     }
 
     public Boleto crear(ComandoSolicitudCrearBoleto comandoSolicitudCrearBoleto){
-        return Boleto.reconstruir(comandoSolicitudCrearBoleto.getIdBoleto(), comandoSolicitudCrearBoleto.getCantidadAsientos(),
-                comandoSolicitudCrearBoleto.getNumeroAsientos(), repositorioFuncion.obtener(comandoSolicitudCrearBoleto.getIdFuncion()));
+        return Boleto.crear(comandoSolicitudCrearBoleto.getCantidadAsientos(),
+                comandoSolicitudCrearBoleto.getNumeroAsientos(), obtenerFuncion(comandoSolicitudCrearBoleto.getIdFuncion()));
     }
 }

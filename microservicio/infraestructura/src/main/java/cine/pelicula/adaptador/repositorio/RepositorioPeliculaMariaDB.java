@@ -48,14 +48,4 @@ public class RepositorioPeliculaMariaDB implements RepositorioPelicula {
         return EjecucionBaseDeDatos.obtenerUnObjetoONull(() -> this.customNamedParameterJdbcTemplate
                 .getNamedParameterJdbcTemplate().queryForObject(sqlObtenerPeliculaPorID, parameterSource, mapeoPelicula));
     }
-
-    @Override
-    public void eliminar(Long id) {
-
-    }
-
-    @Override
-    public boolean existe(Long id) {
-        return false;
-    }
 }

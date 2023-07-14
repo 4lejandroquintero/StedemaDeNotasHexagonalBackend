@@ -9,9 +9,6 @@ import java.math.BigDecimal;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Factura {
     private Long idFactura;
     private Boleto boleto;
@@ -91,7 +88,7 @@ public class Factura {
     public void anularFactura(){
         this.estadoFactura = EstadoFactura.ANULADA;
     }
-    public void pagadoFactura(){
+    public void facturaPagada(){
         this.estadoFactura = EstadoFactura.PAGADO;
     }
     private void aplicarDescuentoHappyDays(){

@@ -11,15 +11,7 @@ public class ServicioCrearPelicula {
     public ServicioCrearPelicula(RepositorioPelicula repositorioPelicula) {
         this.repositorioPelicula = repositorioPelicula;
     }
-    private void validarExistenciaPrevia(Pelicula pelicula){
-        boolean existe = this.repositorioPelicula.existe(pelicula.getIdPelicula());
-        if (existe){
-            throw new ExcepcionDuplicidad(PELICULA_YA_EXISTE_EN_EL_SISTEMA);
-        }
-    }
-
     public Long ejecutar(Pelicula pelicula){
-        validarExistenciaPrevia(pelicula);
         return repositorioPelicula.crear(pelicula);
     }
 }

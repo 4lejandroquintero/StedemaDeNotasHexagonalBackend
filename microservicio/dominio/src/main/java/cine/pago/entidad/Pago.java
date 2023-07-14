@@ -27,13 +27,14 @@ public class Pago {
     public static Pago reconstruir(Long idPago, Factura factura, BigDecimal valorAPagar, BigDecimal devuelta) {
         ValidadorArgumento.validarObligatorio(idPago, "Debes ingresar el id del pago");
         ValidadorArgumento.validarObligatorio(factura, "Debes una factura para pago");
-        ValidadorArgumento.validarObligatorio(valorAPagar, "Debes ingresar el id del pago");
+        ValidadorArgumento.validarObligatorio(valorAPagar, "Debes ingresar el valor a pagar");
         return new Pago(idPago, factura, valorAPagar, devuelta);
     }
 
     public static Pago crear(SolicitudRealizarPago solicitudRealizarPago){
         ValidadorArgumento.validarObligatorio(solicitudRealizarPago.getFactura(), "Debes ingresar el id de la factura para pagar");
         ValidadorArgumento.validarObligatorio(solicitudRealizarPago.getValorAPagar(), "Debes ingresar el valor a pagar");
+        ValidadorArgumento.validarMenor(solicitudRealizarPago.getFactura().getValorTotal().longValue(),solicitudRealizarPago.getValorAPagar().longValue(),"El valor a pagar no puede ser menor al valor total de la factura");
         return new Pago(solicitudRealizarPago.getFactura(), solicitudRealizarPago.getValorAPagar());
     }
 
@@ -50,7 +51,4 @@ public class Pago {
         this.devuelta = getValorAPagar().subtract(this.factura.getValorTotal());
     }
 
-    public Long getIdPago() {
-        return idPago;
-    }
 }

@@ -22,14 +22,19 @@ public class Cliente {
         this.tipoMembresia = tipoMembresia;
     }
 
-    public static Cliente reconstruir(Long idCliente,  String nombre, String email, String contrasena, String documentoIdentidad, Membresia tipoMembresia){
+    public Cliente(Long idCliente, String nombre, String documentoIdentidad, Membresia tipoMembresia) {
+        this.idCliente = idCliente;
+        this.nombre = nombre;
+        this.documentoIdentidad = documentoIdentidad;
+        this.tipoMembresia = tipoMembresia;
+    }
+
+    public static Cliente reconstruir(Long idCliente, String nombre, String documentoIdentidad, Membresia tipoMembresia){
         ValidadorArgumento.validarObligatorio(idCliente, "Es necesario ingresar el id del cliente");
         ValidadorArgumento.validarObligatorio(nombre, "Es necesario ingresar el nombre del cliente");
-        ValidadorArgumento.validarObligatorio(email, "Es necesario ingresar el email del cliente");
-        ValidadorArgumento.validarObligatorio(contrasena, "Es necesario ingresar la contraseña del cliente");
         ValidadorArgumento.validarObligatorio(documentoIdentidad, "Es necesario ingresar el documento de identidad del cliente");
         ValidadorArgumento.validarObligatorio(tipoMembresia, "Es necesario ingresar el tipo de membresia del cliente");
-        return new Cliente(idCliente,nombre, email, contrasena, documentoIdentidad, tipoMembresia);
+        return new Cliente(idCliente,nombre, documentoIdentidad, tipoMembresia);
     }
 
     public String getNombre() {

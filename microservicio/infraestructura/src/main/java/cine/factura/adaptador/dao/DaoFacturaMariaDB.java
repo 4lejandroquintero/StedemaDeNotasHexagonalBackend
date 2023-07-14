@@ -1,6 +1,7 @@
 package cine.factura.adaptador.dao;
 
 import cine.factura.adaptador.repositorio.MapeoFactura;
+import cine.factura.modelo.dto.ResumenFacturaDTO;
 import cine.factura.modelo.entidad.Factura;
 import cine.factura.puerto.dao.DaoFactura;
 import cine.infraestructura.jdbc.CustomNamedParameterJdbcTemplate;
@@ -13,11 +14,11 @@ import org.springframework.stereotype.Repository;
 public class DaoFacturaMariaDB implements DaoFactura {
 
     private final CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate;
-    private final MapeoFactura mapeoFactura;
+    private final MapeoFacturaResumen mapeoFacturaResumen;
 
-    public DaoFacturaMariaDB(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate, MapeoFactura mapeoFactura) {
+    public DaoFacturaMariaDB(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate, MapeoFacturaResumen mapeoFacturaResumen) {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
-        this.mapeoFactura = mapeoFactura;
+        this.mapeoFacturaResumen = mapeoFacturaResumen;
     }
 
     @SqlStatement(namespace = "factura", value = "obtenerporid")
@@ -25,10 +26,10 @@ public class DaoFacturaMariaDB implements DaoFactura {
 
 
     @Override
-    public Factura obtener(Long id) {
+    public ResumenFacturaDTO obtener(Long id) {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("id_factura", id);
         return EjecucionBaseDeDatos.obtenerUnObjetoONull(() -> this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate()
-                .queryForObject(sqlObtenerPorId, paramSource, mapeoFactura));
+                .queryForObject(sqlObtenerPorId, paramSource, mapeoFacturaResumen));
     }
 }

@@ -16,12 +16,9 @@ import java.util.Optional;
 
 @Repository
 public class DaoPeliculaMariaDB implements DaoPelicula {
-
-    private final JdbcTemplate jdbcTemplate;
     private final CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate;
     private final MapeoPeliculaDTO mapeoPeliculaDTO;
-    public DaoPeliculaMariaDB(JdbcTemplate jdbcTemplate, CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate, MapeoPeliculaDTO mapeoPeliculaDTO) {
-        this.jdbcTemplate = jdbcTemplate;
+    public DaoPeliculaMariaDB(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate, MapeoPeliculaDTO mapeoPeliculaDTO) {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
         this.mapeoPeliculaDTO = mapeoPeliculaDTO;
     }

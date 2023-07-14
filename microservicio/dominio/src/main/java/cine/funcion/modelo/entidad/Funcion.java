@@ -35,8 +35,20 @@ public class Funcion {
         this.categoriaVisualFuncion = categoriaVisualFuncion;
     }
 
+    public Funcion(Pelicula pelicula, String nombreTeatro, String salaFuncion, LocalDate diaFuncion, LocalTime horaFuncion, BigDecimal valorFuncion, String categoriaAudioFuncion, String categoriaSubtitulosFuncion, String categoriaVisualFuncion) {
+        this.pelicula = pelicula;
+        this.nombreTeatro = nombreTeatro;
+        this.salaFuncion = salaFuncion;
+        this.diaFuncion = diaFuncion;
+        this.horaFuncion = horaFuncion;
+        this.valorFuncion = valorFuncion;
+        this.categoriaAudioFuncion = categoriaAudioFuncion;
+        this.categoriaSubtitulosFuncion = categoriaSubtitulosFuncion;
+        this.categoriaVisualFuncion = categoriaVisualFuncion;
+    }
+
     public static Funcion reconstruir(Long idFuncion, Pelicula pelicula, String nombreTeatro, String salaFuncion, LocalDate diaFuncion, LocalTime horaFuncion, BigDecimal valorFuncion,
-                                      String categoriaAudioFuncion,String categoriaSubtitulosFuncion,
+                                      String categoriaAudioFuncion, String categoriaSubtitulosFuncion,
                                       String categoriaVisualFuncion){
         ValidadorArgumento.validarObligatorio(idFuncion,"El id de la función es requerido");
         ValidadorArgumento.validarObligatorio(nombreTeatro,"El nombre del teatro es requerido");
@@ -50,6 +62,21 @@ public class Funcion {
         ValidadorArgumento.validarObligatorio(categoriaVisualFuncion,"Dato de tipo de categoria visual es requerido");
 
         return new Funcion( idFuncion,  pelicula,  nombreTeatro,  salaFuncion,  diaFuncion,  horaFuncion,  valorFuncion, categoriaAudioFuncion, categoriaSubtitulosFuncion, categoriaVisualFuncion);
+    }
+    public static Funcion crear(Pelicula pelicula, String nombreTeatro, String salaFuncion, LocalDate diaFuncion, LocalTime horaFuncion, BigDecimal valorFuncion,
+                                      String categoriaAudioFuncion,String categoriaSubtitulosFuncion,
+                                      String categoriaVisualFuncion){
+        ValidadorArgumento.validarObligatorio(nombreTeatro,"El nombre del teatro es requerido");
+        ValidadorArgumento.validarObligatorio(pelicula,"El nombre de la pelicula es requerido");
+        ValidadorArgumento.validarObligatorio(salaFuncion,"La sala de la funcion es requerida");
+        ValidadorArgumento.validarObligatorio(diaFuncion,"El dia de la función es requerido");
+        ValidadorArgumento.validarObligatorio(horaFuncion,"La hora de la función es requerido");
+        ValidadorArgumento.validarObligatorio(valorFuncion,"El valor de la funcion es requerido");
+        ValidadorArgumento.validarObligatorio(categoriaAudioFuncion,"Dato del audio es requerido");
+        ValidadorArgumento.validarObligatorio(categoriaSubtitulosFuncion,"Dato de los subtitulos es requerido");
+        ValidadorArgumento.validarObligatorio(categoriaVisualFuncion,"Dato de tipo de categoria visual es requerido");
+
+        return new Funcion(pelicula,  nombreTeatro,  salaFuncion,  diaFuncion,  horaFuncion,  valorFuncion, categoriaAudioFuncion, categoriaSubtitulosFuncion, categoriaVisualFuncion);
     }
 
     public Long getIdFuncion() {

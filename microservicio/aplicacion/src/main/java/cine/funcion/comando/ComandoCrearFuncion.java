@@ -14,7 +14,6 @@ import java.time.LocalTime;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ComandoCrearFuncion {
-    private Long idFuncion;
     private Long idPelicula;
     private String nombreTeatro;
     private String salaFuncion;

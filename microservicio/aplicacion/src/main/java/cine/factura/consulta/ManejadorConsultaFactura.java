@@ -1,6 +1,6 @@
 package cine.factura.consulta;
 
-import cine.factura.modelo.entidad.Factura;
+import cine.factura.modelo.dto.ResumenFacturaDTO;
 import cine.factura.puerto.dao.DaoFactura;
 import org.springframework.stereotype.Component;
 
@@ -11,7 +11,7 @@ public class ManejadorConsultaFactura {
     public ManejadorConsultaFactura(DaoFactura daoFactura) {
         this.daoFactura = daoFactura;
     }
-    public Factura obtenerFactura(Long id){
+    public ResumenFacturaDTO obtenerFactura(Long id){
         return daoFactura.obtener(id);
     }
 }

@@ -1,6 +1,7 @@
 package cine.factura.controlador;
 
 import cine.factura.consulta.ManejadorConsultaFactura;
+import cine.factura.modelo.dto.ResumenFacturaDTO;
 import cine.factura.modelo.entidad.Factura;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -24,8 +25,8 @@ public class ConsultaControladorFactura {
 
     @GetMapping("/{idFactura}")
     @Operation(summary = "Obtener Factura", description = "Metodo utilizado para consultar factura por ID")
-    public ResponseEntity<Factura> obtenerPorID(@PathVariable("idFactura") Long id) {
-        Factura facturaObtenida = manejadorConsultaFactura.obtenerFactura(id);
+    public ResponseEntity<ResumenFacturaDTO> obtenerPorID(@PathVariable("idFactura") Long id) {
+        ResumenFacturaDTO facturaObtenida = manejadorConsultaFactura.obtenerFactura(id);
         return new  ResponseEntity<>(facturaObtenida, HttpStatus.OK);
     }
 }

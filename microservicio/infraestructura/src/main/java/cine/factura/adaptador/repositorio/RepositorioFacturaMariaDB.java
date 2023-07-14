@@ -50,6 +50,10 @@ public class RepositorioFacturaMariaDB implements RepositorioFactura {
 
     @Override
     public void actualizarEstado(Factura factura) {
+        MapSqlParameterSource parameterSource = new MapSqlParameterSource();
+        parameterSource.addValue("id_factura", factura.getIdFactura());
+        parameterSource.addValue("estado_factura", factura.getEstadoFactura().toString());
+        this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().update(sqlActualizarEstado, parameterSource);
 
     }
 }

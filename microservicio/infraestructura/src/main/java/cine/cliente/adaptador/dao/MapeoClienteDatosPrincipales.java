@@ -11,7 +11,6 @@ import java.sql.SQLException;
 
 @Component
 public class MapeoClienteDatosPrincipales implements RowMapper<ClienteDatosPrincipalesDTO>, MapperResult {
-
     @Override
     public ClienteDatosPrincipalesDTO mapRow(ResultSet resultSet, int rowNum) throws SQLException {
         Long id = resultSet.getLong("id_cliente");

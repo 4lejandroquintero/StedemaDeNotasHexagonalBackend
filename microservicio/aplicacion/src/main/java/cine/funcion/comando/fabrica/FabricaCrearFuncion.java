@@ -19,7 +19,7 @@ public class FabricaCrearFuncion {
     }
 
     public Funcion crear(ComandoCrearFuncion comandoCrearFuncion){
-        return Funcion.reconstruir(comandoCrearFuncion.getIdFuncion(), obtenerPelicula(comandoCrearFuncion.getIdPelicula()), comandoCrearFuncion.getNombreTeatro(),
+        return Funcion.crear(obtenerPelicula(comandoCrearFuncion.getIdPelicula()), comandoCrearFuncion.getNombreTeatro(),
                 comandoCrearFuncion.getSalaFuncion(), comandoCrearFuncion.getDiaFuncion(), comandoCrearFuncion.getHoraFuncion(), comandoCrearFuncion.getValorFuncion(),
                 comandoCrearFuncion.getCategoriaAudioFuncion(), comandoCrearFuncion.getCategoriaSubtitulosFuncion(), comandoCrearFuncion.getCategoriaVisualFuncion());
     }

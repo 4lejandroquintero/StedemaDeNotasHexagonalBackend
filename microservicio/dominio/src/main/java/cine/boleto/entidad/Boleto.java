@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 public class Boleto {
-    private final Long idBoleto;
+    private Long idBoleto;
     private final Integer cantidadAsientos;
     private final String numeroAsientos;
     private final Funcion funcion;
@@ -19,12 +19,24 @@ public class Boleto {
         this.funcion = funcion;
     }
 
+    public Boleto(Integer cantidadAsientos, String numeroAsientos, Funcion funcion) {
+        this.cantidadAsientos = cantidadAsientos;
+        this.numeroAsientos = numeroAsientos;
+        this.funcion = funcion;
+    }
+
     public static Boleto reconstruir(Long idBoleto, Integer cantidadAsientos, String numeroAsientos, Funcion funcion){
         ValidadorArgumento.validarObligatorio(idBoleto, "El id del boleto debe ser ingresado");
         ValidadorArgumento.validarObligatorio(cantidadAsientos, "Debe ingresar la cantidad de asientos");
         ValidadorArgumento.validarObligatorio(numeroAsientos, "El boleto debe de contar con un numero de asiento");
         ValidadorArgumento.validarObligatorio(funcion, "Debe tener una función dada para el boleto");
         return new Boleto(idBoleto, cantidadAsientos, numeroAsientos, funcion);
+    }
+    public static Boleto crear(Integer cantidadAsientos, String numeroAsientos, Funcion funcion){
+        ValidadorArgumento.validarObligatorio(cantidadAsientos, "Debe ingresar la cantidad de asientos");
+        ValidadorArgumento.validarObligatorio(numeroAsientos, "El boleto debe de contar con un numero de asiento");
+        ValidadorArgumento.validarObligatorio(funcion, "Debe tener una función dada para el boleto");
+        return new Boleto(cantidadAsientos, numeroAsientos, funcion);
     }
 
     public  BigDecimal obtenerValorFuncion(){

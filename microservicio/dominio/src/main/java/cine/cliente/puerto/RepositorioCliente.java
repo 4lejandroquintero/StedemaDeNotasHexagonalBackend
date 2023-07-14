@@ -1,6 +1,5 @@
 package cine.cliente.puerto;
 
-import cine.cliente.modelo.dto.ClienteDatosPrincipalesDTO;
 import cine.cliente.modelo.entidad.Cliente;
 
 public interface RepositorioCliente {
