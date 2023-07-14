@@ -38,6 +38,10 @@ public class Pago {
         return new Pago(solicitudRealizarPago.getFactura(), solicitudRealizarPago.getValorAPagar());
     }
 
+    public Long getIdPago() {
+        return idPago;
+    }
+
     public Factura getFactura() {
         return factura;
     }

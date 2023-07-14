@@ -2,7 +2,6 @@ package cine.factura.controlador;
 
 import cine.factura.consulta.ManejadorConsultaFactura;
 import cine.factura.modelo.dto.ResumenFacturaDTO;
-import cine.factura.modelo.entidad.Factura;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;

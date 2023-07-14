@@ -26,10 +26,11 @@ public class RepositorioFacturaMariaDB implements RepositorioFactura {
     @SqlStatement(namespace = "factura", value = "actualizarestado")
     private static String sqlActualizarEstado;
 
+    private static final  String IDFACTURAPARAMETER = "id_factura";
     @Override
     public Long guardar(Factura factura) {
         MapSqlParameterSource parameterSource = new MapSqlParameterSource();
-        parameterSource.addValue("id_factura", factura.getIdFactura());
+        parameterSource.addValue(IDFACTURAPARAMETER, factura.getIdFactura());
         parameterSource.addValue("id_boleto", factura.getBoleto().getIdBoleto());
         parameterSource.addValue("id_cliente", factura.getCliente().getIdCliente());
         parameterSource.addValue("fecha_factura", factura.getFechaFactura());
@@ -43,7 +44,7 @@ public class RepositorioFacturaMariaDB implements RepositorioFactura {
     @Override
     public Factura obtener(Long idFactura) {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
-        paramSource.addValue("id_factura", idFactura);
+        paramSource.addValue(IDFACTURAPARAMETER, idFactura);
         return EjecucionBaseDeDatos.obtenerUnObjetoONull(() -> this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate()
                 .queryForObject(sqlObtenerPorId, paramSource, mapeoFactura));
     }
@@ -51,7 +52,7 @@ public class RepositorioFacturaMariaDB implements RepositorioFactura {
     @Override
     public void actualizarEstado(Factura factura) {
         MapSqlParameterSource parameterSource = new MapSqlParameterSource();
-        parameterSource.addValue("id_factura", factura.getIdFactura());
+        parameterSource.addValue(IDFACTURAPARAMETER, factura.getIdFactura());
         parameterSource.addValue("estado_factura", factura.getEstadoFactura().toString());
         this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().update(sqlActualizarEstado, parameterSource);
 

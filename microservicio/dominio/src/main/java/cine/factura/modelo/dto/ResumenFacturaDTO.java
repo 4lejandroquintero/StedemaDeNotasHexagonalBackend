@@ -2,7 +2,6 @@ package cine.factura.modelo.dto;
 
 import cine.boleto.entidad.Boleto;
 import cine.cliente.modelo.dto.ClienteDatosPrincipalesDTO;
-import cine.cliente.modelo.entidad.Cliente;
 import cine.factura.modelo.entidad.EstadoFactura;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

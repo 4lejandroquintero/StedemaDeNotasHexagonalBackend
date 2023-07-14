@@ -31,6 +31,16 @@ class ClienteTest {
         Assertions.assertEquals("123456789", cliente.getDocumentoIdentidad());
         Assertions.assertEquals(Membresia.ZAFIRO, cliente.getTipoMembresia());
     }
+    @Test
+    void deberiaConstruirCliente(){
+
+        var cliente = new ClienteTestDataBuilder().conClientePorDefecto().crear();
+
+        Assertions.assertEquals(1L, cliente.getIdCliente());
+        Assertions.assertEquals("Cliente 1", cliente.getNombre());
+        Assertions.assertEquals("123456789", cliente.getDocumentoIdentidad());
+        Assertions.assertEquals(Membresia.ZAFIRO, cliente.getTipoMembresia());
+    }
 
     @Test
     void reconstruirClienteSinTipoDeberiaLanzarError(){
