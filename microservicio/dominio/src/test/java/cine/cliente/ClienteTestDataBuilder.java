@@ -52,6 +52,13 @@ public class ClienteTestDataBuilder {
     }
 
     public Cliente reconstruir() {
-        return Cliente.reconstruir(idCliente, nombre, email, contrasena,documentoIdentidad,tipoMembresia);
+        return Cliente.crear(idCliente, nombre, email,documentoIdentidad,tipoMembresia);
+    }
+
+    public Cliente crear(){
+        return Cliente.reconstruir(idCliente,nombre,documentoIdentidad,tipoMembresia);
+    }
+    public Cliente crearConContrasena(){
+        return new Cliente(idCliente,nombre,email,contrasena,documentoIdentidad,tipoMembresia);
     }
 }

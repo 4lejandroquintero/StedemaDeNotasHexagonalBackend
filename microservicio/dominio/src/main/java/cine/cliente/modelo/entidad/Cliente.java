@@ -37,6 +37,23 @@ public class Cliente {
         return new Cliente(idCliente,nombre, documentoIdentidad, tipoMembresia);
     }
 
+    public Cliente(Long idCliente, String nombre, String email, String documentoIdentidad, Membresia tipoMembresia) {
+        this.idCliente = idCliente;
+        this.nombre = nombre;
+        this.email = email;
+        this.documentoIdentidad = documentoIdentidad;
+        this.tipoMembresia = tipoMembresia;
+    }
+
+    public static Cliente crear(Long idCliente, String nombre, String email, String documentoIdentidad, Membresia tipoMembresia){
+        ValidadorArgumento.validarObligatorio(idCliente, "Es necesario ingresar el id del cliente");
+        ValidadorArgumento.validarObligatorio(nombre, "Es necesario ingresar el nombre del cliente");
+        ValidadorArgumento.validarObligatorio(email, "Es necesario ingresar el email del cliente");
+        ValidadorArgumento.validarObligatorio(documentoIdentidad, "Es necesario ingresar el documento de identidad del cliente");
+        ValidadorArgumento.validarObligatorio(tipoMembresia, "Es necesario ingresar el tipo de membresia del cliente");
+        return new Cliente(idCliente,nombre, email,documentoIdentidad, tipoMembresia);
+    }
+
     public String getNombre() {
         return nombre;
     }

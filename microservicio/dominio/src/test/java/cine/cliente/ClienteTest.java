@@ -11,18 +11,23 @@ class ClienteTest {
     @Test
     void deberiaCrearClienteExitoso(){
 
-        var cliente = new ClienteTestDataBuilder()
-                .conId(1l)
-                .conNombre("Cliente 1")
-                .conEmail("cliente@mail.com")
-                .conContrasena("admin")
-                .conDocumentoIdentidad("123456789")
-                .conTipoMembresia(Membresia.ZAFIRO).reconstruir();
+        var cliente = new ClienteTestDataBuilder().conClientePorDefecto().reconstruir();
 
-        Assertions.assertEquals(1l, cliente.getIdCliente());
+        Assertions.assertEquals(1L, cliente.getIdCliente());
         Assertions.assertEquals("Cliente 1", cliente.getNombre());
         Assertions.assertEquals("cliente@mail.com", cliente.getEmail());
+        Assertions.assertEquals("123456789", cliente.getDocumentoIdentidad());
+        Assertions.assertEquals(Membresia.ZAFIRO, cliente.getTipoMembresia());
+    }
+    @Test
+    void deberiaCrearClienteExitosoConContrasena(){
+
+        var cliente = new ClienteTestDataBuilder().conClientePorDefecto().crearConContrasena();
+
+        Assertions.assertEquals(1L, cliente.getIdCliente());
+        Assertions.assertEquals("Cliente 1", cliente.getNombre());
         Assertions.assertEquals("admin", cliente.getContrasena());
+        Assertions.assertEquals("cliente@mail.com", cliente.getEmail());
         Assertions.assertEquals("123456789", cliente.getDocumentoIdentidad());
         Assertions.assertEquals(Membresia.ZAFIRO, cliente.getTipoMembresia());
     }
