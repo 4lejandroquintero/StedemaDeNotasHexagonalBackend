@@ -12,7 +12,7 @@ class PagoTest {
     @Test
     void deberiaRealizarPagoCorrectamente(){
         Factura factura = new FacturaTestDataBuilder().conFacturaPorDefecto().reconstruir();
-        Pago pago = new PagoTestDataBuilder().conFactura(factura).conValorAPagar(BigDecimal.valueOf(85000)).crear();
+        Pago pago = new PagoTestDataBuilder().conPagoPorDefecto().conValorAPagar(BigDecimal.valueOf(85000)).conFactura(factura).reconstruir();
 
         Assertions.assertEquals(2L, pago.getIdPago());
         Assertions.assertEquals(factura, pago.getFactura());
