@@ -1,11 +1,9 @@
 package cine.factura.adaptador.dao;
 
 import cine.boleto.puerto.RepositorioBoleto;
-import cine.cliente.puerto.RepositorioCliente;
 import cine.cliente.puerto.dao.DaoCliente;
 import cine.factura.modelo.dto.ResumenFacturaDTO;
 import cine.factura.modelo.entidad.EstadoFactura;
-import cine.factura.puerto.dao.DaoFactura;
 import cine.infraestructura.jdbc.MapperResult;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
@@ -14,7 +12,6 @@ import java.math.BigDecimal;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.NoSuchElementException;
 
 @Component
 public class MapeoFacturaResumen implements RowMapper<ResumenFacturaDTO>, MapperResult {

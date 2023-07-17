@@ -1,6 +1,7 @@
 package cine.pelicula;
 
 import cine.pelicula.entidad.Pelicula;
+import cine.pelicula.entidad.dto.PeliculaDTO;
 
 public class PeliculaTestDataBuilder {
     private Long idPelicula;
@@ -45,6 +46,10 @@ public class PeliculaTestDataBuilder {
 
     public Pelicula reconstruir(){
         return Pelicula.reconstruir(idPelicula,nombrePelicula,sinopsisPelicula,imagenPortada,categoriaEdadPelicula);
+    }
+
+    public PeliculaDTO crearDTO(){
+        return new PeliculaDTO(idPelicula,nombrePelicula,sinopsisPelicula,imagenPortada,categoriaEdadPelicula);
     }
 
 }

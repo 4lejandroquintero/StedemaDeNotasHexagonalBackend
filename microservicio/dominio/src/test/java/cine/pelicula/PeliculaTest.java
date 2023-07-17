@@ -75,6 +75,18 @@ class PeliculaTest {
                 "Es necesario ingresar la categoria de la pelicula");
     }
 
+    @Test
+    void generarDTOPeliculaCorrectamente(){
+        var peliculaDTO = new PeliculaTestDataBuilder().crearPeliculaPorDefecto().crearDTO();
+
+        Assertions.assertEquals(1L, peliculaDTO.getIdPelicula());
+        Assertions.assertEquals("Avengers: End Game", peliculaDTO.getNombrePelicula());
+        Assertions.assertEquals("Después de los eventos de Infinity War, el universo está en ruinas debido a las acciones de Thanos",
+                peliculaDTO.getSinopsisPelicula());
+        Assertions.assertEquals("https://www.lavanguardia.com/peliculas-series/images/movie/poster/2019/4/w1280/br6krBFpaYmCSglLBWRuhui7tPc.jpg",
+                peliculaDTO.getImagenPortada());
+        Assertions.assertEquals("+13", peliculaDTO.getCategoriaEdadPelicula());
+    }
 
 
 }

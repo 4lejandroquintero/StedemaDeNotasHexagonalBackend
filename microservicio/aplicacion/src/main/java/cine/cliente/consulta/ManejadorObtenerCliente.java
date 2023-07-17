@@ -4,8 +4,6 @@ import cine.cliente.modelo.dto.ClienteDatosPrincipalesDTO;
 import cine.cliente.puerto.dao.DaoCliente;
 import org.springframework.stereotype.Component;
 
-import java.util.Optional;
-
 @Component
 public class ManejadorObtenerCliente {
 

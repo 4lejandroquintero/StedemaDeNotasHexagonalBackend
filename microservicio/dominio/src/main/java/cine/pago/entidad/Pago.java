@@ -51,7 +51,7 @@ public class Pago {
     public BigDecimal getDevuelta() {
         return devuelta;
     }
-    private void obtenerDevuelta(){
+    public void obtenerDevuelta(){
         this.devuelta = getValorAPagar().subtract(this.factura.getValorTotal());
     }
 

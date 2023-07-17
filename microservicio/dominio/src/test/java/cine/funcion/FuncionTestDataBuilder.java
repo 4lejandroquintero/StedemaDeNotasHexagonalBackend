@@ -1,5 +1,6 @@
 package cine.funcion;
 
+import cine.factura.modelo.dto.ResumenFacturaDTO;
 import cine.funcion.modelo.entidad.Funcion;
 import cine.pelicula.PeliculaTestDataBuilder;
 import cine.pelicula.entidad.Pelicula;
@@ -82,6 +83,10 @@ public class FuncionTestDataBuilder {
     public FuncionTestDataBuilder conCategoriaVisualFuncion(String categoriaVisualFuncion) {
         this.categoriaVisualFuncion = categoriaVisualFuncion;
         return this;
+    }
+
+    public Funcion crear(){
+        return Funcion.crear(pelicula, nombreTeatro, salaFuncion, diaFuncion, horaFuncion,valorFuncion, categoriaAudioFuncion, categoriaSubtitulosFuncion, categoriaVisualFuncion);
     }
     public Funcion reconstruir(){
         return Funcion.reconstruir(idFuncion, pelicula, nombreTeatro, salaFuncion, diaFuncion, horaFuncion, valorFuncion, categoriaAudioFuncion, categoriaSubtitulosFuncion, categoriaVisualFuncion);

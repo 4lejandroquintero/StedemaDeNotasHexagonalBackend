@@ -40,4 +40,7 @@ public class BoletoTestDataBuilder {
     public Boleto reconstruir(){
         return Boleto.reconstruir(idBoleto,cantidadAsientos,numeroAsientos, funcion);
     }
+    public Boleto crear() {
+    return Boleto.crear(cantidadAsientos,numeroAsientos,funcion);
+    }
 }

@@ -60,7 +60,7 @@ public class Factura {
     }
 
 
-    private BigDecimal obtenerValorTodosBoletos(Boleto boleto){
+    public BigDecimal obtenerValorTodosBoletos(Boleto boleto){
         //Obtengo el primer objeto de la lista de boletos para calcular el valor de la función la cual multiplicaré por la longitud de
         //la lista del objeto de boletos para tener saber el precio total de los boletos.
         //Multiplico el valor del primer boleto a la longitud de la lista de boletos.
@@ -84,20 +84,15 @@ public class Factura {
     private void obtenerFecha(){
         this.fechaFactura = LocalDate.now();
     }
-
-    public void anularFactura(){
-        this.estadoFactura = EstadoFactura.ANULADA;
-    }
     public void facturaPagada(){
         this.estadoFactura = EstadoFactura.PAGADO;
     }
     private void aplicarDescuentoHappyDays(){
-        //Encontrar la manera logica y correcta para extraer el datetime de los boletos sin que sean de diferente fecha en la lista de boletos.
         this.descuento = getValorDeBoletos().multiply(BigDecimal.valueOf(DESCUENTO_HAPPY_DAYS));
         this.valorTotal = getValorDeBoletos().subtract(getDescuento());
     }
 
-    private void descuentosBoleto(){
+    public void descuentosBoleto(){
         LocalDate fechaBoletos = this.boleto.obtenerFechaFuncion();
         DayOfWeek diaSemanaDeLaFuncion = fechaBoletos.getDayOfWeek();
         if(diaSemanaDeLaFuncion == DayOfWeek.TUESDAY || diaSemanaDeLaFuncion == DayOfWeek.WEDNESDAY ){

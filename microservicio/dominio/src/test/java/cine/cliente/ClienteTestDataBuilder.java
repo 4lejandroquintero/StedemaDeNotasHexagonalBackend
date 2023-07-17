@@ -17,7 +17,7 @@ public class ClienteTestDataBuilder {
         this.email = "cliente@mail.com";
         this.contrasena = "admin";
         this.documentoIdentidad = "123456789";
-        this.tipoMembresia = Membresia.ZAFIRO;
+        this.tipoMembresia = Membresia.RUBY;
         return this;
     }
 

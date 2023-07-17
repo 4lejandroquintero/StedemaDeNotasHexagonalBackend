@@ -3,9 +3,12 @@ package cine.factura;
 import cine.boleto.BoletoTestDataBuilder;
 import cine.boleto.entidad.Boleto;
 import cine.cliente.ClienteTestDataBuilder;
+import cine.cliente.modelo.dto.ClienteDatosPrincipalesDTO;
 import cine.cliente.modelo.entidad.Cliente;
+import cine.factura.modelo.dto.ResumenFacturaDTO;
 import cine.factura.modelo.entidad.EstadoFactura;
 import cine.factura.modelo.entidad.Factura;
+import cine.funcion.modelo.entidad.Funcion;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -71,9 +74,16 @@ public class FacturaTestDataBuilder {
         this.valorTotal = valorTotal;
         return this;
     }
+    private ClienteDatosPrincipalesDTO transformar(Cliente cliente){
+        return new ClienteDatosPrincipalesDTO(cliente.getIdCliente(),cliente.getNombre(), cliente.getDocumentoIdentidad(),cliente.getTipoMembresia());
+    }
+    public ResumenFacturaDTO construirDTO(){
+        return new ResumenFacturaDTO(idFactura, boleto, transformar(cliente),fechaFactura,estadoFactura,valorDeBoletos,descuento,valorTotal);
+    }
 
     public Factura reconstruir(){
         return Factura.reconstruir(idFactura,boleto,cliente,fechaFactura, estadoFactura,valorDeBoletos, descuento, valorTotal);
     }
+
 
 }

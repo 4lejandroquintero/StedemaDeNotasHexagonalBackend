@@ -1,6 +1,8 @@
 package cine.pago;
 
+import cine.factura.FacturaTestDataBuilder;
 import cine.factura.modelo.entidad.Factura;
+import cine.pago.entidad.Pago;
 import cine.pago.entidad.SolicitudRealizarPago;
 
 import java.math.BigDecimal;
@@ -10,6 +12,11 @@ public class SolicitudRealizarPagoTestDataBuilder {
     BigDecimal valorAPagar;
 
     public SolicitudRealizarPagoTestDataBuilder() {
+    }
+    public SolicitudRealizarPagoTestDataBuilder solicitudRealizarPagoPorDefecto() {
+        this.factura = new FacturaTestDataBuilder().conFacturaPorDefecto().reconstruir();
+        this.valorAPagar = BigDecimal.valueOf(50000);
+        return this;
     }
 
     public SolicitudRealizarPagoTestDataBuilder conFactura(Factura factura) {
@@ -23,5 +30,15 @@ public class SolicitudRealizarPagoTestDataBuilder {
     }
     public SolicitudRealizarPago construir(){
         return new SolicitudRealizarPago(factura, valorAPagar);
+    }
+
+    public Pago crearSinFactura() {
+        return Pago.crear(new SolicitudRealizarPagoTestDataBuilder().solicitudRealizarPagoPorDefecto().conFactura(null).construir());
+    }
+    public Pago crearSinValorAPagar() {
+        return Pago.crear(new SolicitudRealizarPagoTestDataBuilder().solicitudRealizarPagoPorDefecto().conValorAPagar(null).construir());
+    }
+    public Pago crearConValorMenorAPagar() {
+        return Pago.crear(new SolicitudRealizarPagoTestDataBuilder().solicitudRealizarPagoPorDefecto().conValorAPagar(BigDecimal.valueOf(0)).construir());
     }
 }

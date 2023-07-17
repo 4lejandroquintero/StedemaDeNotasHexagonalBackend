@@ -5,7 +5,6 @@ import cine.cliente.puerto.dao.DaoCliente;
 import cine.infraestructura.jdbc.CustomNamedParameterJdbcTemplate;
 import cine.infraestructura.jdbc.EjecucionBaseDeDatos;
 import cine.infraestructura.jdbc.sqlstatement.SqlStatement;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.stereotype.Repository;
 
