@@ -15,7 +15,7 @@ public class ManejadorObtenerCliente {
         this.daoCliente = daoCliente;
     }
 
-    public Optional<ClienteDatosPrincipalesDTO> ejecutar(Long id){
+    public ClienteDatosPrincipalesDTO ejecutar(Long id){
         return daoCliente.obtenerDatosClientePorID(id);
     }
 }

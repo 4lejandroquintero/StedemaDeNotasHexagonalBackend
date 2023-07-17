@@ -28,7 +28,7 @@ public class DaoFacturaMariaDB implements DaoFactura {
     @Override
     public ResumenFacturaDTO obtener(Long id) {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
-        paramSource.addValue("id_factura", id);
+        paramSource.addValue("id", id);
         return EjecucionBaseDeDatos.obtenerUnObjetoONull(() -> this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate()
                 .queryForObject(sqlObtenerPorId, paramSource, mapeoFacturaResumen));
     }

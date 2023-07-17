@@ -28,7 +28,7 @@ public class MapeoFactura implements RowMapper<Factura>, MapperResult {
 
     @Override
     public Factura mapRow(ResultSet resultSet, int rowNum) throws SQLException {
-        Long idFactura = resultSet.getLong("id_factura");
+        Long idFactura = resultSet.getLong("id");
         Long idBoleto = resultSet.getLong("id_boleto");
         Long idCliente = resultSet.getLong("id_cliente");
         LocalDate fechaFactura = resultSet.getDate("fecha_factura").toLocalDate();

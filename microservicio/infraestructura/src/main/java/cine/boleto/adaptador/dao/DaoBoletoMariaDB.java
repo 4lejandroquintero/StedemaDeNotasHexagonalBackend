@@ -38,7 +38,7 @@ public class DaoBoletoMariaDB implements DaoBoleto {
     @Override
     public Boleto obtenerBoleto(Long id) {
         MapSqlParameterSource parameterSource = new MapSqlParameterSource();
-        parameterSource.addValue("id_boleto", id);
+        parameterSource.addValue("id", id);
         return EjecucionBaseDeDatos.obtenerUnObjetoONull(() -> this.customNamedParameterJdbcTemplate
                 .getNamedParameterJdbcTemplate().queryForObject(sqlObtenerBoleto, parameterSource, mapeoBoleto));
     }

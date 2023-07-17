@@ -28,7 +28,7 @@ public class MapeoFacturaResumen implements RowMapper<ResumenFacturaDTO>, Mapper
     }
     @Override
     public ResumenFacturaDTO mapRow(ResultSet resultSet, int rowNum) throws SQLException {
-        Long idFactura = resultSet.getLong("id_factura");
+        Long idFactura = resultSet.getLong("id");
         Long idBoleto = resultSet.getLong("id_boleto");
         Long idCliente = resultSet.getLong("id_cliente");
         LocalDate fechaFactura = resultSet.getDate("fecha_factura").toLocalDate();
@@ -36,7 +36,7 @@ public class MapeoFacturaResumen implements RowMapper<ResumenFacturaDTO>, Mapper
         BigDecimal valorDeBoletos = resultSet.getBigDecimal("valor_boletos_factura");
         BigDecimal descuento = resultSet.getBigDecimal("valor_descuento_factura");
         BigDecimal valorTotal = resultSet.getBigDecimal("valor_total");
-        return new ResumenFacturaDTO(idFactura, repositorioBoleto.obtener(idBoleto),daoCliente.obtenerDatosClientePorID(idCliente).orElseThrow(()-> new NoSuchElementException("Cliente no encontrado")),
+        return new ResumenFacturaDTO(idFactura, repositorioBoleto.obtener(idBoleto),daoCliente.obtenerDatosClientePorID(idCliente),
                 fechaFactura, estadoFactura, valorDeBoletos,descuento, valorTotal);
     }
 }

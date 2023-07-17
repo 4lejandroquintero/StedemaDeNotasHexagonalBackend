@@ -3,17 +3,17 @@ package cine.cliente.adaptador.dao;
 import cine.cliente.modelo.dto.ClienteDatosPrincipalesDTO;
 import cine.cliente.puerto.dao.DaoCliente;
 import cine.infraestructura.jdbc.CustomNamedParameterJdbcTemplate;
+import cine.infraestructura.jdbc.EjecucionBaseDeDatos;
 import cine.infraestructura.jdbc.sqlstatement.SqlStatement;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 public class DaoClienteMariaDB implements DaoCliente {
 
-    private final JdbcTemplate jdbcTemplate;
     private final CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate;
     private final MapeoClienteDatosPrincipales mapeoClienteDatosPrincipales;
 
@@ -21,8 +21,7 @@ public class DaoClienteMariaDB implements DaoCliente {
     private static String sqlObtenerDatosClientes;
     @SqlStatement(namespace = "cliente", value = "obtenerdatosprincipalesporid")
     private static String sqlObtenerDatosPrincipalesPorId;
-    public DaoClienteMariaDB(JdbcTemplate jdbcTemplate, CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate, MapeoClienteDatosPrincipales mapeoClienteDatosPrincipales) {
-        this.jdbcTemplate = jdbcTemplate;
+    public DaoClienteMariaDB(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate, MapeoClienteDatosPrincipales mapeoClienteDatosPrincipales) {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
         this.mapeoClienteDatosPrincipales = mapeoClienteDatosPrincipales;
     }
@@ -33,7 +32,10 @@ public class DaoClienteMariaDB implements DaoCliente {
     }
 
     @Override
-    public Optional<ClienteDatosPrincipalesDTO> obtenerDatosClientePorID(Long id) {
-        return jdbcTemplate.query(sqlObtenerDatosPrincipalesPorId,new MapeoClienteDatosPrincipales(),id).stream().findFirst();
+    public ClienteDatosPrincipalesDTO obtenerDatosClientePorID(Long id) {
+        MapSqlParameterSource parameterSource = new MapSqlParameterSource();
+        parameterSource.addValue("id", id);
+        return EjecucionBaseDeDatos.obtenerUnObjetoONull(() -> this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlObtenerDatosPrincipalesPorId,
+                parameterSource, new MapeoClienteDatosPrincipales()));
     }
 }

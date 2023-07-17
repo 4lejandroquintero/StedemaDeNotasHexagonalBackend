@@ -23,7 +23,7 @@ public class MapeoFuncion implements RowMapper<Funcion>, MapperResult {
 
     @Override
     public Funcion mapRow(ResultSet resultSet, int rowNum) throws SQLException {
-        Long idFuncion = resultSet.getLong("id_funcion");
+        Long idFuncion = resultSet.getLong("id");
         Long idPelicula = resultSet.getLong("id_pelicula");
         String nombreTeatro = resultSet.getString("nombre_teatro_funcion");
         String salaFuncion = resultSet.getString("sala_funcion");

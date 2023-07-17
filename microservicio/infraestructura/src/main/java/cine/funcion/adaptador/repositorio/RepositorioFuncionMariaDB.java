@@ -29,7 +29,7 @@ public class RepositorioFuncionMariaDB implements RepositorioFuncion {
     @Override
     public Long crear(Funcion funcion) {
         MapSqlParameterSource parameterSource = new MapSqlParameterSource();
-        parameterSource.addValue("id_funcion", funcion.getIdFuncion());
+        parameterSource.addValue("id", funcion.getIdFuncion());
         parameterSource.addValue("id_pelicula", funcion.getPelicula().getIdPelicula());
         parameterSource.addValue("nombre_teatro_funcion", funcion.getNombreTeatro());
         parameterSource.addValue("sala_funcion", funcion.getSalaFuncion());
@@ -45,7 +45,7 @@ public class RepositorioFuncionMariaDB implements RepositorioFuncion {
     @Override
     public Funcion obtener(Long id) {
         MapSqlParameterSource parameterSource = new MapSqlParameterSource();
-        parameterSource.addValue("id_funcion", id);
+        parameterSource.addValue("id", id);
         return EjecucionBaseDeDatos.obtenerUnObjetoONull(() -> this.customNamedParameterJdbcTemplate
                 .getNamedParameterJdbcTemplate().queryForObject(sqlObtenerFuncion, parameterSource, mapeoFuncion));
     }

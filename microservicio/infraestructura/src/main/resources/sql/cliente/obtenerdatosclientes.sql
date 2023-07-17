@@ -1,2 +1,2 @@
-select id_cliente, nombre_cliente, documento_identidad_cliente, membresia_cliente
+select id, nombre_cliente, documento_identidad_cliente, membresia_cliente
 from cliente

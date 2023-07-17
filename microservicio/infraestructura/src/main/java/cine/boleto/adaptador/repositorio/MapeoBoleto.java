@@ -21,7 +21,7 @@ public class MapeoBoleto implements RowMapper<Boleto>, MapperResult {
 
     @Override
     public Boleto mapRow(ResultSet resultSet, int rowNum) throws SQLException {
-        Long idBoleto = resultSet.getLong("id_boleto");
+        Long idBoleto = resultSet.getLong("id");
         Integer cantidadAsientos = resultSet.getInt("cantidad_asientos");
         String numeroAsiento = resultSet.getString("numero_asientos_boleto");
         Long idFuncion= resultSet.getLong("id_funcion");

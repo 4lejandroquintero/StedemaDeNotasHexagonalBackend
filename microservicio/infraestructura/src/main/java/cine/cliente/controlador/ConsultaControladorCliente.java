@@ -34,6 +34,6 @@ public class ConsultaControladorCliente {
     }
     @GetMapping("/{id}")
     public ClienteDatosPrincipalesDTO obtenerCliente(@PathVariable("id") Long id){
-        return manejadorObtenerCliente.ejecutar(id).orElseThrow(() -> new RuntimeException("Cliente no encontrado"));
+        return manejadorObtenerCliente.ejecutar(id);
     }
 }

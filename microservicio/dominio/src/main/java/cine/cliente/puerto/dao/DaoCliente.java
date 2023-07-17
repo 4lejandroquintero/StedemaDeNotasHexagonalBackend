@@ -7,5 +7,5 @@ import java.util.Optional;
 
 public interface DaoCliente {
     List<ClienteDatosPrincipalesDTO> obtenerDatosClientes();
-    Optional<ClienteDatosPrincipalesDTO> obtenerDatosClientePorID(Long id);
+    ClienteDatosPrincipalesDTO obtenerDatosClientePorID(Long id);
 }

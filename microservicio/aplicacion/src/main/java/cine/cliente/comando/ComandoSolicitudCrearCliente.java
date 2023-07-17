@@ -11,7 +11,6 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ComandoSolicitudCrearCliente {
-    private Long idCliente;
     private String nombre;
     private String email;
     private String contrasena;

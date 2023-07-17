@@ -26,7 +26,7 @@ public class DaoPagoMariaDB implements DaoPago {
     @Override
     public Pago obtenerPorID(Long idPago) {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
-        paramSource.addValue("id_pago", idPago);
+        paramSource.addValue("id", idPago);
         return EjecucionBaseDeDatos.obtenerUnObjetoONull(() -> this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate()
                 .queryForObject(sqlObtenerPorId, paramSource, mapeoPago));
     }

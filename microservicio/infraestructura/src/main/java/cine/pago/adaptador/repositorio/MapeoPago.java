@@ -20,7 +20,7 @@ public class MapeoPago implements RowMapper<Pago>, MapperResult {
 
     @Override
     public Pago mapRow(ResultSet resultSet , int rowNum) throws SQLException {
-        Long idPago = resultSet.getLong("id_pago");
+        Long idPago = resultSet.getLong("id");
         Long idFactura = resultSet.getLong("id_factura");
         BigDecimal valorAPagar = resultSet.getBigDecimal("valor_a_pagar");
         BigDecimal devuelta = resultSet.getBigDecimal("devuelta");

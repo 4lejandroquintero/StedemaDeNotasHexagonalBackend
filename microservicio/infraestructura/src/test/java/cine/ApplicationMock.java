@@ -1,6 +1,7 @@
 package cine;
 
 import org.flywaydb.core.Flyway;
+import org.springframework.boot.test.mock.web.SpringBootMockServletContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -14,9 +15,8 @@ import java.io.IOException;
 
 
 @Configuration
-@ComponentScan("com.ceiba")
+@ComponentScan("cine")
 public class ApplicationMock {
-	
 
     @Bean
     public DataSource h2DataSource() {

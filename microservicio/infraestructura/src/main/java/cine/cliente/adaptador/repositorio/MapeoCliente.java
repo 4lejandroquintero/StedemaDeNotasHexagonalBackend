@@ -15,7 +15,7 @@ import java.sql.SQLException;
 public class MapeoCliente implements RowMapper<Cliente>, MapperResult {
     @Override
     public Cliente mapRow(ResultSet resultSet, int rowNum) throws SQLException {
-        Long idCliente = resultSet.getLong("id_cliente");
+        Long idCliente = resultSet.getLong("id");
         String nombre  = resultSet.getString("nombre_cliente");
         String email= resultSet.getString("email_cliente");
         Membresia tipoMembresia = Membresia.valueOf(resultSet.getString("membresia_cliente"));

@@ -22,6 +22,14 @@ public class Cliente {
         this.tipoMembresia = tipoMembresia;
     }
 
+    public Cliente(String nombre, String email, String contrasena, String documentoIdentidad, Membresia tipoMembresia) {
+        this.nombre = nombre;
+        this.email = email;
+        this.contrasena = contrasena;
+        this.documentoIdentidad = documentoIdentidad;
+        this.tipoMembresia = tipoMembresia;
+    }
+
     public Cliente(Long idCliente, String nombre, String documentoIdentidad, Membresia tipoMembresia) {
         this.idCliente = idCliente;
         this.nombre = nombre;

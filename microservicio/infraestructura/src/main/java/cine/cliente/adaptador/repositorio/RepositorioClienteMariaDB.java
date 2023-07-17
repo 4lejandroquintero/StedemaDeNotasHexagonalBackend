@@ -22,10 +22,11 @@ public class RepositorioClienteMariaDB implements RepositorioCliente {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
         this.mapeoCliente = mapeoCliente;
     }
+
     @Override
     public Long crear(Cliente cliente) {
         MapSqlParameterSource parameterSource = new MapSqlParameterSource();
-        parameterSource.addValue("id_cliente", cliente.getIdCliente());
+        parameterSource.addValue("id", cliente.getIdCliente());
         parameterSource.addValue("nombre_cliente", cliente.getNombre());
         parameterSource.addValue("email_cliente", cliente.getEmail());
         parameterSource.addValue("contrasena_cliente", cliente.getContrasena());
@@ -36,7 +37,7 @@ public class RepositorioClienteMariaDB implements RepositorioCliente {
     @Override
     public Cliente obtener(Long id) {
         MapSqlParameterSource parameterSource = new MapSqlParameterSource();
-        parameterSource.addValue("id_cliente", id);
+        parameterSource.addValue("id", id);
         return EjecucionBaseDeDatos.obtenerUnObjetoONull(() -> this.customNamedParameterJdbcTemplate
                 .getNamedParameterJdbcTemplate().queryForObject(sqlObtenerPorID, parameterSource, mapeoCliente));
     }

@@ -36,7 +36,7 @@ public class DaoFuncionMariaDB  implements DaoFuncion {
     @Override
     public Funcion obtenerFuncion(Long id) {
         MapSqlParameterSource parameterSource = new MapSqlParameterSource();
-        parameterSource.addValue("id_funcion", id);
+        parameterSource.addValue("id", id);
         return EjecucionBaseDeDatos.obtenerUnObjetoONull(() -> this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate()
                 .queryForObject(sqlObtenerFuncion, parameterSource, mapeoFuncion));
     }

@@ -27,7 +27,7 @@ public class RepositorioBoletoMariaDB implements RepositorioBoleto {
     @Override
     public Long crear(Boleto boleto) {
         MapSqlParameterSource parameterSource = new MapSqlParameterSource();
-        parameterSource.addValue("id_boleto", boleto.getIdBoleto());
+        parameterSource.addValue("id", boleto.getIdBoleto());
         parameterSource.addValue("cantidad_asientos", boleto.getCantidadAsientos());
         parameterSource.addValue("numero_asientos_boleto", boleto.getNumeroAsientos());
         parameterSource.addValue("id_funcion", boleto.getFuncion().getIdFuncion());
@@ -37,7 +37,7 @@ public class RepositorioBoletoMariaDB implements RepositorioBoleto {
     @Override
     public Boleto obtener(Long id) {
         MapSqlParameterSource parameterSource = new MapSqlParameterSource();
-        parameterSource.addValue("id_boleto", id);
+        parameterSource.addValue("id", id);
         return EjecucionBaseDeDatos.obtenerUnObjetoONull(() -> this.customNamedParameterJdbcTemplate
                 .getNamedParameterJdbcTemplate().queryForObject(sqlObtenerPorID, parameterSource, mapeoBoleto));
     }

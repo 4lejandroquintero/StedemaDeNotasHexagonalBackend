@@ -37,7 +37,7 @@ public class RepositorioPagoMariaDB implements RepositorioPago {
     @Override
     public Pago obtener(Long idPago) {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
-        paramSource.addValue("id_pago", idPago);
+        paramSource.addValue("id", idPago);
         return EjecucionBaseDeDatos.obtenerUnObjetoONull(() -> this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate()
                 .queryForObject(sqlObtenerPorId, paramSource, mapeoPago));
     }

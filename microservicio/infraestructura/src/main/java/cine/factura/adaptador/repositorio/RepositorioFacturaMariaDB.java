@@ -26,7 +26,7 @@ public class RepositorioFacturaMariaDB implements RepositorioFactura {
     @SqlStatement(namespace = "factura", value = "actualizarestado")
     private static String sqlActualizarEstado;
 
-    private static final  String IDFACTURAPARAMETER = "id_factura";
+    private static final  String IDFACTURAPARAMETER = "id";
     @Override
     public Long guardar(Factura factura) {
         MapSqlParameterSource parameterSource = new MapSqlParameterSource();
