@@ -65,7 +65,7 @@ class ComandoControladorFacturaTest {
         Assertions.assertEquals(3L, factura.getIdFactura());
         Assertions.assertEquals(2L, factura.getBoleto().getIdBoleto());
         Assertions.assertEquals(2L, factura.getCliente().getIdCliente());
-        Assertions.assertEquals(LocalDate.of(2023,7,16), factura.getFechaFactura());
+        Assertions.assertEquals(LocalDate.now(), factura.getFechaFactura());
         Assertions.assertEquals(EstadoFactura.PENDIENTE, factura.getEstadoFactura());
         Assertions.assertEquals(BigDecimal.valueOf(45000), factura.getValorDeBoletos().setScale(0, RoundingMode.DOWN));
         Assertions.assertEquals(BigDecimal.valueOf(11250), factura.getDescuento().setScale(0, RoundingMode.DOWN));
