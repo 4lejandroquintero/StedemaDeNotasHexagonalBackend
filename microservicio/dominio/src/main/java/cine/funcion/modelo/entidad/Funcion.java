@@ -52,7 +52,7 @@ public class Funcion {
                                       String categoriaVisualFuncion){
         ValidadorArgumento.validarObligatorio(idFuncion,"El id de la función es requerido");
         ValidadorArgumento.validarObligatorio(nombreTeatro,"El nombre del teatro es requerido");
-        ValidadorArgumento.validarObligatorio(pelicula,"El nombre de la pelicula es requerido");
+        ValidadorArgumento.validarObligatorio(pelicula,"Es necesario ingresar la pelicula es requerido");
         ValidadorArgumento.validarObligatorio(salaFuncion,"La sala de la funcion es requerida");
         ValidadorArgumento.validarObligatorio(diaFuncion,"El dia de la función es requerido");
         ValidadorArgumento.validarObligatorio(horaFuncion,"La hora de la función es requerido");
@@ -66,7 +66,7 @@ public class Funcion {
     public static Funcion crear(Pelicula pelicula, String nombreTeatro, String salaFuncion, LocalDate diaFuncion, LocalTime horaFuncion, BigDecimal valorFuncion,
                                       String categoriaAudioFuncion,String categoriaSubtitulosFuncion,
                                       String categoriaVisualFuncion){
-        ValidadorArgumento.validarObligatorio(pelicula,"El ID de la pelicula es requerido");
+        ValidadorArgumento.validarObligatorio(pelicula,"La pelicula es requerido para crear una funcion");
         ValidadorArgumento.validarObligatorio(nombreTeatro,"El nombre del teatro es requerido");
         ValidadorArgumento.validarObligatorio(salaFuncion,"La sala de la funcion es requerida");
         ValidadorArgumento.validarObligatorio(diaFuncion,"El dia de la función es requerido");
