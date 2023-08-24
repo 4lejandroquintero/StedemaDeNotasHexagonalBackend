@@ -32,9 +32,6 @@ module.exports = function (config) {
         { type: 'lcov', subdir: 'report-lcov' },
       ]
     },
-    files: [
-      '!src/app/feature/cms/**'
-    ],
     reporters: ['progress', 'kjhtml','sonarqube', 'coverage'],
     // htmlReporter: {
     //   outputFile: 'reports/unit/units.html',
