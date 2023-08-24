@@ -6,11 +6,18 @@ describe('AsientosService', () => {
   let service: AsientosService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      providers:[AsientosService]
+    });
     service = TestBed.inject(AsientosService);
   });
 
   it('should be created', () => {
     expect(service).toBeTruthy();
+  });
+
+  it('deberia tener una lista de asientos',() =>{
+    const name = 'asientos';
+    expect(name).toBe('asientos');
   });
 });

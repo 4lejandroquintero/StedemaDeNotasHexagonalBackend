@@ -2,45 +2,86 @@ import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 import { PeliculasService } from './peliculas.service';
-import { environment } from 'src/environments/environment';
+
+import { Pelicula } from '@shared/models/pelicula/peliculas';
 import { HttpService } from '@core/services/http.service';
 
 describe('PeliculasService', () => {
-  let httpMock: HttpTestingController;
-  let service: PeliculasService;
-  const apiEndpointPeliculas = `${environment.endpoint}/pelicula`;
+  let peliculaService: PeliculasService;
+  let httpController: HttpTestingController;
 
   beforeEach(() => {
-    const injector = TestBed.configureTestingModule({
-      imports:[HttpClientTestingModule],
-      providers:[PeliculasService, HttpService]
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
+      providers: [
+        PeliculasService,
+        HttpService
+      ]
     });
-    httpMock = injector.inject(HttpTestingController);
-    service = TestBed.inject(PeliculasService);
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(PeliculasService);
+    peliculaService = TestBed.inject(PeliculasService);
+    httpController = TestBed.inject(HttpTestingController);
   });
 
-  it('should be created', () => {
-    const peliculaService: PeliculasService = TestBed.inject(PeliculasService);
+  it('should be create', () => {
     expect(peliculaService).toBeTruthy();
   });
 
-  it('deberia listar peliculas', () => {
-    const peliculas = {
-      data: [
-        { idPelicula: '1', nombrePelicula: 'Avatar', sinopsisPelicula: 'Raza Espacial', imagenPortada: 'urlImagen', categoriaEdadPelicula: '+12'},
-        { idPelicula: '2', nombrePelicula: 'Avatar 2', sinopsisPelicula: 'Raza Espacial', imagenPortada: 'urlImagen', categoriaEdadPelicula: '+12'}
-      ]
-    };
-    service.obtenerListado().subscribe(dataPelicula => {
-      expect(dataPelicula.length).toBe(2);
-      expect(dataPelicula).toEqual(peliculas);
+  describe('test de obtener datos',()=>{
+    it('deberia retornar una lista de peliculas', (doneFn) => {
+      const mockData: Pelicula[] = [
+        { idPelicula: 1, nombrePelicula: 'Avatar', sinopsisPelicula: 'Raza Espacial', imagenPortada: 'urlImagen', categoriaEdadPelicula: '+12'},
+        { idPelicula: 2, nombrePelicula: 'Avatar 2', sinopsisPelicula: 'Raza Espacial', imagenPortada: 'urlImagen', categoriaEdadPelicula: '+12'}
+      ];
+      peliculaService.obtenerListado().subscribe((data)=> {
+        expect(data.length).toEqual(mockData.length);
+        expect(data).toEqual(mockData);
+        doneFn();
+      });
+      const url = peliculaService.getUrl();
+      const req = httpController.expectOne(url);
+      req.flush(mockData);
     });
-    const req = httpMock.expectOne(apiEndpointPeliculas);
-    expect(req.request.method).toBe('GET');
-    req.flush(peliculas);
   });
+
+  // let httpMock: HttpTestingController;
+  // let service: PeliculasService;
+  // const apiEndpointPeliculas = `${environment.endpoint}/pelicula`;
+
+  // beforeEach(() => {
+  //   const injector = TestBed.configureTestingModule({
+  //     imports:[HttpClientTestingModule],
+  //     providers:[PeliculasService, HttpService]
+  //   });
+  //   httpMock = injector.inject(HttpTestingController);
+  //   service = TestBed.inject(PeliculasService);
+  //   TestBed.configureTestingModule({});
+  //   service = TestBed.inject(PeliculasService);
+  // });
+
+  // it('should be created', () => {
+  //   const peliculaService: PeliculasService = TestBed.inject(PeliculasService);
+  //   expect(peliculaService).toBeTruthy();
+  // });
+
+  // it('deberia traer url de api', ()=> {
+  //   expect(service.getUrl()).toBe('http://localhost:8083/cine/pelicula');
+  // });
+
+  // it('deberia listar peliculas', () => {
+  //   const peliculas = {
+  //     data: [
+  //       { idPelicula: '1', nombrePelicula: 'Avatar', sinopsisPelicula: 'Raza Espacial', imagenPortada: 'urlImagen', categoriaEdadPelicula: '+12'},
+  //       { idPelicula: '2', nombrePelicula: 'Avatar 2', sinopsisPelicula: 'Raza Espacial', imagenPortada: 'urlImagen', categoriaEdadPelicula: '+12'}
+  //     ]
+  //   };
+  //   service.obtenerListado().subscribe(dataPelicula => {
+  //     expect(dataPelicula.length).toBe(2);
+  //     expect(dataPelicula).toEqual(peliculas);
+  //   });
+  //   const req = httpMock.expectOne(apiEndpointPeliculas);
+  //   expect(req.request.method).toBe('GET');
+  //   req.flush(peliculas);
+  // });
 
 
 });

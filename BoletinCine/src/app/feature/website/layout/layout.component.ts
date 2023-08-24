@@ -1,6 +1,4 @@
-import { Component, OnInit  } from '@angular/core';
-import { AuthService } from '@core/services/auth.service';
-import { TokenService } from '@core/services/token.service';
+import { Component  } from '@angular/core';
 
 
 @Component({
@@ -8,18 +6,7 @@ import { TokenService } from '@core/services/token.service';
   templateUrl: './layout.component.html',
   styleUrls: ['./layout.component.scss']
 })
-export class LayoutComponent implements OnInit  {
+export class LayoutComponent {
   constructor(
-    private authService: AuthService,
-    private tokenService: TokenService
   ){}
-
-  ngOnInit(){
-    const token = this.tokenService.getToken();
-    if(token){
-      this.authService.getProfile().subscribe();
-    }
-  }
-
-
 }

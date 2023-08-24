@@ -13,7 +13,7 @@ export class FacturasService {
   private API_URL = `${environment.endpoint}/factura`;
 
   constructor(
-    private http: HttpService,
+    protected http: HttpService,
   ) {}
 
   convertirData(idCliente: number, idBoleto: number){

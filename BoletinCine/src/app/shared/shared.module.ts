@@ -42,7 +42,6 @@ import { FuncionesService } from './services/funcion/funciones.service';
     MatFormFieldModule,
     SwiperModule,
   ],
-  providers:[PeliculasService, FuncionesService
-  ]
+  providers:[PeliculasService, FuncionesService]
 })
 export class SharedModule { }

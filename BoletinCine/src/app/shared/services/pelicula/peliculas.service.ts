@@ -7,7 +7,7 @@ import { HttpService } from '@core/services/http.service';
 export class PeliculasService {
   private API_URL = `${environment.endpoint}/pelicula`;
 
-  constructor(private http: HttpService) { }
+  constructor(protected http: HttpService) { }
 
   public guardar(pelicula: Pelicula){
     return this.http.doPost<Pelicula, boolean>(this.API_URL, pelicula);
@@ -19,6 +19,10 @@ export class PeliculasService {
 
   public obtenerPorID(idPelicula: string){
     return this.http.doGet<Pelicula>(`${this.API_URL}/${idPelicula}`);
+  }
+
+  public getUrl(){
+    return this.API_URL;
   }
 
 }

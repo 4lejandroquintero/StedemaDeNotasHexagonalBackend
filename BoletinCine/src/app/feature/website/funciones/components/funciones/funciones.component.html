@@ -20,11 +20,12 @@
       </button>
     </div>
     <app-tablero [funcion]="funcion" *ngFor="let funcion of funciones"></app-tablero>
-    <ng-container *ngTemplateOutlet="ceroFunciones"></ng-container>
+    <ng-container  *ngTemplateOutlet="ceroFunciones"></ng-container>
   </div>
 </div>
 
 <ng-template #ceroFunciones>
+  <div class="contenido" *ngIf="funciones">
   <div class="sinFunciones" *ngIf="funciones.length === 0">
     <div class="bloque">
       <div class="text">
@@ -34,5 +35,6 @@
         <img src="../../../../assets//imgs//empty.jpg" alt="vacio, no hay funciones">
       </div>
     </div>
+  </div>
   </div>
 </ng-template>

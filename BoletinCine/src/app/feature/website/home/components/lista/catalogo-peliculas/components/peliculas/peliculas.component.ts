@@ -13,7 +13,7 @@ export class PeliculasComponent  {
 
 
   constructor(
-    private peliculasService: PeliculasService,
+    protected peliculasService: PeliculasService,
   ){
     this.obtenerPeliculas();
   }

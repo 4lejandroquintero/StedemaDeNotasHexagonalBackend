@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BoletoComponent } from './boleto.component';
+import { AsientosService } from '../asientos/service/asientos.service';
 
 describe('BoletoComponent', () => {
   let component: BoletoComponent;
@@ -8,7 +9,8 @@ describe('BoletoComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BoletoComponent ]
+      declarations: [ BoletoComponent ],
+      providers: [AsientosService]
     })
       .compileComponents();
 

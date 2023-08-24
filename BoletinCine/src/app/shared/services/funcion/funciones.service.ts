@@ -8,7 +8,7 @@ export class FuncionesService {
 
   private API_URL = `${environment.endpoint}/funcion`;
 
-  constructor(private http: HttpService) { }
+  constructor(protected http: HttpService) { }
 
   crear(data: Funcion){
     return this.http.doPost(this.API_URL, data);

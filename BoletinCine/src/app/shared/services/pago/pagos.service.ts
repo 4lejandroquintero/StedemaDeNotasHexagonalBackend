@@ -12,7 +12,7 @@ export class PagosService {
   private API_URL = `${environment.endpoint}/pagos`;
 
 
-  constructor(private http: HttpService) { }
+  constructor(protected http: HttpService) { }
 
   crear(data: Pago){
     return this.http.doPost<Pago, IdPago>(this.API_URL, data);
@@ -29,5 +29,9 @@ export class PagosService {
 
   obtenerPorID(id: string){
     return this.http.doGet<PagoDTO>(`${this.API_URL}/${id}`);
+  }
+
+  public getUrl(){
+    return this.API_URL;
   }
 }

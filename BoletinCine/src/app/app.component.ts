@@ -26,7 +26,6 @@ export class AppComponent implements OnInit {
     const token = this.tokenService.getToken();
     if(token){
       this.authService.getProfile().subscribe(data => this.clienteLogged = data);
-      this.authService.cliente$.subscribe(data => this.clienteLogged = data);
     }
 
   }
