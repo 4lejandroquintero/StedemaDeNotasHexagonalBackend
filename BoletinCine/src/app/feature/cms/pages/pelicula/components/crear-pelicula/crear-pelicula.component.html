@@ -1,0 +1,47 @@
+<div class="container-fluid d-flex justify-content-center mt-3">
+  <div class="card mx-4 mx-md-5 shadow-5-strong">
+    <div class="card-body py-3 px-5 w-100 d-flex justify-content-center">
+      <div class="row d-flex justify-content-center text-center w-100">
+        <div class="col-lg-8">
+          <h2 class="fw-bold mb-5">Crear Pelicula</h2>
+          <form [formGroup]="peliculaForm" (ngSubmit)="crear()">
+            <div class="form-outline mb-4 w-100">
+              <label for="nombrePelicula">Nombre Pelicula</label>
+              <input validar type="text" id="nombrePelicula" class="form-control border-bottom" formControlName="nombrePelicula" />
+            </div>
+            <div class="form-outline mb-4 w-100">
+              <label for="nombrePelicula">Sinopsis Pelicula</label>
+              <input validar type="text" id="sinopsisPelicula" class="form-control border-bottom"
+                formControlName="sinopsisPelicula" />
+            </div>
+            <div class="form-outline mb-4 w-100">
+              <label for="nombrePelicula">URL Imagen</label>
+              <input validar type="text" id="imagenPortada" class="form-control border-bottom" formControlName="imagenPortada" />
+
+            </div>
+            <div class="form-outline mb-4 w-100">
+                <mat-form-field validar>
+                  <mat-label>Categoria Edad</mat-label>
+                  <mat-select [formControl]="categoriaControl" [(ngModel)]="selectedValue" required formControlName="categoriaEdadPelicula">
+                    <mat-option>--</mat-option>
+                    <mat-option *ngFor="let categoria of categorias" [value]="categoria.name">
+                      {{categoria.name}}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="categoriaControl.hasError('required')">Porfavor selecciona una categoria</mat-error>
+                  <mat-hint>{{categoriaControl.value?.publico}}</mat-hint>
+                </mat-form-field>
+
+            </div>
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-primary bg-warning btn-block mb-2" id="botonGuardar">
+              Crear
+            </button>
+
+            <!-- Register buttons -->
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
