@@ -1,0 +1,89 @@
+<div class="containerPrincipal" *ngIf="factura">
+  <div class="bloque shadow-custom">
+    <div class="row gx-1 justify-content-center">
+      <div class="col-lg-1 col-md-4 imagen">
+        <img [src]="factura.boleto.funcion.pelicula.imagenPortada" alt="imagenPortada"/>
+      </div>
+    </div>
+    <div class="container containerSecundario">
+      <div class="container container1">
+      </div>
+      <div class="row gx-1 justify-content-evenly">
+        <div class="col-lg-1 col-md-4">
+          <h4>ID Factura</h4>
+          <p>{{idFactura}}</p>
+        </div>
+        <div class="col-lg-1 col-md-4">
+          <h4>Fecha de Factura</h4>
+          <p>{{factura.fechaFactura | date}}</p>
+        </div>
+        <div class="col-lg-1 col-md-4">
+          <h4> Estado de Factura </h4>
+          <p> {{factura.estadoFactura}} </p>
+        </div>
+        <div class="col-lg-1 col-md-4">
+          <h4> Valor de Boletos </h4>
+          <p> {{factura.valorDeBoletos | currency}} </p>
+        </div>
+        <div class="col-lg-1 col-md-4">
+          <h4> Valor del Descuento </h4>
+          <p> {{factura.descuento | currency}}  </p>
+        </div>
+        <div class="col-lg-1 col-md-4">
+          <h4> Asientos Reservados  </h4>
+          <p> {{factura.boleto.numeroAsientos}} </p>
+        </div>
+        <div class="col-lg-1 col-md-4">
+          <h4> Sala de Funcion  </h4>
+          <p> {{factura.boleto.funcion.salaFuncion}} </p>
+        </div>
+      </div>
+    </div>
+    <div class="container container2">
+      <div class="row gx-1 justify-content-evenly">
+        <div class="col-lg-1 col-md-4">
+          <h4> Dia de la Funcion </h4>
+          <p> {{factura.boleto.funcion.diaFuncion| date}} </p>
+        </div>
+        <div class="col-lg-1 col-md-4">
+          <h4> Hora de la Funcion </h4>
+          <p> {{factura.boleto.funcion.horaFuncion}} </p>
+        </div>
+        <div class="col-lg-1 col-md-4">
+          <h4> Categoria Audio </h4>
+          <p> {{factura.boleto.funcion.categoriaAudioFuncion}} </p>
+        </div>
+        <div class="col-lg-1 col-md-4">
+          <h4>  Categoria Subtitulos </h4>
+          <p> {{factura.boleto.funcion.categoriaSubtitulosFuncion}} </p>
+        </div>
+        <div class="col-lg-1 col-md-4">
+          <h4>  Categoria Visual </h4>
+          <p> {{factura.boleto.funcion.categoriaVisualFuncion}} </p>
+        </div>
+        <div class="col-lg-1 col-md-4">
+          <h4> Nombre Pelicula </h4>
+          <p> {{factura.boleto.funcion.pelicula.nombrePelicula}} </p>
+        </div>
+        <div class="col-lg-1 col-md-4">
+          <h4> Sinopsis Pelicula </h4>
+          <p> {{factura.boleto.funcion.pelicula.sinopsisPelicula}} </p>
+        </div>
+        <div class="col-lg-1 col-md-4">
+          <h4> Categoria Edad Pelicula </h4>
+          <p> {{factura.boleto.funcion.pelicula.categoriaEdadPelicula}} </p>
+        </div>
+      </div>
+      <div class="pagar">
+        <div class="contenido">
+          <h1>Valor a Pagar</h1>
+          <h2>{{factura.valorTotal}}</h2>
+        </div>
+      </div>
+    </div>
+    <hr class="hr">
+    <div class="pago">
+      <app-pago [idFactura]="factura.idFactura" [valorTotalFactura]="factura.valorTotal"></app-pago>
+    </div>
+  </div>
+</div>

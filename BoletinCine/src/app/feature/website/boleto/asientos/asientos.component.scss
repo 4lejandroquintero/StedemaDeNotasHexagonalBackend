@@ -1,0 +1,44 @@
+.container{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr); /* 8 columnas */
+  grid-gap: 10px; /* Espacio entre inputs */
+  max-width: 85%;
+  justify-content: center; /* Ajusta el ancho máximo de la cuadrícula según tus necesidades */
+  border: 1px solid #fdc500;
+  padding: 8px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+.input-box {
+  padding: 10px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+input{
+  transform: scale(1.8);
+  cursor: pointer;
+  margin: 5px;
+}
+button{
+  margin-bottom: 15px;
+}
+
+.btn-success{
+  width: 220px;
+  padding: 20px;
+}
+
+@media (max-width: 425px) {
+  .grid-container{
+    overflow: scroll;
+  }
+ }

@@ -1,0 +1,84 @@
+<section class="about" id="about">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <h2>Sobre Nosotros</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-4 pilares">
+        <h4>Mision</h4>
+        <p>
+          Nuestra misión en el "CINEMATIC'S" es pindar a nuestra comunidad una
+          experiencia cinematográfica inigualable, ofreciendo películas de alta
+          calidad y entretenimiento de primera clase en un ambiente acogedor.
+          Nos esforzamos por ser el destino preferido para todos los amantes del
+          cine, promoviendo momentos memorables que unan a las personas a través
+          de historias visualmente cautivadoras y emocionantes.
+        </p>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqXD-KVAZ00x82x9cuvjkS1J2hUSNKhdJuLQ&usqp=CAU" alt="Imagen alusiva a la misión" >
+      </div>
+      <div class="col-xs-12 col-sm-4 pilares">
+        <h4>Vision</h4>
+        <p>
+          Buscamos ser el cine líder en nuestra región, reconocido por nuestra
+          excelencia en proyección, sonido y servicio al cliente. Aspiramos a
+          ser más que un simple cine, un punto de referencia cultural y de
+          entretenimiento donde la comunidad se reúne para disfrutar de
+          películas innovadoras, clásicos y eventos especiales. Queremos ser un
+          catalizador para inspirar la pasión por el cine y fortalecer los lazos
+          entre las personas.
+        </p>
+        <img src="https://static.vecteezy.com/system/resources/previews/001/861/349/original/illustration-business-vision-vector.jpg" alt="Imagen alusiva a la misión" >
+      </div>
+      <div class="col-xs-12 col-sm-4 pilares">
+        <h4>Valores</h4>
+        <p>
+          Excelencia: Nos esforzamos por la excelencia en todo lo que hacemos,
+          desde la calidad de nuestras proyecciones hasta la atención al cliente
+          y las experiencias que ofrecemos. <p> Diversidad: Valoramos la diversidad
+          en nuestras selecciones de películas, eventos y en nuestra audiencia,
+          promoviendo una experiencia inclusiva para todos. <p> Pasión: Amamos el
+          cine y estamos dedicados a compartir esa pasión con nuestra comunidad,
+          buscando siempre emocionar y sorprender a nuestros espectadores.
+          <p>Integridad: Operamos de manera transparente y ética, manteniendo la
+          confianza de nuestra audiencia y respetando los estándares más altos
+          en todas nuestras interacciones. <p>Innovación: Apazamos la innovación
+          en la industria del cine, explorando nuevas formas de entretenimiento,
+          colaborando con talento creativo y utilizando la última tecnología
+          para mejorar la experiencia de nuestros visitantes.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- end of about section-->
+<hr />
+<section class="clients" id="clients">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <h2>Nuestro Establecimiento</h2>
+      </div>
+    </div>
+    <div class="row p-5 gap-8">
+      <div
+        class="col-xs-12 col-sm-6 col-md-4 col-lg-3 mx-10"
+        style="width: 100%"
+      >
+        <swiper [slidesPerView]="1">
+          <ng-template swiperSlide *ngFor="let img of imgs" style="width: 100%">
+            <img
+              [src]="img"
+              alt="imagen establecimiento"
+              min-height="600px"
+              style="width: 100%; margin: 0 auto"
+            />
+          </ng-template>
+        </swiper>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- end of clients section-->
+<hr />

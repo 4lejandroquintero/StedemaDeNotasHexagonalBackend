@@ -1,0 +1,70 @@
+
+
+<table mat-table [dataSource]="funciones" class="mat-elevation-z8">
+
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="portadaPelicula">
+    <th mat-header-cell *matHeaderCellDef> Portada funcion </th>
+    <td mat-cell *matCellDef="let funcion" class="tdImagen"> <img [src]=" funcion.pelicula.imagenPortada" alt="img peli"> </td>
+  </ng-container>
+
+  <ng-container matColumnDef="idFuncion">
+    <th mat-header-cell *matHeaderCellDef> ID. </th>
+    <td mat-cell *matCellDef="let funcion"> {{funcion.idFuncion}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="nombreTeatro">
+    <th mat-header-cell *matHeaderCellDef> Nombre </th>
+    <td mat-cell *matCellDef="let funcion"> {{funcion.nombreTeatro}} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="salaFuncion">
+    <th mat-header-cell *matHeaderCellDef> Sala de Funcion </th>
+    <td mat-cell *matCellDef="let funcion"> {{funcion.salaFuncion}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="diaFuncion">
+    <th mat-header-cell *matHeaderCellDef> Dia Funcion </th>
+    <td mat-cell *matCellDef="let funcion"> {{funcion.diaFuncion | date}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="horaFuncion">
+    <th mat-header-cell *matHeaderCellDef> Hora de Funcion </th>
+    <td mat-cell *matCellDef="let funcion"> {{funcion.horaFuncion}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="valorFuncion">
+    <th mat-header-cell *matHeaderCellDef> Valor de Funcion </th>
+    <td mat-cell *matCellDef="let funcion"> {{funcion.valorFuncion | currency}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="categoriaAudio">
+    <th mat-header-cell *matHeaderCellDef> Categoria Audio </th>
+    <td mat-cell *matCellDef="let funcion"> {{funcion.categoriaAudioFuncion}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="categoriaSub">
+    <th mat-header-cell *matHeaderCellDef> Categoria Subtitulos </th>
+    <td mat-cell *matCellDef="let funcion"> {{funcion.categoriaSubtitulosFuncion}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="categoriaVisual">
+    <th mat-header-cell *matHeaderCellDef> Categoria Visual </th>
+    <td mat-cell *matCellDef="let funcion"> {{funcion.categoriaVisualFuncion}} </td>
+  </ng-container>
+
+
+
+
+
+   <!-- Symbol Column -->
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

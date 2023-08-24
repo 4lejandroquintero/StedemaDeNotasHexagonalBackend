@@ -1,0 +1,134 @@
+<section class="text-center">
+  <!-- Background image -->
+  <div class="p-5 bg-image" style="
+      background-image: url('https://s1.eestatic.com/2022/10/19/actualidad/711939320_228102809_1706x960.jpg');
+      height: 300px;
+    "></div>
+  <!-- Background image -->
+
+  <div class="card mx-4 mx-md-5 shadow-5-strong" style="
+      margin-top: -80px;
+      background: hsla(0, 0%, 100%, 0.8);
+      backdrop-filter: blur(30px);
+    ">
+    <div class="card-body py-5 px-md-5">
+      <div class="row d-flex justify-content-center">
+        <div class="col-lg-8">
+          <h2 class="fw-bold mb-5">Crear Funcion</h2>
+          <form [formGroup]="funcionForm" (ngSubmit)="crear()">
+            <div class="col-md-12 mb-4">
+              <div class="form-outline">
+                <mat-form-field class="text-center">
+                  <mat-label> Pelicula</mat-label>
+                  <mat-select validar formControlName="idPelicula">
+                    <mat-option *ngFor="let pelicula of peliculas" [value]="pelicula.idPelicula">
+                      {{ pelicula.nombrePelicula }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+            <!-- 2 column grid layout with text inputs for the first and last names -->
+            <div class="form-outline mb-4">
+              <div class="form-outline">
+                <mat-form-field>
+                  <mat-label> Teatros </mat-label>
+                  <mat-select validar formControlName="nombreTeatro">
+                    <mat-option *ngFor="let teatro of teatros" [value]="teatro.value">
+                      {{ teatro.value }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-4 my-4">
+                <div class="form-outline">
+                  <mat-form-field>
+                    <mat-label> Salas </mat-label>
+                    <mat-select validar formControlName="salaFuncion">
+                      <mat-option *ngFor="let sala of salas" [value]="sala.value">
+                        {{ sala.value }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+              <mat-form-field color="accent" class="col-md-6 mb-4">
+                <mat-label>Dia Funcion</mat-label>
+                <input matInput validar [matDatepicker]="picker2" validar formControlName="diaFuncion" />
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+                <mat-datepicker #picker2 color="primary"></mat-datepicker>
+              </mat-form-field>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 mb-4">
+                <div class="form-outline">
+                  <label class="form-label" for="valorFuncion">Valor de la Funcion</label>
+                  <input type="number" id="valorFuncion" class="form-control" validar formControlName="valorFuncion"
+                    autocomplete="off" />
+                </div>
+              </div>
+              <div class="col-md-6 mb-4">
+                <div class="form-outline d-flex justify-content-center flex-column ">
+                  <label class="form-label" for="horaFuncion">Hora de Funcion</label>
+                  <input type="time" id="horaFuncion" class="form-control" validar formControlName="horaFuncion"
+                    autocomplete="off" />
+                </div>
+              </div>
+              <div class="col-md-6 mb-4">
+                <div class="form-outline">
+                  <mat-form-field >
+                    <mat-label> Lista de Categorias de Audio</mat-label>
+                    <mat-select validar formControlName="categoriaAudioFuncion">
+                      <mat-option *ngFor="let audio of categoriasAudio" [value]="audio.value">
+                        {{ audio.viewValue }}
+                      </mat-option>
+                    </mat-select >
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="col-md-6 mb-4">
+                <div class="form-outline">
+                  <mat-form-field>
+                    <mat-label> Categorias de Subtitulos</mat-label>
+                    <mat-select validar formControlName="categoriaSubtitulosFuncion">
+                      <mat-option *ngFor="let subtitulos of categoriasSubtitulos" [value]="subtitulos.value">
+                        {{ subtitulos.viewValue }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="col-md-12 mb-4">
+                <div class="form-outline">
+                  <mat-form-field>
+                    <mat-label> Categorias Visuales</mat-label>
+                    <mat-select validar formControlName="categoriaVisualFuncion">
+                      <mat-option *ngFor="let visual of categoriasVisual" [value]="visual.value">
+                        {{ visual.viewValue }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+
+
+            <!-- Email input -->
+
+            <!-- Password input -->
+
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-primary bg-warning btn-block mb-4">
+              Crear Funcion
+            </button>
+            <!-- Register buttons -->
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

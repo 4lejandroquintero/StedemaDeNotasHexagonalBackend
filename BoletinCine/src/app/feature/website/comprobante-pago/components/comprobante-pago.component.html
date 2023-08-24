@@ -1,0 +1,85 @@
+<div class="containerPrincipal" *ngIf="pago">
+  <div class="infoPago">
+    <div class="bg-image ">
+      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"
+        style="
+          opacity: 0.61;
+          width: 150%;
+          height: 280px;
+          fill: #162535;
+          transform: rotateY(0deg);
+          position: absolute;
+          z-index: -1;">
+        <path
+          d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z">
+        </path>
+      </svg>
+      <div class="bloque gradient-custom">
+        <div class="contenido">
+          <div class="table-responsive">
+            <table class="table-responsive caption-top table-bordered table-warning tabla1">
+              <caption>Comprobante de Pago</caption>
+              <thead class="table-light">
+                <tr>
+                  <th scope="col">ID Factura </th>
+                  <th scope="col">Numero de Asientos </th>
+                  <th scope="col">Fecha de Factura </th>
+                  <th scope="col">Estado de Factura </th>
+                  <th scope="col">Valor de Boletos </th>
+                  <th scope="col">Descuento </th>
+                  <th scope="col">Valor Total </th>
+                  <th scope="col">Valor Pagado </th>
+                  <th scope="col">Devuelta</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row"> {{pago.factura.idFactura}} </th>
+                  <td>{{pago.factura.boleto.numeroAsientos}}</td>
+                  <td>{{pago.factura.fechaFactura | date }}</td>
+                  <td>{{pago.factura.estadoFactura}}</td>
+                  <td>{{pago.factura.valorDeBoletos}}</td>
+                  <td>{{pago.factura.descuento | currency}}</td>
+                  <td>{{pago.factura.valorTotal | currency}}</td>
+                  <td>{{pago.valorAPagar | currency}}</td>
+                  <td>{{pago.devuelta | currency}}</td>
+
+                </tr>
+              </tbody>
+            </table>
+
+            <table class="table-responsive caption-top table-bordered table-warning">
+              <thead class="table-light">
+                <tr>
+                  <th scope="col">Hora Funcion</th>
+                  <th scope="col">Categoria Audio </th>
+                  <th scope="col">Categoria Subtitulos </th>
+                  <th scope="col">Categoria Visual</th>
+                  <th scope="col">Nombre de Pelicula </th>
+                  <th scope="col">Nombre Cliente </th>
+                  <th scope="col">Documento de Identidad </th>
+                  <th scope="col">Sala Funcion </th>
+                  <th scope="col">Dia de Funcion</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th>{{pago.factura.boleto.funcion.horaFuncion}}</th>
+                  <td>{{pago.factura.boleto.funcion.categoriaAudioFuncion}}</td>
+                  <td>{{pago.factura.boleto.funcion.categoriaSubtitulosFuncion}}</td>
+                  <td>{{pago.factura.boleto.funcion.categoriaVisualFuncion}}</td>
+                  <td>{{pago.factura.boleto.funcion.pelicula.nombrePelicula}}</td>
+                  <td>{{pago.factura.cliente.nombre}}</td>
+                  <td>{{pago.factura.cliente.documentoIdentidad}}</td>
+                  <td>{{pago.factura.boleto.funcion.salaFuncion}}</td>
+                  <td>{{pago.factura.boleto.funcion.diaFuncion | date}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

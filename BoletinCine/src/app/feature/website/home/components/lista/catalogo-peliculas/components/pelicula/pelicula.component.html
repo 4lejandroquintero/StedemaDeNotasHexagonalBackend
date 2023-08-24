@@ -1,0 +1,16 @@
+<div class="card">
+  <div class="bg-image hover-overlay" mdbRipple rippleColor="light">
+    <app-img class="img-fluid" [imagen]="pelicula.imagenPortada"> </app-img>
+    <a class="imgPelicula" [routerLink]="['/funcion', pelicula.idPelicula]" (click)="visualizarFuncionesPorPelicula()">
+      <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+    </a>
+  </div>
+  <div class="card-body">
+    <h2 class="card-title">{{pelicula.nombrePelicula}}</h2>
+    <p class="card-text">{{pelicula.sinopsisPelicula}}</p>
+    <div class="card-footer">
+      <small class="text-muted">Categoria: {{pelicula.categoriaEdadPelicula}} años</small>
+    </div>
+    <button [routerLink]="['/funcion', pelicula.idPelicula]" (click)="visualizarFuncionesPorPelicula()" type="button" href="#"  data-mdb-ripple-unbound="true" class="btn btn-outline-secondary me-3 rig " mdbRipple rippleColor="dark" style="color: #fdc500; border: 1px solid #fdc500; ">Reservar</button>
+  </div>
+</div>

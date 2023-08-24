@@ -1,0 +1,75 @@
+*{
+  box-sizing: border-box;
+}
+.containerPrincipal{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+  background: rgb(2,0,36);
+background: linear-gradient(180deg, rgba(2,0,36,0.6418942577030813) 0%, rgba(253,197,0,1) 40%, rgba(196,158,12,1) 60%, rgba(24,41,48,0.6699054621848739) 100%);
+  color: whitesmoke;
+  font-size: 14px;
+}
+.bloque{
+  width: 85%;
+  height: auto;
+  margin: 60px;
+  padding: 20px;
+  border-radius: 15px;
+  background-color: #18293B;
+}
+.imagen{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 260px;
+  height: 250px;
+}
+.imagen img{
+  width: 100%;
+  height: 100%;
+  background-color: #3A5161;
+  border-radius: 5px;
+}
+
+.shadow-custom {
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .25), 0 3px 10px 5px rgba(0, 0, 0, 0.05) !important;
+}
+
+.pago{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.pagar{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.col-lg-1{
+  border: 1px solid wheat;
+  border-radius: 15px;
+  padding: 8px;
+  margin: 10px;
+}
+.col-lg-1 h4{
+  text-decoration: underline;
+}
+.contenido{
+  margin-top: 10px;
+  padding: 8px;
+  border: 1px solid #fdc500;
+  border-radius: 15px;
+}
+
+.contenido h2{
+  text-align: center;
+  text-decoration: underline;
+
+}
