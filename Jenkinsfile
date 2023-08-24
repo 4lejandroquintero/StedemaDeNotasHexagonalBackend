@@ -86,14 +86,7 @@ pipeline {
 
     success {
       echo 'This will run only if successful'
-    }
-
-    failure {
-      echo 'This will run only if failed'
-      mail(to: 'jose.diaz@ceiba.com.co',
-        subject: "Failed Pipeline:${currentBuild.fullDisplayName}",
-        body: "Something is wrong with ${env.BUILD_URL}")
-    }
+    }  
 
     unstable {
       echo 'This will run only if the run was marked as unstable'
