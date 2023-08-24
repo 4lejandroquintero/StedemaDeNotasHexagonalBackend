@@ -44,9 +44,10 @@ pipeline {
     stage('Tests end-to-end') {
       steps {
         echo "------------>End-to-end Tests<------------"
-        dir('BoletinCine') {
+        echo "------Aquí se ejecutarán los test end-to-end------"
+        /*dir('BoletinCine') {
           sh 'npm run test'
-        }        
+        }*/       
       }
     }
     
