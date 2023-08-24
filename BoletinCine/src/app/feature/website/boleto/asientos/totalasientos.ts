@@ -1,6 +1,5 @@
 export function generarAsientos(){
   const asientos = [];
-
   for (let index = 1; index <= 8; index++) {
     const option = { asiento:`A${index}`, isTaken: false};
     asientos.push(option);

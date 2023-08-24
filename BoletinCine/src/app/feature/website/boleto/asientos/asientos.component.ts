@@ -70,7 +70,6 @@ export class AsientosComponent implements OnInit, DoCheck{
 
   }
 
-
   filtrarSeleccionados(){
     this.asientosSeleccionados = this.opcionesAsiento.filter(option => option.isTaken).map(option => option.asiento) ;
     this.numAsientosSeleccionados = this.asientosSeleccionados.length;

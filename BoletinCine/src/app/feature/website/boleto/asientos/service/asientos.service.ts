@@ -12,5 +12,4 @@ export class AsientosService {
     this.asientoSeleccionadoSubject.next(listaAsientos.filter(option => option.isTaken).map(option => option.asiento));
   }
 
-
 }

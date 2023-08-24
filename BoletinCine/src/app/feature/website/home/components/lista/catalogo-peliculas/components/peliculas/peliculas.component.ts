@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { PeliculasService } from '../../../../../../../../shared/services/pelicula/peliculas.service';
+import { PeliculasService } from '@shared/services/pelicula/peliculas.service';
 import { Pelicula } from '@models/pelicula/peliculas';
 
 @Component({
