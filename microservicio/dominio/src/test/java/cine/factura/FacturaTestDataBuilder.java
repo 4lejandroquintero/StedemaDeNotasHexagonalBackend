@@ -8,6 +8,7 @@ import cine.cliente.modelo.entidad.Cliente;
 import cine.factura.modelo.dto.ResumenFacturaDTO;
 import cine.factura.modelo.entidad.EstadoFactura;
 import cine.factura.modelo.entidad.Factura;
+import cine.factura.modelo.entidad.SolicitudFacturar;
 import cine.funcion.modelo.entidad.Funcion;
 
 import java.math.BigDecimal;
@@ -27,7 +28,7 @@ public class FacturaTestDataBuilder {
         this.idFactura = 1L;
         this.boleto = new BoletoTestDataBuilder().conBoletoPorDefecto().reconstruir();
         this.cliente = new ClienteTestDataBuilder().conClientePorDefecto().reconstruir();
-        this.fechaFactura = LocalDate.of(2023,2,12);
+        this.fechaFactura = LocalDate.now();
         this.estadoFactura = EstadoFactura.PENDIENTE;
         this.valorDeBoletos = BigDecimal.valueOf(110000);
         this.descuento = BigDecimal.valueOf(27500);
@@ -83,6 +84,9 @@ public class FacturaTestDataBuilder {
 
     public Factura reconstruir(){
         return Factura.reconstruir(idFactura,boleto,cliente,fechaFactura, estadoFactura,valorDeBoletos, descuento, valorTotal);
+    }
+    public Factura crear(){
+        return Factura.crear(new SolicitudFacturarTestDataBuilder().conBoleto(boleto).conCliente(cliente).construir());
     }
 
 

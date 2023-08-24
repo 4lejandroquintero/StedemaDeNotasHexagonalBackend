@@ -12,15 +12,21 @@ import org.springframework.stereotype.Repository;
 public class RepositorioClienteMariaDB implements RepositorioCliente {
     private final CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate;
     private final MapeoCliente mapeoCliente;
+    private final MapeoClienteCompleto mapeoClienteCompleto;
+
     @SqlStatement(namespace = "cliente", value = "crearcliente")
     private static String sqlCrearCliente;
 
     @SqlStatement(namespace = "cliente", value = "obtenerporid")
     private static String sqlObtenerPorID;
 
-    public RepositorioClienteMariaDB(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate, MapeoCliente mapeoCliente) {
+    @SqlStatement(namespace = "cliente", value = "autenticar")
+    private static String sqlObtenerPorEmail;
+
+    public RepositorioClienteMariaDB(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate, MapeoCliente mapeoCliente, MapeoClienteCompleto mapeoClienteCompleto) {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
         this.mapeoCliente = mapeoCliente;
+        this.mapeoClienteCompleto = mapeoClienteCompleto;
     }
 
     @Override
@@ -34,6 +40,15 @@ public class RepositorioClienteMariaDB implements RepositorioCliente {
         parameterSource.addValue("membresia_cliente", cliente.getTipoMembresia().name());
         return this.customNamedParameterJdbcTemplate.crear(parameterSource, sqlCrearCliente);
     }
+
+    @Override
+    public Cliente consultar(String email) {
+        MapSqlParameterSource parameterSource = new MapSqlParameterSource();
+        parameterSource.addValue("email_cliente", email);
+        return EjecucionBaseDeDatos.obtenerUnObjetoONull(() -> this.customNamedParameterJdbcTemplate
+                .getNamedParameterJdbcTemplate().queryForObject(sqlObtenerPorEmail, parameterSource, mapeoClienteCompleto));
+    }
+
     @Override
     public Cliente obtener(Long id) {
         MapSqlParameterSource parameterSource = new MapSqlParameterSource();

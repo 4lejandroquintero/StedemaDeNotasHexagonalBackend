@@ -1,81 +1,107 @@
 @Library('ceiba-jenkins-library') _
 
 pipeline {
-  //Donde se va a ejecutar el Pipeline
   agent {
-        label 'Slave_Induccion'
-      }
+    label 'Slave_Induccion'
+  }
 
-      //Opciones específicas de Pipeline dentro del Pipeline
-      options {
-        	buildDiscarder(logRotator(numToKeepStr: '3'))
-     		disableConcurrentBuilds()
-      }
+  options {
+    buildDiscarder(logRotator(numToKeepStr: '3'))
+    disableConcurrentBuilds()
+  }
 
-      //Una sección que define las herramientas “preinstaladas” en Jenkins
-      tools {
-        jdk 'JDK17_Centos' //Versión preinstalada en la Configuración del Master
-        nodejs 'NodeJS15'
-      }
-  //Aquí comienzan los “ítems” del Pipeline
-  stages{
+  tools {
+    jdk 'JDK17_Centos'
+    nodejs 'NodeJS15'
+  }
+
+  stages {
     stage('Checkout') {
-      steps{
+      steps {
         echo "------------>Checkout<------------"
         checkout scm
       }
     }
-    stage('Compile & Unit Tests') {
-    steps{
-        echo "------------>Compile & Unit Tests<------------"
-              dir('microservicio'){
-                  sh 'chmod +x gradlew'
-                  sh './gradlew --b ./build.gradle clean'
-                  sh './gradlew --b ./build.gradle test'
-                  junit 'dominio/build/test-results/test/*.xml'
-              }
-              //RUTA RELATIVA DE LOS ARCHIVOS .XML resultado de las pruebas con JUnit
-        }
+
+    stage('NPM Install') {
+      steps {
+        echo "------------>Instalacion NPM<------------"
+        dir('BoletinCine') {
+          sh 'npm install'
+        }      
+      }
     }
+  
+
+    stage('Unit Tests') {
+      steps {
+        echo "------------>Unit Tests<------------"
+        dir('BoletinCine') {
+          sh 'npm run test'
+        }        
+      }
+    }
+
+    stage('Tests end-to-end') {
+      steps {
+        echo "------------>End-to-end Tests<------------"
+        dir('BoletinCine') {
+          sh 'npm run test'
+        }        
+      }
+    }
+    
+    stage('Codigo Estatico') {
+      steps {
+        echo "------------>Codigo con TSLint<------------"
+        dir('BoletinCine') {
+          sh 'npm run lint'
+        }        
+      }
+    }
+
     stage('Static Code Analysis') {
-    steps{
+      steps {
         echo '------------>Análisis de código estático<------------'
-            sonarqubeMasQualityGatesP(sonarKey:'co.com.ceiba.adn:bolestosdecine.jose.diaz',
-                sonarName:'ADN-BoletosDeCine-jose.diaz',
-                sonarPathProperties:'./sonar-project.properties')
+        sonarqubeMasQualityGatesP(sonarKey: 'co.com.ceiba.adn:bolestosdecine.jose.diaz',
+          sonarName: 'ADN-BoletosDeCine-jose.diaz',
+          sonarPathProperties: './sonar-project.properties')
+      }
+    }
 
-            }
-          }
+    stage('Build') {
+      steps {
+        echo "------------>Build<------------"
+        dir('BoletinCine') {
+          sh 'npm run build'
+        }
+      }
+    }
+  }
 
-          stage('Build') {
-            steps {
-              echo "------------>Build<------------"
-              //Construir sin tarea test que se ejecutó previamente
-              dir('microservicio'){
-                sh './gradlew --b ./build.gradle build -x test'
-              }
-            }
-          }
-        }
-        post {
-               always {
-                 echo 'This will always run'
-               }
-               success {
-                 echo 'This will run only if successful'
-               }
-               failure {
-                 echo 'This will run only if failed'
-                 mail (to: 'jose.diaz@ceiba.com.co',
-                 subject: "Failed Pipeline:${currentBuild.fullDisplayName}",
-                 body: "Something is wrong with ${env.BUILD_URL}")
-               }
-               unstable {
-                 echo 'This will run only if the run was marked as unstable'
-               }
-               changed {
-                 echo 'This will run only if the state of the Pipeline has changed'
-                 echo 'For example, if the Pipeline was previously failing but is now successful'
-               }
-             }
-        }
+  post {
+    always {
+      echo 'This will always run'
+    }
+
+    success {
+      echo 'This will run only if successful'
+    }
+
+    failure {
+      echo 'This will run only if failed'
+      mail(to: 'jose.diaz@ceiba.com.co',
+        subject: "Failed Pipeline:${currentBuild.fullDisplayName}",
+        body: "Something is wrong with ${env.BUILD_URL}")
+    }
+
+    unstable {
+      echo 'This will run only if the run was marked as unstable'
+    }
+
+    changed {
+      echo 'This will run only if the state of the Pipeline has changed'
+      echo 'For example, if the Pipeline was previously failing but is now successful'
+    }
+  }
+}

@@ -19,7 +19,7 @@ public class Boleto {
         this.funcion = funcion;
     }
 
-    public Boleto(Integer cantidadAsientos, String numeroAsientos, Funcion funcion) {
+    private Boleto(Integer cantidadAsientos, String numeroAsientos, Funcion funcion) {
         this.cantidadAsientos = cantidadAsientos;
         this.numeroAsientos = numeroAsientos;
         this.funcion = funcion;

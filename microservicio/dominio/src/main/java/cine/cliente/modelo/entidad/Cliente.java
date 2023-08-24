@@ -1,10 +1,13 @@
 package cine.cliente.modelo.entidad;
 
 import cine.dominio.ValidadorArgumento;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.Collection;
 import java.util.Date;
 
-public class Cliente {
+public class Cliente implements UserDetails {
     private  Long idCliente;
     private  String nombre;
     private  String email;
@@ -43,6 +46,16 @@ public class Cliente {
         ValidadorArgumento.validarObligatorio(documentoIdentidad, "Es necesario ingresar el documento de identidad del cliente");
         ValidadorArgumento.validarObligatorio(tipoMembresia, "Es necesario ingresar el tipo de membresia del cliente");
         return new Cliente(idCliente,nombre, documentoIdentidad, tipoMembresia);
+    }
+
+    public static Cliente reconstruirCompleto(Long idCliente, String nombre, String email, String contrasena, String documentoIdentidad, Membresia tipoMembresia){
+        ValidadorArgumento.validarObligatorio(idCliente, "Es necesario ingresar el id del cliente");
+        ValidadorArgumento.validarObligatorio(nombre, "Es necesario ingresar el nombre del cliente");
+        ValidadorArgumento.validarObligatorio(email, "Es necesario ingresar el email del cliente");
+        ValidadorArgumento.validarObligatorio(contrasena, "Es necesario ingresar la contrasena del cliente");
+        ValidadorArgumento.validarObligatorio(documentoIdentidad, "Es necesario ingresar el documento de identidad del cliente");
+        ValidadorArgumento.validarObligatorio(tipoMembresia, "Es necesario ingresar el tipo de membresia del cliente");
+        return new Cliente(idCliente,nombre,email, contrasena,  documentoIdentidad, tipoMembresia);
     }
 
     public Cliente(Long idCliente, String nombre, String email, String documentoIdentidad, Membresia tipoMembresia) {
@@ -94,5 +107,40 @@ public class Cliente {
 
     public Long getIdCliente() {
         return idCliente;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return null;
+    }
+
+    @Override
+    public String getPassword() {
+        return getContrasena();
+    }
+
+    @Override
+    public String getUsername() {
+        return this.nombre;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
     }
 }

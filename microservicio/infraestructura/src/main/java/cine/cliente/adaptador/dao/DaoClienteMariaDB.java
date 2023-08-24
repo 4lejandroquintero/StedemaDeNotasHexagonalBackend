@@ -1,5 +1,8 @@
 package cine.cliente.adaptador.dao;
 
+import cine.cliente.adaptador.repositorio.MapeoClienteCompleto;
+import cine.cliente.adaptador.repositorio.MapeoDatosCliente;
+import cine.cliente.modelo.dto.ClienteDatosCompletos;
 import cine.cliente.modelo.dto.ClienteDatosPrincipalesDTO;
 import cine.cliente.puerto.dao.DaoCliente;
 import cine.infraestructura.jdbc.CustomNamedParameterJdbcTemplate;
@@ -16,13 +19,18 @@ public class DaoClienteMariaDB implements DaoCliente {
     private final CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate;
     private final MapeoClienteDatosPrincipales mapeoClienteDatosPrincipales;
 
+    private final MapeoDatosCliente mapeoDatosCliente;
+
     @SqlStatement(namespace = "cliente", value="obtenerdatosclientes")
     private static String sqlObtenerDatosClientes;
     @SqlStatement(namespace = "cliente", value = "obtenerdatosprincipalesporid")
     private static String sqlObtenerDatosPrincipalesPorId;
-    public DaoClienteMariaDB(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate, MapeoClienteDatosPrincipales mapeoClienteDatosPrincipales) {
+    @SqlStatement(namespace = "cliente", value = "obtenerporid")
+    private static String sqlObtenerFullDatos;
+    public DaoClienteMariaDB(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate, MapeoClienteDatosPrincipales mapeoClienteDatosPrincipales, MapeoClienteCompleto mapeoClienteCompleto, MapeoDatosCliente mapeoDatosCliente) {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
         this.mapeoClienteDatosPrincipales = mapeoClienteDatosPrincipales;
+        this.mapeoDatosCliente = mapeoDatosCliente;
     }
 
     @Override
@@ -36,5 +44,13 @@ public class DaoClienteMariaDB implements DaoCliente {
         parameterSource.addValue("id", id);
         return EjecucionBaseDeDatos.obtenerUnObjetoONull(() -> this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlObtenerDatosPrincipalesPorId,
                 parameterSource, new MapeoClienteDatosPrincipales()));
+    }
+
+    @Override
+    public ClienteDatosCompletos obtenerFullDatosClientePorID(Long id) {
+        MapSqlParameterSource parameterSource = new MapSqlParameterSource();
+        parameterSource.addValue("id", id);
+        return EjecucionBaseDeDatos.obtenerUnObjetoONull(() -> this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlObtenerFullDatos,
+                parameterSource, mapeoDatosCliente));
     }
 }

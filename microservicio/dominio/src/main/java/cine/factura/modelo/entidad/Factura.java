@@ -24,16 +24,16 @@ public class Factura {
     public static final double DESCUENTO_MEMBRESIA_ZAFIRO = 0.35;
     public static final double DESCUENTO_HAPPY_DAYS = 0.4;
 
-    public Factura(Boleto boleto, Cliente cliente) {
+    private Factura(Boleto boleto, Cliente cliente) {
         this.boleto = boleto;
         this.cliente = cliente;
         obtenerFecha();
         this.estadoFactura = EstadoFactura.PENDIENTE;
-        this.valorDeBoletos = obtenerValorTodosBoletos(boleto);
+        obtenerValorTodosBoletos();
         descuentosBoleto();
     }
 
-    public Factura(Long idFactura, Boleto boleto, Cliente cliente, LocalDate fechaFactura, EstadoFactura estadoFactura, BigDecimal valorDeBoletos, BigDecimal descuento, BigDecimal valorTotal) {
+    private Factura(Long idFactura, Boleto boleto, Cliente cliente, LocalDate fechaFactura, EstadoFactura estadoFactura, BigDecimal valorDeBoletos, BigDecimal descuento, BigDecimal valorTotal) {
         this.idFactura = idFactura;
         this.boleto = boleto;
         this.cliente = cliente;
@@ -59,12 +59,8 @@ public class Factura {
         return new Factura( solicitudFacturar.getBoleto(), solicitudFacturar.getCliente());
     }
 
-
-    public BigDecimal obtenerValorTodosBoletos(Boleto boleto){
-        //Obtengo el primer objeto de la lista de boletos para calcular el valor de la función la cual multiplicaré por la longitud de
-        //la lista del objeto de boletos para tener saber el precio total de los boletos.
-        //Multiplico el valor del primer boleto a la longitud de la lista de boletos.
-        return boleto.obtenerValorFuncion().multiply(BigDecimal.valueOf(boleto.getCantidadAsientos()));
+    private void obtenerValorTodosBoletos(){
+        this.valorDeBoletos = this.boleto.obtenerValorFuncion().multiply(BigDecimal.valueOf(this.boleto.getCantidadAsientos()));
     }
     private void aplicarDescuentoDeMembresia(){
         if(this.cliente.esMembresiaEsmeralda()){
@@ -92,7 +88,7 @@ public class Factura {
         this.valorTotal = getValorDeBoletos().subtract(getDescuento());
     }
 
-    public void descuentosBoleto(){
+    private void descuentosBoleto(){
         LocalDate fechaBoletos = this.boleto.obtenerFechaFuncion();
         DayOfWeek diaSemanaDeLaFuncion = fechaBoletos.getDayOfWeek();
         if(diaSemanaDeLaFuncion == DayOfWeek.TUESDAY || diaSemanaDeLaFuncion == DayOfWeek.WEDNESDAY ){
@@ -132,7 +128,6 @@ public class Factura {
     }
 
     public BigDecimal getDescuento() {
-
         return descuento;
     }
 
