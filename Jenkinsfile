@@ -26,7 +26,7 @@ pipeline {
       steps {
         echo "------------>Instalacion NPM<------------"
         dir('BoletinCine') {
-          sh 'npm install --force'
+          sh 'npm install --legacy-peer-deps'
         }      
       }
     }
