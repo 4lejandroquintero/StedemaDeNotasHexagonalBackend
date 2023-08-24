@@ -10,9 +10,8 @@ pipeline {
     disableConcurrentBuilds()
   }
 
-  tools {
-    jdk 'JDK17_Centos'
-    nodejs 'NodeJS15'
+  tools {    
+    nodejs 'NodeJS14'
   }
 
   stages {
