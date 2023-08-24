@@ -25,7 +25,10 @@ export class LoginComponent implements OnInit{
   iniciarSesion(){
     if(this.loginForm.valid){
       this.authService.loginAndGet(this.loginForm.get('correo').value, this.loginForm.get('contrasena').value )
-        .subscribe(()=>(this.alertaInicionSesion(), this.recargarPagina()));
+        .subscribe(()=>{
+          this.alertaInicionSesion();
+          this.recargarPagina();
+        });
     }
     if(!this.loginForm.valid){
       this.alertaSesionIncorrecta();

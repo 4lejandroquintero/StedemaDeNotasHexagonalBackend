@@ -63,7 +63,9 @@ export class AsientosComponent implements OnInit, DoCheck{
     this.boleto.idFuncion = parseInt(this.idFuncion);
     this.boleto.cantidadAsientos = this.numAsientosSeleccionados;
     this.boleto.numeroAsientos = this.asientosSeleccionados.toString();
-    this.boletosService.crear(this.boleto).subscribe((data)=>(this.valor = data.valor, console.log(this.valor),this.alertaExitosa()));
+    this.boletosService.crear(this.boleto).subscribe((data)=>{
+      this.valor = data.valor;
+      this.alertaExitosa(); });
     this.asientosConfirmados = true;
     this.cancelarAsientos = false;
     this.continuacionProceso = false;

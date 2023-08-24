@@ -20,11 +20,9 @@ export class ComprobantePagoComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(data => this.idPago = data.get('idPago'));
-    console.log(this.idPago);
 
     this.pagosService.obtenerPorID(this.idPago).subscribe(data => {
       this.pago = data;
-      console.log(data);
     }) ;
 
   }

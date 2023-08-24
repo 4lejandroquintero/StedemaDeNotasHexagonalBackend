@@ -2,7 +2,7 @@ import { HttpService } from '@core-service/http.service';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Factura, FacturaDTO } from '@models/factura/factura';
-import { facturaID } from '@shared/models/factura/facturaID';
+import { IDFactura } from '@shared/models/factura/facturaID';
 
 
 @Injectable()
@@ -24,7 +24,7 @@ export class FacturasService {
 
 
   crear(data: Factura){
-    return this.http.doPost<Factura, facturaID >(this.API_URL, data );
+    return this.http.doPost<Factura, IDFactura >(this.API_URL, data );
   }
 
   obtenerListado(){

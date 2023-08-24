@@ -17,12 +17,8 @@ export class BoletoComponent{
   obtenerListaSeleccionados(){
     this.asientosService.asientosSeleccionados$.subscribe(data => this.asientos = data);
   }
-
   controladorEvento($event){
     this.nombrePelicula = $event;
-  }
-  valores(){
-    console.log(this.nombrePelicula);
   }
 
 }

@@ -55,7 +55,7 @@ import {
   ViewContainerRef,
 } from '@angular/core';
 import { AbstractControl, NgControl, NgModel, ValidatorFn } from '@angular/forms';
-import { EMPTY, merge, Observable, Subscription } from 'rxjs';
+import { EMPTY, merge, Observable, Subscription, throwError } from 'rxjs';
 import { MensajeErrorCamposContenedorDirective } from './mensaje-error-campos-contenedor.directive';
 import { MensajeErrorCamposSubmitDirective } from './mensaje-error-campos-submit.directive';
 import { FORM_ERRORS } from '../errores/lista-errores';
@@ -95,7 +95,7 @@ export class MensajeErrorCamposDirective implements OnInit, OnDestroy, AfterView
       return this.formControl.dirty || this.formControl.touched;
     }
   }
-  
+
   private get formControl(): AbstractControl {
     return this.control.control;
   }
@@ -129,7 +129,7 @@ export class MensajeErrorCamposDirective implements OnInit, OnDestroy, AfterView
       this.componente.instance.text = texto;
       this.claseError(true);
     } catch (error) {
-      console.error(error);
+      throwError(() => error);
     }
   }
 
@@ -158,7 +158,7 @@ export class MensajeErrorCamposDirective implements OnInit, OnDestroy, AfterView
         this.claseError(false);
       }
     } catch (error) {
-      console.error(error);
+      throwError(() => error);
     }
   }
 

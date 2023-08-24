@@ -36,10 +36,10 @@ export class PagoComponent implements OnInit {
       if (result.isConfirmed) {
         if(this.formPago.valid){
           this.pago.valorAPagar = this.formPago.get('valorAPagar').value;
-          this.pagosService.crear(this.pago).subscribe(numeroPago => (
-            this.idPago = numeroPago.valor.toString(),
-            this.route.navigate(['/comprobante/pago', this.idPago])
-          ));
+          this.pagosService.crear(this.pago).subscribe(numeroPago => {
+            this.idPago = numeroPago.valor.toString();
+            this.route.navigate(['/comprobante/pago', this.idPago]);
+          });
         }
         Swal.fire(
           'Pago realizado!',

@@ -3,8 +3,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpService } from '@core/services/http.service';
 import { Boleto, CreateBoletoDTO } from '@models/boleto/boleto';
-import { tap } from 'rxjs/operators';
-import { rtaBoletoReserva } from '@shared/models/boleto/boleto';
+import { ValorBoletoReserva } from '@shared/models/boleto/boleto';
 
 
 @Injectable()
@@ -26,7 +25,7 @@ export class BoletosService   {
 
 
   public crear(data: CreateBoletoDTO) {
-    return this.http.doPost<CreateBoletoDTO, rtaBoletoReserva>(this.API_URL, data).pipe(tap((valor) => console.log(valor)));
+    return this.http.doPost<CreateBoletoDTO, ValorBoletoReserva>(this.API_URL, data);
   }
 
   public obtenerListado() {

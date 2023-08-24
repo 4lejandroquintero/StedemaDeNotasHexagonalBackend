@@ -12,8 +12,7 @@ export class TokenService {
   }
 
   getToken(){
-    const token = localStorage.getItem('token');
-    return token;
+    return localStorage.getItem('token'); ;
   }
 
   saveIdUser(idCliente: string){
@@ -21,8 +20,7 @@ export class TokenService {
   }
 
   public getidCliente(){
-    const id = localStorage.getItem('idCliente');
-    return id;
+    return localStorage.getItem('idCliente');
   }
 
   borrarDatos(){

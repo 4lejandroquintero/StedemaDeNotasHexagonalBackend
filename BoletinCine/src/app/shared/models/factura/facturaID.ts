@@ -1,3 +1,3 @@
-export interface facturaID{
+export interface IDFactura{
   valor: number;
 }

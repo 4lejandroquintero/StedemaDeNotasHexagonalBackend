@@ -49,9 +49,4 @@ export class FacturaComponent implements OnInit{
         );
       });
   }
-
-  mostrarValor(){
-    console.log(this.factura);
-    this.factureishon = this.factura;
-  }
 }

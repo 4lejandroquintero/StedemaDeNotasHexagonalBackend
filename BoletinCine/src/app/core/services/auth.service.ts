@@ -33,8 +33,12 @@ export class AuthService {
   login(correo: string, contrasena: string){
     return this.http.doPost<ComandoLogin, Auth >(`${this.API_URL}/login`, {correo, contrasena})
       .pipe(
-        tap( response => ((this.tokenService.saveToken(response.valor.token)),
-        this.tokenService.saveIdUser((response.valor.idCliente).toString()))));
+        tap( response => {
+          this.tokenService.saveToken(response.valor.token);
+          this.tokenService.saveIdUser((response.valor.idCliente).toString());
+        }
+        )
+      );
   }
 
   loginAndGet(correo: string, contrasena: string){
@@ -51,18 +55,6 @@ export class AuthService {
       tap( user => (this.setCliente(user)))
     );
   }
-
-  getCurrentClient(){
-    const token = this.tokenService.getToken();
-    if(token){
-      return this.getProfile().subscribe((rta) => rta.id);
-    }
-  }
-
-  tenerCliente(){
-    this.cliente$.subscribe();
-  }
-
   setCliente(u: Cliente){
     this.dataCliente = u;
     this.cliente.next(this.dataCliente);

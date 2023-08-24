@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpService } from '@core-service/http.service';
-import { HttpParams } from '@angular/common/http';
 import { Pago, IdPago, PagoDTO } from '@shared/models/pago/pago';
 
 @Injectable({
@@ -18,13 +17,8 @@ export class PagosService {
     return this.http.doPost<Pago, IdPago>(this.API_URL, data);
   }
 
-  obtenerListado(limit?: number, offset?: number){
-    let params = new HttpParams();
-    if(limit != undefined && offset != undefined){
-      params = params.set('limit',limit);
-      params = params.set('offset',offset);
-    }
-    return this.http.doGet(this.API_URL, { params });
+  obtenerListado(){
+    return this.http.doGet<PagoDTO[]>(this.API_URL);
   }
 
   obtenerPorID(id: string){

@@ -11,6 +11,6 @@ export interface CreateBoletoDTO{
   idFuncion: number;
 }
 
-export interface rtaBoletoReserva{
+export interface ValorBoletoReserva{
   valor: number;
 }
