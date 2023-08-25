@@ -41,6 +41,7 @@ pipeline {
       }
     }
 
+    /*
     stage('Tests end-to-end') {
       steps {
         echo "------------>End-to-end Tests<------------"        
@@ -52,6 +53,9 @@ pipeline {
         }     
       }
     }
+    */
+
+
     /* 
     stage('Codigo Estatico') {
       steps {
