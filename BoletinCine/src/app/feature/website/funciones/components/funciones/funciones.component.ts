@@ -24,10 +24,10 @@ export class FuncionesComponent implements OnInit {
     this.route.paramMap
       .pipe(
         switchMap((params) => {
-          this.idBoleto =parseInt(params.get('id'));
+          this.idBoleto =parseInt(params.get('id'), 10);
           if (this.idBoleto) {
             return this.funcionesService.obtenerListado().pipe(
-              map(data => data.filter(funcion => parseInt(funcion.pelicula.idPelicula) === this.idBoleto))
+              map(data => data.filter(funcion => parseInt(funcion.pelicula.idPelicula, 10) === this.idBoleto))
             );
           }
           return [null];
