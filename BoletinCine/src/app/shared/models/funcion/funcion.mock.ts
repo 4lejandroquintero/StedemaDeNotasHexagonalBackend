@@ -26,4 +26,4 @@ export const generateManyFunciones = (size = 10): Funcion[] => {
     funciones.push(generateOneFuncion());
   }
   return [... funciones];
-}
+};
