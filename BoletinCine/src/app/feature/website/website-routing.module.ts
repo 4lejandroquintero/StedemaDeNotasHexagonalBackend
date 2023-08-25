@@ -36,7 +36,6 @@ const routes: Routes = [
       {
         path: 'funcion/:id',
         loadChildren: () => import('./funciones/funciones.module').then(mod => mod.FuncionesModule),
-        canActivate: [SecurityGuard]
       },
       {
         path: 'reserva/:nombrePeli/:idFuncion',

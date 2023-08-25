@@ -1,8 +1,8 @@
-<div class="card" *ngIf="pelicula">
+<div class="card carta" *ngIf="pelicula">
   <div class="bg-image hover-overlay" mdbRipple rippleColor="light">
     <app-img class="img-fluid" [imagen]="pelicula.imagenPortada"> </app-img>
     <a class="imgPelicula" [routerLink]="['/funcion', pelicula.idPelicula]">
-      <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+      <div class="mask" style="background-color: rgba(251, 251, 251);"></div>
     </a>
   </div>
   <div class="card-body">

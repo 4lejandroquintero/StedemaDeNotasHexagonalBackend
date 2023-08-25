@@ -43,11 +43,11 @@ pipeline {
 
     stage('Tests end-to-end') {
       steps {
-        echo "------------>End-to-end Tests<------------"
-        echo "------Aquí se ejecutarán los test end-to-end------"
-        /*dir('BoletinCine') {
-          sh 'npm run test'
-        }*/       
+        echo "------------>End-to-end Tests<------------"        
+        dir('BoletinCine') {
+          sh 'npm i -g @testim/testim-cli'
+          sh 'testim --token "MT5iH5MlaNKwbn96YSk9M77ybYmILLeZQTiDUN4Slk2YzDEQyy" --project "ZohH5gUe2qB3SUElrw47" --grid "Testim-Grid"'
+        }     
       }
     }
     /* 
@@ -59,6 +59,7 @@ pipeline {
         }        
       }
     }*/
+    
 
     stage('Static Code Analysis') {
       steps {
@@ -68,6 +69,9 @@ pipeline {
           sonarPathProperties: './sonar-project.properties')
       }
     }
+
+
+
 
     stage('Build') {
       steps {
