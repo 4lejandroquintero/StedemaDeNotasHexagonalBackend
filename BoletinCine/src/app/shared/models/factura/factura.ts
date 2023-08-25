@@ -1,9 +1,9 @@
-export class Factura {
+export class FacturaDTO {
   idCliente: number;
   idBoleto: number;
 }
 
-export interface FacturaDTO{
+export interface Factura{
   idFactura: number;
   fechaFactura: string;
   estadoFactura: string;
@@ -11,6 +11,8 @@ export interface FacturaDTO{
   descuento: number;
   valorTotal: number;
   boleto: {
+    idBoleto: number;
+    cantidadAsientos: number;
     numeroAsientos: string;
     funcion: {
       salaFuncion: string;
@@ -26,7 +28,5 @@ export interface FacturaDTO{
         categoriaEdadPelicula: string;
       };
     };
-
   };
-
 }

@@ -6,7 +6,7 @@ import { Component, DoCheck, EventEmitter, Input, OnInit, Output } from '@angula
 import { generarAsientos } from './totalasientos';
 import { Funcion } from '@shared/models/funcion/funcion';
 import Swal from 'sweetalert2';
-import { Boleto } from '@shared/models/boleto/boleto';
+import { BoletoDTO } from '@shared/models/boleto/boleto';
 
 @Component({
   selector: 'app-asientos',
@@ -19,7 +19,7 @@ export class AsientosComponent implements OnInit, DoCheck{
   asientosSeleccionados = [];
   opcionesAsiento = [];
   numAsientosSeleccionados = 0;
-  boleto = new Boleto();
+  boleto = new BoletoDTO();
   idFuncion: string | null = null;
   nombrePeli: string | null = null;
   asientosConfirmados = false;

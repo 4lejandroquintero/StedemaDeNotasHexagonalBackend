@@ -1,7 +1,7 @@
 import { PagosService } from '@shared/services/pago/pagos.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { PagoDTO } from '@shared/models/pago/pago';
+import { Pago } from '@shared/models/pago/pago';
 
 @Component({
   selector: 'app-comprobante-pago',
@@ -11,7 +11,7 @@ import { PagoDTO } from '@shared/models/pago/pago';
 export class ComprobantePagoComponent implements OnInit {
 
   idPago: string;
-  pago: PagoDTO;
+  pago: Pago;
 
   constructor(
     private route: ActivatedRoute,

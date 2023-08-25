@@ -2,7 +2,7 @@ import { HttpService } from '@core-service/http.service';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Factura, FacturaDTO } from '@models/factura/factura';
-import { IDFactura } from '@shared/models/factura/facturaID';
+import { ValorRetornoFactura } from '@shared/models/factura/facturaID';
 
 
 @Injectable()
@@ -15,12 +15,12 @@ export class FacturasService {
   constructor(
     protected http: HttpService,
   ) {}
-  crear(data: Factura){
-    return this.http.doPost<Factura, IDFactura >(this.API_URL, data );
+  crear(data: FacturaDTO){
+    return this.http.doPost<FacturaDTO, ValorRetornoFactura >(this.API_URL, data );
   }
 
   obtenerPorID(id: number){
-    return this.http.doGet<FacturaDTO>(`${this.API_URL}/${id}`);
+    return this.http.doGet<Factura>(`${this.API_URL}/${id}`);
   }
 
 }

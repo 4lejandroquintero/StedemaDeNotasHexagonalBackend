@@ -1,3 +1,3 @@
-export interface IDFactura{
+export interface ValorRetornoFactura{
   valor: number;
 }

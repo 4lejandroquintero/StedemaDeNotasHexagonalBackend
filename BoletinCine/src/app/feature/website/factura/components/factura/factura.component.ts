@@ -13,11 +13,11 @@ import { switchMap } from 'rxjs';
 })
 export class FacturaComponent implements OnInit{
   idBoleto: string | null;
-  dataFactura = new Factura();
-  factura: FacturaDTO;
+  dataFactura = new FacturaDTO();
+  factura: Factura;
   idFactura: number;
 
-  factureishon: FacturaDTO;
+  factureishon: Factura;
 
   constructor(
     private facturaService: FacturasService,

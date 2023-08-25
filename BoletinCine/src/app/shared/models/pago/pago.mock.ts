@@ -1,14 +1,16 @@
-export class PagoDTO{
-  idFactura: number;
-  valorAPagar: number;
-}
+import { generateOneFactura } from '@shared/models/factura/factura.mock';
+import { faker } from '@faker-js/faker';
+
+export const generateOnePago = (): infoPagoMock =>{
+  return {
+    valorAPagar: faker.number.int(50000),
+    devuelta: faker.number.int(50000),
+    factura: generateOneFactura()
+  };
+};
 
 
-export interface ValorRetornoPago{
-  valor: number;
-}
-
-export interface Pago{
+interface infoPagoMock {
   valorAPagar: number;
   devuelta: number;
   factura: {
@@ -18,10 +20,6 @@ export interface Pago{
     valorDeBoletos: number;
     descuento: number;
     valorTotal: number;
-    cliente: {
-      nombre: string;
-      documentoIdentidad: string;
-    };
     boleto: {
       idBoleto: number;
       cantidadAsientos: number;

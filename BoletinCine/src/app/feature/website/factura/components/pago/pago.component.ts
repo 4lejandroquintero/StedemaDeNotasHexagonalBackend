@@ -3,7 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
-import { Pago } from '@shared/models/pago/pago';
+import { PagoDTO } from '@shared/models/pago/pago';
 
 @Component({
   selector: 'app-pago',
@@ -14,7 +14,7 @@ export class PagoComponent implements OnInit {
   @Input() idFactura: number;
   @Input() valorTotalFactura: number;
   formPago: FormGroup;
-  pago = new Pago();
+  pago = new PagoDTO();
   idPago: string;
   valorAPagar: number;
 

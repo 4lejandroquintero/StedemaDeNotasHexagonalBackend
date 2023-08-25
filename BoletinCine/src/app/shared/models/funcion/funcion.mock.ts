@@ -4,11 +4,6 @@ import {Funcion} from './funcion';
 export const generateOneFuncion = (): Funcion => {
   return {
     idFuncion: faker.number.int(),
-    pelicula: {
-      idPelicula: faker.datatype.uuid(),
-      nombrePelicula: faker.company.buzzAdjective(),
-      imagenPortada: faker.image.avatar(),
-    },
     nombreTeatro: faker.company.catchPhraseAdjective(),
     salaFuncion: faker.string.alphanumeric(2),
     diaFuncion: faker.date.soon().toDateString(),
@@ -17,6 +12,11 @@ export const generateOneFuncion = (): Funcion => {
     categoriaAudioFuncion: faker.music.genre(),
     categoriaSubtitulosFuncion: faker.string.fromCharacters('espanol'),
     categoriaVisualFuncion: faker.string.fromCharacters('espanol'),
+    pelicula: {
+      idPelicula: faker.datatype.uuid(),
+      nombrePelicula: faker.company.buzzAdjective(),
+      imagenPortada: faker.image.avatar(),
+    },
   };
 };
 
