@@ -47,8 +47,8 @@ pipeline {
         dir('BoletinCine') {
           sh 'npm i -g @testim/testim-cli'
           sh 'ng serve'
-          sh 'testim --token "MT5iH5MlaNKwbn96YSk9M77ybYmILLeZQTiDUN4Slk2YzDEQyy" --project "ZohH5gUe2qB3SUElrw47" --grid "Testim-Grid"' "--report-file reports/testim/testim-tests.xml"
-          sh 'pkill -f "ng serve"'
+          sh 'testim --token "MT5iH5MlaNKwbn96YSk9M77ybYmILLeZQTiDUN4Slk2YzDEQyy" --project "ZohH5gUe2qB3SUElrw47" --grid "Testim-Grid" " --report-file reports/testim/testim-tests.xml'
+          sh 'pkill -f "ng'
         }     
       }
     }
