@@ -5,6 +5,7 @@ import { PeliculasService } from './peliculas.service';
 
 import { Pelicula } from '@shared/models/pelicula/peliculas';
 import { HttpService } from '@core/services/http.service';
+import { environment } from 'src/environments/environment';
 
 describe('PeliculasService', () => {
   let peliculaService: PeliculasService;
@@ -15,15 +16,21 @@ describe('PeliculasService', () => {
       imports: [HttpClientTestingModule],
       providers: [
         PeliculasService,
-        HttpService
+        HttpService,
+        [{provide: environment, useValue: environment}]
       ]
-    });
+    }).compileComponents();
     peliculaService = TestBed.inject(PeliculasService);
     httpController = TestBed.inject(HttpTestingController);
   });
 
   it('should be create', () => {
     expect(peliculaService).toBeTruthy();
+  });
+
+  it('deberia retornar valor de cadena de API', () => {
+    const value = peliculaService.getUrl();
+    expect(value).toEqual('http://localhost:8083/cine/pelicula');
   });
 
   describe('test de obtener datos',()=>{

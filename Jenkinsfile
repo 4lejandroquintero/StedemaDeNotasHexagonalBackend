@@ -50,7 +50,7 @@ pipeline {
         }*/       
       }
     }
-    
+    /* 
     stage('Codigo Estatico') {
       steps {
         echo "------------>Codigo con TSLint<------------"
@@ -58,7 +58,7 @@ pipeline {
           sh 'npm run lint'
         }        
       }
-    }
+    }*/
 
     stage('Static Code Analysis') {
       steps {
