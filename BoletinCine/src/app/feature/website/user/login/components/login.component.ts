@@ -11,7 +11,7 @@ import Swal from 'sweetalert2';
 export class LoginComponent implements OnInit{
 
   loginForm: FormGroup;
-  tiempoEsperaAviso = 2000;
+  private tiempoEsperaAviso = 2000;
 
   constructor(
     private authService: AuthService,

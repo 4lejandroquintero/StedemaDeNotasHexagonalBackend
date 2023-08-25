@@ -11,8 +11,6 @@ import { Location } from '@angular/common';
   styleUrls: ['./funciones.component.scss']
 })
 export class FuncionesComponent implements OnInit {
-
-
   funciones: Funcion[] = [];
   idBoleto: string | null = null;
 
@@ -29,7 +27,7 @@ export class FuncionesComponent implements OnInit {
           this.idBoleto = params.get('id');
           if (this.idBoleto) {
             return this.funcionesService.obtenerListado().pipe(
-              map(data => data.filter(funcion => funcion.pelicula.idPelicula === this.idBoleto))
+              map(data => data.filter(funcion => funcion.pelicula.idPelicula == this.idBoleto))
             );
           }
           return [null];

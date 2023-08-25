@@ -1,4 +1,4 @@
-export interface Pago{
+export class Pago{
   idFactura: number;
   valorAPagar: number;
 }

@@ -3,6 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { Pago } from '@shared/models/pago/pago';
 
 @Component({
   selector: 'app-pago',
@@ -13,7 +14,7 @@ export class PagoComponent implements OnInit {
   @Input() idFactura: number;
   @Input() valorTotalFactura: number;
   formPago: FormGroup;
-  pago: any = {};
+  pago = new Pago();
   idPago: string;
   valorAPagar: number;
 
@@ -41,18 +42,21 @@ export class PagoComponent implements OnInit {
             this.route.navigate(['/comprobante/pago', this.idPago]);
           });
         }
-        Swal.fire(
-          'Pago realizado!',
-          'Se ha realizado el pago exitosamente',
-          'success'
-        );
-      }return this.alertaError();
+      }
+      return this.alertaPagoExitoso();
     }
     )
     ;
   }
 
 
+  alertaPagoExitoso(){
+    Swal.fire(
+      'Pago realizado!',
+      'Se ha realizado el pago exitosamente',
+      'success'
+    );
+  }
 
   alertaError(){
     Swal.fire({

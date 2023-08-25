@@ -1,3 +1,4 @@
+import { Factura } from './../../../../../shared/models/factura/factura';
 import { ActivatedRoute } from '@angular/router';
 import { FacturasService } from '@shared/services/factura/facturas.service';
 import { Component, OnInit } from '@angular/core';
@@ -12,7 +13,7 @@ import { switchMap } from 'rxjs';
 })
 export class FacturaComponent implements OnInit{
   idBoleto: string | null;
-  dataFactura: any = {};
+  dataFactura = new Factura();
   factura: FacturaDTO;
   idFactura: number;
 

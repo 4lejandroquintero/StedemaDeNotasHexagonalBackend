@@ -1,4 +1,4 @@
-export interface Factura {
+export class Factura {
   idCliente: number;
   idBoleto: number;
 }
