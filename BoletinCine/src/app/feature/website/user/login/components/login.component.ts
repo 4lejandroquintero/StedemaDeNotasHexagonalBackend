@@ -3,6 +3,7 @@ import { AuthService } from '@core-service/auth.service';
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -10,13 +11,13 @@ import Swal from 'sweetalert2';
 })
 export class LoginComponent implements OnInit{
 
+
   loginForm: FormGroup;
-  private tiempoEsperaAviso = 2000;
 
   constructor(
     private authService: AuthService,
     private fb: FormBuilder,
-  ) {this.loginForm = this.fb.group({});}
+  ){this.loginForm = this.fb.group({});}
 
   ngOnInit(): void {
     this.construirFormularioLogin();
@@ -37,18 +38,20 @@ export class LoginComponent implements OnInit{
   }
 
   recargarPagina(){
+    const tiempoEsperaAviso = 2000;
     setTimeout(function() {
       window.location.reload();
-    }, this.tiempoEsperaAviso);
+    }, tiempoEsperaAviso);
   }
 
   alertaInicionSesion(){
+    const tiempoEsperaAviso = 2000;
     return Swal.fire({
       position: 'center',
       icon: 'success',
       title: 'Te has logueado con exito!',
       showConfirmButton: false,
-      timer: this.tiempoEsperaAviso,
+      timer: tiempoEsperaAviso ,
     });
   }
   alertaSesionIncorrecta(){

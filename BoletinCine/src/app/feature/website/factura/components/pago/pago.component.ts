@@ -33,20 +33,16 @@ export class PagoComponent implements OnInit {
     if(this.valorAPagar < this.valorTotalFactura){
       return this.alertaError();
     }
-    this.alertaConfirmacion().then((result) => {
-      if (result.isConfirmed) {
-        if(this.formPago.valid){
-          this.pago.valorAPagar = this.formPago.get('valorAPagar').value;
-          this.pagosService.crear(this.pago).subscribe(numeroPago => {
-            this.idPago = numeroPago.valor.toString();
-            this.route.navigate(['/comprobante/pago', this.idPago]);
-          });
-        }
+    return this.alertaConfirmacion().then((result) => {
+      if (result.isConfirmed && this.formPago.valid) {
+        this.pago.valorAPagar = this.formPago.get('valorAPagar').value;
+        this.pagosService.crear(this.pago).subscribe(numeroPago => {
+          this.idPago = numeroPago.valor.toString();
+          this.route.navigate(['/comprobante/pago', this.idPago]);
+        });
       }
       return this.alertaPagoExitoso();
-    }
-    )
-    ;
+    });
   }
 
 

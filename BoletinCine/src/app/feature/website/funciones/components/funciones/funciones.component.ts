@@ -12,7 +12,7 @@ import { Location } from '@angular/common';
 })
 export class FuncionesComponent implements OnInit {
   funciones: Funcion[] = [];
-  idBoleto: string | null = null;
+  idBoleto: number | null = null;
 
   constructor(
     private route: ActivatedRoute,
@@ -24,10 +24,10 @@ export class FuncionesComponent implements OnInit {
     this.route.paramMap
       .pipe(
         switchMap((params) => {
-          this.idBoleto = params.get('id');
+          this.idBoleto =parseInt(params.get('id'));
           if (this.idBoleto) {
             return this.funcionesService.obtenerListado().pipe(
-              map(data => data.filter(funcion => funcion.pelicula.idPelicula == this.idBoleto))
+              map(data => data.filter(funcion => parseInt(funcion.pelicula.idPelicula) === this.idBoleto))
             );
           }
           return [null];

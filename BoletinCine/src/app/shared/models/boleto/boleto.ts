@@ -1,4 +1,4 @@
-export interface Boleto{
+export class Boleto{
   idBoleto?: number;
   cantidadAsientos: number;
   numeroAsientos: string;
