@@ -11,6 +11,7 @@ import Swal from 'sweetalert2';
 export class LoginComponent implements OnInit{
 
   loginForm: FormGroup;
+  tiempoEsperaAviso = 2000;
 
   constructor(
     private authService: AuthService,
@@ -38,7 +39,7 @@ export class LoginComponent implements OnInit{
   recargarPagina(){
     setTimeout(function() {
       window.location.reload();
-    }, 2000);
+    }, this.tiempoEsperaAviso);
   }
 
   alertaInicionSesion(){
@@ -47,7 +48,7 @@ export class LoginComponent implements OnInit{
       icon: 'success',
       title: 'Te has logueado con exito!',
       showConfirmButton: false,
-      timer: 2000
+      timer: this.tiempoEsperaAviso,
     });
   }
   alertaSesionIncorrecta(){

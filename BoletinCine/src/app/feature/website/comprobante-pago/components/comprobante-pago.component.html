@@ -49,6 +49,7 @@
             </table>
 
             <table class="table-responsive caption-top table-bordered table-warning">
+              <caption>Comprobante de Pago</caption>
               <thead class="table-light">
                 <tr>
                   <th scope="col">Hora Funcion</th>
@@ -64,7 +65,7 @@
               </thead>
               <tbody>
                 <tr>
-                  <th>{{pago.factura.boleto.funcion.horaFuncion}}</th>
+                  <th scope="row">{{pago.factura.boleto.funcion.horaFuncion}}</th>
                   <td>{{pago.factura.boleto.funcion.categoriaAudioFuncion}}</td>
                   <td>{{pago.factura.boleto.funcion.categoriaSubtitulosFuncion}}</td>
                   <td>{{pago.factura.boleto.funcion.categoriaVisualFuncion}}</td>

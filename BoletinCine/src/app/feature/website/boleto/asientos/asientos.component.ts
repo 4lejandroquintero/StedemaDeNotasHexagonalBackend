@@ -60,7 +60,7 @@ export class AsientosComponent implements OnInit, DoCheck{
   }
 
   crearBoleto(){
-    this.boleto.idFuncion = parseInt(this.idFuncion);
+    this.boleto.idFuncion = parseInt(this.idFuncion,10);
     this.boleto.cantidadAsientos = this.numAsientosSeleccionados;
     this.boleto.numeroAsientos = this.asientosSeleccionados.toString();
     this.boletosService.crear(this.boleto).subscribe((data)=>{

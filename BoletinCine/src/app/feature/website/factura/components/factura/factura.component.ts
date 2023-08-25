@@ -31,10 +31,8 @@ export class FacturaComponent implements OnInit{
         switchMap((params) => {
           this.idBoleto = params.get('idBoleto');
           if (this.idBoleto) {
-            this.dataFactura.idBoleto = parseInt(this.idBoleto);
-            this.dataFactura.idCliente = parseInt(
-              this.tokenService.getidCliente()
-            );
+            this.dataFactura.idBoleto = parseInt(this.idBoleto, 10);
+            this.dataFactura.idCliente = parseInt(this.tokenService.getidCliente(),10);
             return this.facturaService.crear(this.dataFactura);
           }
           return [];
