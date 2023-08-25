@@ -46,8 +46,10 @@ export class PagoComponent implements OnInit {
           'Se ha realizado el pago exitosamente',
           'success'
         );
-      }
-    });
+      }return this.alertaError();
+    }
+    )
+    ;
   }
 
 
