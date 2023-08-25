@@ -1,4 +1,4 @@
-import { faker } from '@faker-js/faker';
+import {  faker } from '@faker-js/faker';
 import { Factura } from './factura';
 import { generarAsientos } from '../../../feature/website/boleto/asientos/totalasientos';
 enum estadosFactura {
@@ -13,6 +13,10 @@ export const generateOneFactura = (): Factura => {
     valorDeBoletos: parseInt(faker.commerce.price()),
     descuento: parseInt(faker.commerce.price()),
     valorTotal: parseInt(faker.commerce.price()),
+    cliente: {
+      nombre: faker.person.firstName(),
+      documentoIdentidad: faker.person.zodiacSign(),
+    },
     boleto: {
       idBoleto: faker.number.int(100),
       cantidadAsientos: faker.number.int(56),

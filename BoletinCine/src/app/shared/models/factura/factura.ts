@@ -10,6 +10,10 @@ export interface Factura{
   valorDeBoletos: number;
   descuento: number;
   valorTotal: number;
+  cliente: {
+    nombre: string;
+    documentoIdentidad: string;
+  };
   boleto: {
     idBoleto: number;
     cantidadAsientos: number;

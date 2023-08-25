@@ -1,16 +1,14 @@
 import { generateOneFactura } from '@shared/models/factura/factura.mock';
 import { faker } from '@faker-js/faker';
 
-export const generateOnePago = (): infoPagoMock =>{
+export const generateOnePago = (): InfoPagoMock =>{
   return {
     valorAPagar: faker.number.int(50000),
     devuelta: faker.number.int(50000),
     factura: generateOneFactura()
   };
 };
-
-
-interface infoPagoMock {
+interface InfoPagoMock {
   valorAPagar: number;
   devuelta: number;
   factura: {
@@ -20,6 +18,10 @@ interface infoPagoMock {
     valorDeBoletos: number;
     descuento: number;
     valorTotal: number;
+    cliente: {
+      nombre: string;
+      documentoIdentidad: string;
+    };
     boleto: {
       idBoleto: number;
       cantidadAsientos: number;
