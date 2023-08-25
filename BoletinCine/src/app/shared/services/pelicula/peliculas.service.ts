@@ -9,18 +9,9 @@ export class PeliculasService {
 
   constructor(protected http: HttpService) { }
 
-  public guardar(pelicula: Pelicula){
-    return this.http.doPost<Pelicula, boolean>(this.API_URL, pelicula);
-  }
-
   public obtenerListado(){
     return this.http.doGet<Pelicula[]>(this.API_URL);
   }
-
-  public obtenerPorID(idPelicula: string){
-    return this.http.doGet<Pelicula>(`${this.API_URL}/${idPelicula}`);
-  }
-
   public getUrl(){
     return this.API_URL;
   }

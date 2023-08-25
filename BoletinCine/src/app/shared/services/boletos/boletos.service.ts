@@ -1,4 +1,3 @@
-import { AuthService } from '@core/services/auth.service';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpService } from '@core/services/http.service';
@@ -15,14 +14,7 @@ export class BoletosService   {
 
   constructor(
     private http: HttpService,
-    private authService: AuthService,
   ){}
-
-
-  obtenerIdCliente(){
-    this.authService.cliente$.subscribe(data => this.idCliente = data.id);
-  }
-
 
   public crear(data: CreateBoletoDTO) {
     return this.http.doPost<CreateBoletoDTO, ValorBoletoReserva>(this.API_URL, data);
@@ -30,14 +22,6 @@ export class BoletosService   {
 
   public obtenerListado() {
     return this.http.doGet<Boleto[]>(this.API_URL);
-  }
-
-  public obtenerPorID(id: string) {
-    return this.http.doGet(`${this.API_URL}/${id}`);
-  }
-
-  public obtenerPorFuncion(idFuncion: string) {
-    return this.http.doGet(`${this.API_URL}/funcion/${idFuncion}`);
   }
 
 }

@@ -15,20 +15,8 @@ export class FacturasService {
   constructor(
     protected http: HttpService,
   ) {}
-
-  convertirData(idCliente: number, idBoleto: number){
-    this.factura.idCliente = idCliente;
-    this.factura.idBoleto = idBoleto;
-    return this.factura;
-  }
-
-
   crear(data: Factura){
     return this.http.doPost<Factura, IDFactura >(this.API_URL, data );
-  }
-
-  obtenerListado(){
-    return this.http.doGet(this.API_URL);
   }
 
   obtenerPorID(id: number){

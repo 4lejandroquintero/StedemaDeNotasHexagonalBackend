@@ -13,6 +13,7 @@ import { Location } from '@angular/common';
 export class FuncionesComponent implements OnInit {
   funciones: Funcion[] = [];
   idBoleto: number | null = null;
+  longitudFunciones: number;
 
   constructor(
     private route: ActivatedRoute,
@@ -35,6 +36,7 @@ export class FuncionesComponent implements OnInit {
       )
       .subscribe((data) => {
         this.funciones = data;
+        this.longitudFunciones = this.funciones.length;
       });
   }
 

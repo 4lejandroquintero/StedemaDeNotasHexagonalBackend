@@ -52,6 +52,7 @@
     "@angular/cli": "^14.2.10",
     "@angular/compiler-cli": "^14.2.12",
     "@angular/language-service": "^14.2.12",
+    "@faker-js/faker": "^8.0.2",
     "@stryker-mutator/core": "^6.0.2",
     "@stryker-mutator/karma-runner": "^6.0.2",
     "@stryker-mutator/typescript-checker": "^6.0.2",

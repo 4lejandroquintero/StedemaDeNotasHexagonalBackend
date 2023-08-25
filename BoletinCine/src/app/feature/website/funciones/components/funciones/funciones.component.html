@@ -20,13 +20,15 @@
       </button>
     </div>
     <app-tablero [funcion]="funcion" *ngFor="let funcion of funciones"></app-tablero>
-    <ng-container  *ngTemplateOutlet="ceroFunciones"></ng-container>
+    <div class="nofunciones"  *ngIf="longitudFunciones === 0">
+      <ng-container *ngTemplateOutlet="ceroFunciones"></ng-container>
+    </div>
   </div>
 </div>
 
 <ng-template #ceroFunciones>
-  <div class="contenido" *ngIf="funciones">
-  <div class="sinFunciones" *ngIf="funciones.length === 0">
+  <div class="contenido" >
+  <div class="sinFunciones">
     <div class="bloque">
       <div class="text">
         Oh! Que lastima, no hay funciones disponibles por el momento para esta pelicula

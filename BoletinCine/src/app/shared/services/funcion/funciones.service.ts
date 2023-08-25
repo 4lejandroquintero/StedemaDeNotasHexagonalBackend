@@ -10,16 +10,8 @@ export class FuncionesService {
 
   constructor(protected http: HttpService) { }
 
-  crear(data: Funcion){
-    return this.http.doPost(this.API_URL, data);
-  }
-
   obtenerListado(){
     return this.http.doGet<Funcion[]>(this.API_URL);
-  }
-
-  obtenerPorID(id: string){
-    return this.http.doGet(`${this.API_URL}/${id}`);
   }
 
 }
