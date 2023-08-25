@@ -4,6 +4,7 @@ import { PeliculasComponent } from './peliculas.component';
 import { PeliculasService } from '@shared/services/pelicula/peliculas.service';
 import { HttpService } from '@core/services/http.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { PeliculaComponent } from '../pelicula/pelicula.component';
 
 describe('PeliculasComponent', () => {
   let component: PeliculasComponent;
@@ -11,7 +12,7 @@ describe('PeliculasComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PeliculasComponent ],
+      declarations: [ PeliculasComponent, PeliculaComponent],
       imports: [HttpClientTestingModule],
       providers: [PeliculasService, HttpService]
     })
@@ -25,4 +26,5 @@ describe('PeliculasComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
 });
