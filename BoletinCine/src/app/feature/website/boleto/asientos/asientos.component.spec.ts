@@ -7,6 +7,7 @@ import { HttpService } from '@core/services/http.service';
 import { AuthService } from '@core/services/auth.service';
 import { AsientosService } from './service/asientos.service';
 import { RouterTestingModule } from '@angular/router/testing';
+import Swal from 'sweetalert2';
 
 describe('AsientosComponent', () => {
   let component: AsientosComponent;
@@ -27,5 +28,29 @@ describe('AsientosComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('deberia aparecer alerta de inicion sesion correcto', () =>{
+    const swalFireSpy = spyOn(Swal, 'fire');
+    component.alertaExitosa();
+
+    expect(swalFireSpy).toHaveBeenCalledWith({
+      position: 'center',
+      icon: 'success',
+      title: 'Asientos confirmados exitosamente',
+      showConfirmButton: false,
+      timer: 1000
+    }as any);
+  });
+
+  it('deberia cambiar valores binding', () => {
+    component.cancelarConfirmacion();
+    expect(component.cancelarAsientos).toEqual(true);
+    expect(component.continuacionProceso).toEqual(true);
+  });
+
+  it('deberia cambiar valor asientos confirmados', () => {
+    component.asientosSeleccionados = [[], []];
+    expect(component.asientosConfirmados).toEqual(true);
   });
 });
