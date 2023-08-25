@@ -12,7 +12,7 @@ export class TokenService {
   }
 
   getToken(){
-    return localStorage.getItem('token'); ;
+    return localStorage.getItem('token');
   }
 
   saveIdUser(idCliente: string){
