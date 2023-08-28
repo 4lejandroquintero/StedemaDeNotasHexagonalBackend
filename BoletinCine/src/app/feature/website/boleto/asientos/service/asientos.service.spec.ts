@@ -17,7 +17,25 @@ describe('AsientosService', () => {
   });
 
   it('deberia tener una lista de asientos',() =>{
-    const name = 'asientos';
-    expect(name).toBe('asientos');
+    const mockListaAsientos = [
+      {
+        asiento: 'A1',
+        isTaken: true,
+      },
+      {
+        asiento: 'A2',
+        isTaken: true,
+      },
+      {
+        asiento: 'A3',
+        isTaken: true,
+      },
+    ];
+    service.obtenerListaAsientos(mockListaAsientos);
+    service.asientoSeleccionadoSubject.subscribe( data => {
+      expect(data).toEqual(mockListaAsientos.filter(opcion => opcion.isTaken).map(opcion => opcion.asiento));
+    });
   });
+
+
 });

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PeliculasService } from '@shared/services/pelicula/peliculas.service';
 import { Pelicula } from '@models/pelicula/peliculas';
 
@@ -7,14 +7,16 @@ import { Pelicula } from '@models/pelicula/peliculas';
   templateUrl: './peliculas.component.html',
   styleUrls: ['./peliculas.component.scss']
 })
-export class PeliculasComponent  {
+export class PeliculasComponent implements OnInit {
   peliculas: Pelicula[] = [];
   idPelicula: string;
 
 
   constructor(
     protected peliculasService: PeliculasService,
-  ){
+  ){}
+
+  ngOnInit(): void {
     this.obtenerPeliculas();
   }
 

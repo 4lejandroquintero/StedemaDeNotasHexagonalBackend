@@ -1,0 +1,14 @@
+<div class="container">
+<div class="grid-container">
+  <div class="input-box" *ngFor="let option of opcionesAsiento">
+    <input class="valor" validar type="checkbox" [(ngModel)]="option.isTaken" (change)="filtrarSeleccionados()">
+    {{ option.asiento }}
+  </div>
+</div>
+<h4>Seleccionadas: {{filtrarSeleccionados()}}</h4>
+<h5>Cantidad de Asientos Selecionados:  {{numAsientosSeleccionados}}</h5>
+<button (click)="crearBoleto()" class="btn btn-warning" [disabled]="asientosConfirmados"> Confirmar Asientos </button>
+<button (click)="cancelarConfirmacion()" class="btn btn-danger" [disabled]="cancelarAsientos"> Cancelar Asientos </button>
+<button [routerLink]="['/factura/reserva', valor]" class="btn btn-success" validar [disabled]="continuacionProceso"> Continuar Reserva </button>
+</div>
+

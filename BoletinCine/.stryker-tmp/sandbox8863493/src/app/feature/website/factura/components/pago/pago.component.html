@@ -1,0 +1,9 @@
+<div class="container">
+  <div class="pago">
+    <form [formGroup]="formPago" (ngSubmit)="generarPago()">
+      <h4>Modulo de Pago</h4>
+      <input class="valorAPagar" type="number" placeholder="Ingresa con cuanto pagas" validar formControlName="valorAPagar">
+      <button class="btn-primary button" type="submit"> Generar Pago </button>
+    </form>
+  </div>
+</div>

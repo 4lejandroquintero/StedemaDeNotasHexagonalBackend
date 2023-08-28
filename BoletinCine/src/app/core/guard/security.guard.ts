@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, UrlTree, Router } from '@angular/router';
+import { CanActivate, Router } from '@angular/router';
 import { TokenService } from '@core/services/token.service';
-import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,10 +9,8 @@ export class SecurityGuard implements CanActivate {
   constructor(
     private router: Router,
     private tokenService: TokenService
-    //private authService: AuthService
-
   ){}
-  canActivate(): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+  canActivate():  boolean  {
     const token = this.tokenService.getToken();
     if(!token){
       this.router.navigate(['/home']);

@@ -17,8 +17,8 @@ interface ComandoLogin{
 @Injectable()
 export class AuthService {
 
-  private dataCliente: Cliente | null = null;
-  private cliente = new BehaviorSubject<Cliente | null>(null);
+  public dataCliente: Cliente | null = null;
+  public cliente = new BehaviorSubject<Cliente | null>(null);
   // eslint-disable-next-line @typescript-eslint/member-ordering
   public cliente$ = this.cliente.asObservable();
 
@@ -28,6 +28,7 @@ export class AuthService {
     private http: HttpService,
     private tokenService: TokenService
   ) { }
+
 
 
   login(correo: string, contrasena: string){

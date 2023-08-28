@@ -5,7 +5,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { MensajeErrorCamposSubmitDirective } from './directivas/error-campos/directiva/mensaje-error-campos-submit.directive';
 import { MensajeErrorCamposContenedorDirective } from './directivas/error-campos/directiva/mensaje-error-campos-contenedor.directive';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { TrackByPipe } from './pipe/track-by.pipe';
 import { AngularmaterialModule } from './angularmaterial/angularmaterial.module';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
@@ -19,7 +18,6 @@ import { FuncionesService } from './services/funcion/funciones.service';
   declarations: [
     MensajeErrorCamposContenedorDirective,
     MensajeErrorCamposSubmitDirective,
-    TrackByPipe,
   ],
   imports: [ReactiveFormsModule, FormsModule, BootstrapmaterialModule,  ],
   exports: [
@@ -29,7 +27,6 @@ import { FuncionesService } from './services/funcion/funciones.service';
     MensajeErrorCamposSubmitDirective,
     ReactiveFormsModule,
     FormsModule,
-    TrackByPipe,
     BootstrapmaterialModule,
     AngularmaterialModule,
     MatTableModule,

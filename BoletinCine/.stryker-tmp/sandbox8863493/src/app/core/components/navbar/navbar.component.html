@@ -1,0 +1,70 @@
+<!-- Just an image -->
+<nav class="navbar navbar-dark sticky-top navbar-expand-lg" style="background-color: #18293b">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img src="../../../../assets/imgs/Logov5 (1).png" height="35" alt="" loading="lazy" />
+    </a>
+    <button class="navbar-toggler" type="button" (click)="centered.toggle()" aria-controls="navbarCenteredExample"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <i><img src="../../../../assets/imgs/menuNavBar.png" alt="navbar" /></i>
+    </button>
+
+    <!-- Collapsible wrapper -->
+    <div class="collapse navbar-collapse justify-content-center justify-content-lg-between bloqueNav"
+      id="navbarCenteredExample" mdbCollapse #centered="mdbCollapse"
+      style="background-color: #18293b; border-radius: 0 0 8px 8px">
+      <!-- Left links -->
+      <ul class="navbar-nav mb-2 mb-lg-0 align-items-center fw-bold">
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" aria-current="page" routerLink="home">Peliculas</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="membresias" routerLinkActive="active">Membresias</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" routerLink="sobrenosotros">Sobre Nosotros</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" routerLink="contactanos" tabindex="-1"
+            aria-disabled="true">Contactos</a>
+        </li>
+      </ul>
+
+      <div class="d-flex align-items-center botones align-self-center" *ngIf="!clienteLogged" >
+        <a routerLink="login" type="button" class="btn btn-outline-secondary me-3" mdbRipple rippleColor="dark"
+          style="color: #fdc500; border: 1px solid #fdc500">
+          Iniciar Sesion
+        </a>
+      </div>
+
+      <ul class="navbar-nav sesionLogged" *ngIf="clienteLogged">
+        <!-- Avatar -->
+        <li mdbDropdown class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle d-flex align-items-center p-2"
+            style="border: 1px solid #fefbfb; border-radius: 8px" id="navbarDropdownMenuLink" role="button"
+            mdbDropdownToggle aria-expanded="false">
+            <img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/14cb6b84808917.5d68451d7d126.gif" class="rounded-circle" height="22"
+              alt="" loading="lazy" />
+          </a>
+          <ul mdbDropdownMenu class="dropdown-menu menuLogin" style="
+              position: fixed;
+              right: 2px;
+              width: 4px;
+              text-align: center;
+              margin: 0 auto;
+            " aria-labelledby="navbarDropdownMenuLink">
+            <li>
+              <a class="dropdown-item" routerLink="perfil">Perfil</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="" (click)="logOut()">Salir</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <!-- Left links -->
+    </div>
+
+    <!-- Si está logueado sale el avatar -->
+  </div>
+</nav>

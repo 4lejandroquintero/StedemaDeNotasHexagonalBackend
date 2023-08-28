@@ -20,4 +20,9 @@ describe('ImgComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('deberia emitir imagen al padre', () => {
+    component.imgLoaded();
+    component.loaded.emit(component.imagen);
+  });
 });

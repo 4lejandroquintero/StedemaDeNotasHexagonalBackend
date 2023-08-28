@@ -21,13 +21,11 @@ export class NavbarComponent  implements OnInit {
     const token = this.tokenService.getToken();
     if(token){
       this.authService.getProfile().subscribe(data => this.clienteLogged = data);
-      this.authService.cliente$.subscribe(data => this.clienteLogged = data);
+
     }
   }
 
   logOut(){
     this.authService.logOut();
   }
-
-
 }
