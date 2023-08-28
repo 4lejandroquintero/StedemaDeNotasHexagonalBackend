@@ -18,11 +18,22 @@ describe('ImgComponent', () => {
   });
 
   it('should create', () => {
+    component.imgDefault = 'https://www.m2crowd.com/core/i/placeholder.png';
     expect(component).toBeTruthy();
   });
 
+  it('no existe imagen', () => {
+    component.noExistImg();
+    component.imagen = 'https://www.m2crowd.com/core/i/placeholder.png';
+    expect(component.imagen).toEqual(component.imgDefault);
+  });
+
+
+
+
   it('deberia emitir imagen al padre', () => {
     component.imgLoaded();
+    component.imagen = 'urlImagen';
     component.loaded.emit(component.imagen);
   });
 });
