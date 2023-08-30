@@ -6,7 +6,7 @@ import { HttpService } from './http.service';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { environment } from 'src/environments/environment';
 import { Auth } from '@core/modelo/authprofile';
-import { tap } from 'rxjs';
+import { switchMap, tap } from 'rxjs';
 
 const mockData: Auth = {
   valor: {
@@ -33,7 +33,6 @@ const clienteMock = {
 describe('AuthService', () => {
   let service: AuthService;
   let httpController: HttpTestingController;
-  const apiEndpointAuth = `${environment.endpoint}/cliente/login`;
   let tokenService: TokenService;
 
   beforeEach(() => {
@@ -52,6 +51,7 @@ describe('AuthService', () => {
 
   describe('test para login', () => {
     it('deberia retornar un token', (doneFn) => {
+      const apiEndpointAuth = `${environment.endpoint}/cliente/login`;
 
       const email = 'jose@mail.com';
       const contrasena = '123';
@@ -66,6 +66,7 @@ describe('AuthService', () => {
   });
 
   it('should call to saveToken', (doneFn) => {
+    const apiEndpointAuth = `${environment.endpoint}/cliente/login`;
     //Arrange
     const email = 'jose@mail.com';
     const password = '123';
@@ -85,14 +86,17 @@ describe('AuthService', () => {
     const email = 'jose@mail.com';
     const password = '123';
 
+    service.loginAndGet(email, password);
+    service.login(email, password).pipe(switchMap(() => service.getProfile()));
     service.loginAndGet(email, password).pipe(() => service.getProfile().pipe(tap(
       data => expect(data).toEqual(clienteMock)
     )));
+
     dnFn();
   });
   it('deberia setear dato a subscribe de cliente', () => {
-
     service.setCliente(clienteMock);
+    service.dataCliente = clienteMock;
     expect(service.dataCliente).toEqual(clienteMock);
     service.cliente.subscribe(data => {
       expect(data).toEqual(service.dataCliente);
@@ -102,8 +106,25 @@ describe('AuthService', () => {
   it('deberia eliminar datos de usuario autenticado', () => {
     spyOn(tokenService, 'borrarDatos');
     service.logOut();
+    tokenService.borrarDatos();
+    service.cliente = null;
     expect(tokenService.borrarDatos).toHaveBeenCalled();
     expect(service.cliente).toBe(null);
+  });
+
+  it('deberia obtener perfil cliente', () => {
+    spyOn(tokenService, 'getidCliente').and.returnValue('1');
+    const apiEndpointAuth = `${environment.endpoint}/cliente/full/1`;
+    const mockCliente = clienteMock;
+
+    service.getProfile().subscribe( data => {
+      expect(data).toEqual(mockCliente);
+    }
+    );
+    const req = httpController.expectOne(apiEndpointAuth);
+    expect(req.request.method).toBe('GET');
+    req.flush(mockCliente);
+    httpController.verify();
   });
 });
 

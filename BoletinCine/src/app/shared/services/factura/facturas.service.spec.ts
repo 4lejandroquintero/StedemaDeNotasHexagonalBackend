@@ -56,15 +56,17 @@ describe('FacturasService', () => {
       //Arrange
       const mockData = generateOneFactura(); //mockdeFactura
       const idFactura = 1;
+      const expectedUrl = `${environment.endpoint}/factura/1`;
 
       //Act
       service.obtenerPorID(idFactura).subscribe(data => {
         //Assert
+
         expect(data).toBe(mockData);
         doneFn();
       });
 
-      const req = httpController.expectOne(`${apiEndpointFactura}/${idFactura}`);
+      const req = httpController.expectOne(expectedUrl);
       expect(req.request.method).toBe('GET');
       req.flush(mockData);
     });

@@ -11,6 +11,7 @@ import { TokenService } from '@core/services/token.service';
 })
 export class NavbarComponent  implements OnInit {
   clienteLogged: Cliente | null;
+  token: string;
 
   constructor(
     private authService: AuthService,
@@ -18,10 +19,13 @@ export class NavbarComponent  implements OnInit {
   ){}
 
   ngOnInit(): void {
-    const token = this.tokenService.getToken();
-    if(token){
-      this.authService.getProfile().subscribe(data => this.clienteLogged = data);
+    this.obtenerInfoClienteLogueado();
+  }
 
+  obtenerInfoClienteLogueado(){
+    this.token = this.tokenService.getToken();
+    if(this.token){
+      this.authService.getProfile().subscribe(data => this.clienteLogged = data);
     }
   }
 

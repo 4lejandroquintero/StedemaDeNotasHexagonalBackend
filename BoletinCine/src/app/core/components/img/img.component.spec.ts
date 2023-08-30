@@ -12,28 +12,31 @@ describe('ImgComponent', () => {
     })
       .compileComponents();
 
+
     fixture = TestBed.createComponent(ImgComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
   it('should create', () => {
-    component.imgDefault = 'https://www.m2crowd.com/core/i/placeholder.png';
     expect(component).toBeTruthy();
+    expect(component.imgDefault).toBe('https://www.m2crowd.com/core/i/placeholder.png');
   });
 
   it('no existe imagen', () => {
     component.noExistImg();
-    component.imagen = 'https://www.m2crowd.com/core/i/placeholder.png';
+    fixture.detectChanges();
     expect(component.imagen).toEqual(component.imgDefault);
   });
 
-
-
-
   it('deberia emitir imagen al padre', () => {
+    const imgMock = 'https://www.m2crowd.com/core/i/placeholder.png';
+    spyOn(component.loaded, 'emit');
+    component.imagen =imgMock;
+
     component.imgLoaded();
-    component.imagen = 'urlImagen';
-    component.loaded.emit(component.imagen);
+    fixture.detectChanges();
+
+    expect(component.loaded.emit).toHaveBeenCalledWith(imgMock);
   });
 });

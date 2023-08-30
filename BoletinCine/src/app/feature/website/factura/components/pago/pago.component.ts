@@ -35,7 +35,7 @@ export class PagoComponent implements OnInit {
     }
     return this.alertaConfirmacion().then((result) => {
       if (result.isConfirmed && this.formPago.valid) {
-        this.pago.valorAPagar = this.formPago.get('valorAPagar').value;
+        this.pago.valorAPagar = this.valorAPagar;
         this.pagosService.crear(this.pago).subscribe(numeroPago => {
           this.idPago = numeroPago.valor.toString();
           this.route.navigate(['/comprobante/pago', this.idPago]);
@@ -61,6 +61,7 @@ export class PagoComponent implements OnInit {
       text: 'Has ingresado un valor menor al valor a pagar',
     });
   }
+
 
   alertaConfirmacion(){
     return Swal.fire({

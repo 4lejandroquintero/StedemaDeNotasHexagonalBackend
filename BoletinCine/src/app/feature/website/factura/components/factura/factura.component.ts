@@ -36,7 +36,7 @@ export class FacturaComponent implements OnInit{
             this.dataFactura.idCliente = parseInt(this.tokenService.getidCliente(),10);
             return this.facturaService.crear(this.dataFactura);
           }
-          return [];
+          return ;
         })
       )
       .subscribe((data) =>{

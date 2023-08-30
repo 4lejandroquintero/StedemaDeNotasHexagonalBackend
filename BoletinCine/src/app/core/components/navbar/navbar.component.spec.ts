@@ -34,6 +34,11 @@ describe('NavbarComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(NavbarComponent);
     component = fixture.componentInstance;
+
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
     const clienteMock = {
       id: 1,
       nombre: 'Jose',
@@ -42,17 +47,49 @@ describe('NavbarComponent', () => {
       documentoIdentidad: '12345',
       tipoMembresia: 'RUBY'
     };
-    tokenService.getToken.and.returnValue('Token mock de Cliente');
-
+    tokenService.getToken.and.returnValue('tokenCliente');
     authService.getProfile.and.returnValue(of(clienteMock));
-
-
     fixture.detectChanges();
+    component.ngOnInit();
+
+    expect(component).toBeTruthy();
+    expect(authService.getProfile).toHaveBeenCalled();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('deberia obtener informacion cliente logueado', () => {
+    component.ngOnInit();
+    const clienteMock = {
+      id: 1,
+      nombre: 'Jose',
+      email: 'jose@mail.com',
+      contrasena: '123',
+      documentoIdentidad: '12345',
+      tipoMembresia: 'RUBY'
+    };
+    tokenService.getToken.and.returnValue('tokenCliente');
+    authService.getProfile.and.returnValue(of(clienteMock));
+    component.obtenerInfoClienteLogueado();
+    fixture.detectChanges();
+
+    expect(component.token).toEqual('tokenCliente');
+    authService.getProfile().subscribe((data) => {
+      expect(data).toEqual(clienteMock);
+      expect(data).toBe(component.clienteLogged);
+    });
   });
+
+  it('deberia no cargar el valor del cliente', () => {
+    tokenService.getToken.and.returnValue(null);
+    authService.getProfile.and.returnValue(null);
+
+    component.obtenerInfoClienteLogueado();
+    fixture.detectChanges();
+
+    expect(tokenService.getToken).toHaveBeenCalled();
+    expect(authService.getProfile).not.toHaveBeenCalled();
+  });
+
+
 
   it('deberia realizar logOut del perfil', () => {
     component.logOut();

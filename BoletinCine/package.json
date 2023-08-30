@@ -10,13 +10,10 @@
     "analyze": "webpack-bundle-analyzer dist/app-base/stats.json",
     "test": "ng test --code-coverage --no-watch",
     "test:obs": "ng test --code-coverage",
-    "test:mutation": "stryker run && node utilidades/mutation/generate-mutation-sonar-report.js",
+    "test:mutation": "stryker run --ignoreStatic && node utilidades/mutation/generate-mutation-sonar-report.js",
     "lint": "ng lint",
     "lint:fix": "ng lint --fix",
-    "e2e": "ng e2e",
-    "e2e:run": "ng run app-base:cypress-run --config-file ./cypress.e2e.config.ts --browser chrome",
-    "bdd:run": "ng run app-base:cypress-run --config-file ./cypress.bdd.config.ts --browser chrome",
-    "bdd": "ng e2e --config-file ./cypress.bdd.config.ts"
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {
@@ -36,6 +33,7 @@
     "chart.js": "^3.1.1",
     "mdb-angular-ui-kit": "^3.0.0",
     "ngx-cookie-service": "^14.0.1",
+    "run": "^1.4.0",
     "rxjs": "~7.5.5",
     "sweetalert2": "^11.7.27",
     "swiper": "8.4",
@@ -54,8 +52,7 @@
     "@angular/language-service": "^14.2.12",
     "@faker-js/faker": "^8.0.2",
     "@stryker-mutator/core": "^6.0.2",
-    "@stryker-mutator/karma-runner": "^6.0.2",
-    "@stryker-mutator/typescript-checker": "^6.0.2",
+    "@stryker-mutator/karma-runner": "^6.4.2",
     "@types/jasmine": "~4.0.3",
     "@types/jasminewd2": "~2.0.8",
     "@types/node": "^17.0.38",

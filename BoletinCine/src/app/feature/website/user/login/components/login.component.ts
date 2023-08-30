@@ -31,8 +31,7 @@ export class LoginComponent implements OnInit{
           this.alertaInicionSesion();
           this.recargarPagina();
         });
-    }
-    if(!this.loginForm.valid){
+    }else{
       this.alertaSesionIncorrecta();
     }
   }
@@ -62,7 +61,7 @@ export class LoginComponent implements OnInit{
     });
   }
 
-  private construirFormularioLogin() {
+  public construirFormularioLogin() {
     this.loginForm = new FormGroup({
       correo: new FormControl('', [Validators.required]),
       contrasena: new FormControl('', [Validators.required]),

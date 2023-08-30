@@ -20,7 +20,8 @@ export class FacturasService {
   }
 
   obtenerPorID(id: number){
-    return this.http.doGet<Factura>(`${this.API_URL}/${id}`);
+    const url =  `${this.API_URL}/${id}`;
+    return this.http.doGet<Factura>(url);
   }
 
 }

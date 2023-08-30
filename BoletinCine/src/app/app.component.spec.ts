@@ -31,6 +31,15 @@ describe('AppComponent', () => {
     authService = TestBed.inject(AuthService) as jasmine.SpyObj<AuthService>;
   }));
   beforeEach(() => {
+    fixture = TestBed.createComponent(AppComponent);
+
+
+    fixture.detectChanges();
+  });
+
+  it('should create the app', () => {
+    const app = fixture.debugElement.componentInstance;
+    const component = fixture.componentInstance;
     tokenService.getToken.and.returnValue('token de Cliente');
     const clienteMock = {
       id: 1,
@@ -41,14 +50,45 @@ describe('AppComponent', () => {
       tipoMembresia: 'RUBY'
     };
     authService.getProfile.and.returnValue(of(clienteMock));
-
-    fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
-  });
+    component.ngOnInit();
 
-  it('should create the app', () => {
-    const app = fixture.debugElement.componentInstance;
+
     expect(app).toBeTruthy();
+    expect(authService.getProfile).toHaveBeenCalled();
   });
 
+  it('deberia obtener info del cliente', () => {
+    const app = fixture.componentInstance;
+    tokenService.getToken.and.returnValue('tokenCliente');
+    const clienteMock = {
+      id: 1,
+      nombre: 'Jose',
+      email: 'jose@mail.com',
+      contrasena: '123',
+      documentoIdentidad: '12345',
+      tipoMembresia: 'RUBY'
+    };
+    authService.getProfile.and.returnValue(of(clienteMock));
+
+    app.obtenerInfoCliente();
+    fixture.detectChanges();
+    expect(tokenService.getToken).toHaveBeenCalled();
+    expect(app.clienteLogged).toEqual(clienteMock);
+
+  });
+
+
+  it('no deberia obtener info del cliente', () => {
+    const app = fixture.componentInstance;
+    tokenService.getToken.and.returnValue(null);
+    authService.getProfile.and.returnValue(null);
+
+    app.obtenerInfoCliente();
+    fixture.detectChanges();
+    expect(tokenService.getToken).toHaveBeenCalled();
+    expect(authService.getProfile).not.toHaveBeenCalled();
+    expect(app.clienteLogged).toBeUndefined();
+
+  });
 });

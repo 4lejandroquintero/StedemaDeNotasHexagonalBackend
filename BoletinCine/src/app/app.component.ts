@@ -14,10 +14,13 @@ export class AppComponent implements OnInit {
   ){}
 
   ngOnInit(){
+    this.obtenerInfoCliente();
+  }
+
+  obtenerInfoCliente(){
     const token = this.tokenService.getToken();
     if(token){
       this.authService.getProfile().subscribe(data => this.clienteLogged = data);
     }
-
   }
 }
