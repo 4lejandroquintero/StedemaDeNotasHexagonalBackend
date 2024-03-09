@@ -1,0 +1,2 @@
+insert into pregunta(preguntaId, contenido, imagen, opcion1, opcion2, opcion3, opcion4, respuestaDada, respuesta)
+values (:preguntaId, :contenido, :imagen, :opcion1, :opcion2, :opcion3, :opcion4, :respuestaDada, :respuesta)

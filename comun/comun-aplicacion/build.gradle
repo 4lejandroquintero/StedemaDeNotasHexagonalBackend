@@ -1,9 +1,9 @@
 apply plugin: 'java'
 apply plugin: 'eclipse'
 
-group = 'cine'
+group = 'notas'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '17'
+sourceCompatibility = '1.8'
 
 repositories {
 	mavenCentral()
