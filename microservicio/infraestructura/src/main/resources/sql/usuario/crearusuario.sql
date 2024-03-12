@@ -1,2 +1,2 @@
-insert into usuario(id, username, password, nombre, apellido, email, telefono, enabled, rol)
-values (:id, :username, :password, :nombre, :apellido, :email, :telefono, : enabled, :rol)
+insert into usuario(username, password, nombre, apellido, email, telefono, enabled, rol)
+values (:username, :password, :nombre, :apellido, :email, :telefono, :enabled, :rol)

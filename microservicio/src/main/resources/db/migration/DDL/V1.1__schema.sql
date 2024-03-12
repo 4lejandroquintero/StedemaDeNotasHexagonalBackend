@@ -1,13 +1,13 @@
 CREATE TABLE usuario (
     id SERIAL PRIMARY KEY,
-    username VARCHAR(50) NOT NULL UNIQUE,
+    username VARCHAR(50) UNIQUE,
     password VARCHAR(50),
-    nombre VARCHAR(100) NOT NULL,
-    apellido VARCHAR(255) NOT NULL,
+    nombre VARCHAR(100) ,
+    apellido VARCHAR(255) ,
     email VARCHAR(255) UNIQUE,
     telefono VARCHAR(255),
     enabled BOOLEAN,
-    rol VARCHAR(50) NOT NULL
+    rol VARCHAR(50)
 );
 
 CREATE TABLE pregunta (
