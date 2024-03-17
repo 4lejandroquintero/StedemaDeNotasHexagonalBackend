@@ -44,6 +44,7 @@ public class UsuarioRepositorioMariaDB implements UsuarioRepositorio {
         return this.customNamedParameterJdbcTemplate.crear(parameterSource, sqlCrearUsuario);
     }
 
+
     @Override
     public Usuario consultar(String email) {
         MapSqlParameterSource parameterSource = new MapSqlParameterSource();
