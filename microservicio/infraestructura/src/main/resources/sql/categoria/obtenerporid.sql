@@ -1,3 +1,3 @@
-select  categoriaId, titulo, descripcion, examenId
+select  categoriaId, titulo, descripcion
 from categoria
-where categoriaId = :categoriaId
+where categoria_id = :categoria_id
