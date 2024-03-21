@@ -8,8 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/funcion")
-@Tag(name = "Controlador comando de funcion")
+@RequestMapping("/examen")
+@Tag(name = "Controlador comando de examen")
 public class ComandoControladorExamen {
     private final ManejadorCrearExamen manejadorCrearExamen;
 

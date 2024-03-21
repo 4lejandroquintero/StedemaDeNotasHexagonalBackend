@@ -82,7 +82,11 @@ public class Usuario implements UserDetails {
     return new Usuario(id, username, password, nombre, apellido, email, telefono, enabled, rol );
   }
 
-  public Long getId() {
+  public static void eliminar(Long id) {
+      ValidadorArgumento.validarObligatorio(id, "El ID del usuario es obligatorio para eliminar");
+  }
+
+ public Long getId() {
     return id;
   }
 

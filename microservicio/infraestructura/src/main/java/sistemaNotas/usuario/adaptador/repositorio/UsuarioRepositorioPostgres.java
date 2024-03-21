@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import sistemaNotas.usuario.puerto.UsuarioRepositorio;
 
 @Repository
-public class UsuarioRepositorioMariaDB implements UsuarioRepositorio {
+public class UsuarioRepositorioPostgres implements UsuarioRepositorio {
     private final CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate;
     private final MapeoUsuario mapeoUsuario;
     private final MapeoUsuarioCompleto mapeoUsuarioCompleto;
@@ -21,9 +21,12 @@ public class UsuarioRepositorioMariaDB implements UsuarioRepositorio {
     private static String sqlObtenerPorID;
 
     @SqlStatement(namespace = "usuario", value = "autenticar")
-    private static String sqlObtenerPorEmail;
+    private static String sqlObtenerPorUsername;
 
-    public UsuarioRepositorioMariaDB(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate, MapeoUsuario mapeoUsuario, MapeoUsuarioCompleto mapeoUsuarioCompleto) {
+    @SqlStatement(namespace = "usuario", value = "eliminar")
+    private static String sqlEliminarUsuario;
+
+    public UsuarioRepositorioPostgres(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate, MapeoUsuario mapeoUsuario, MapeoUsuarioCompleto mapeoUsuarioCompleto) {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
         this.mapeoUsuario = mapeoUsuario;
         this.mapeoUsuarioCompleto = mapeoUsuarioCompleto;
@@ -44,13 +47,12 @@ public class UsuarioRepositorioMariaDB implements UsuarioRepositorio {
         return this.customNamedParameterJdbcTemplate.crear(parameterSource, sqlCrearUsuario);
     }
 
-
     @Override
-    public Usuario consultar(String email) {
+    public Usuario consultar(String username) {
         MapSqlParameterSource parameterSource = new MapSqlParameterSource();
-        parameterSource.addValue("email", email);
+        parameterSource.addValue("username", username);
         return EjecucionBaseDeDatos.obtenerUnObjetoONull(() -> this.customNamedParameterJdbcTemplate
-                .getNamedParameterJdbcTemplate().queryForObject(sqlObtenerPorEmail, parameterSource, mapeoUsuarioCompleto));
+                .getNamedParameterJdbcTemplate().queryForObject(sqlObtenerPorUsername, parameterSource, mapeoUsuarioCompleto));
     }
 
     @Override
@@ -60,4 +62,5 @@ public class UsuarioRepositorioMariaDB implements UsuarioRepositorio {
         return EjecucionBaseDeDatos.obtenerUnObjetoONull(() -> this.customNamedParameterJdbcTemplate
                 .getNamedParameterJdbcTemplate().queryForObject(sqlObtenerPorID, parameterSource, mapeoUsuario));
     }
+
 }

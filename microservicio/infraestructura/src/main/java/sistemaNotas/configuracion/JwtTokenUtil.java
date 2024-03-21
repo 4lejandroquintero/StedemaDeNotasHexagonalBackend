@@ -23,7 +23,7 @@ public class JwtTokenUtil {
 
     public String generateAccessToken(Usuario user) {
         return Jwts.builder()
-                .setSubject(String.format("%s", user.getEmail()))
+                .setSubject(String.format("%s", user.getUsername()))
                 .setIssuer("ProyectoNotas")
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + EXPIRE_DURATION))

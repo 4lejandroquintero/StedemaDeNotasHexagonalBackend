@@ -12,11 +12,11 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class ExamenDaoMariaDB implements ExamenDao {
+public class ExamenDaoPostgres implements ExamenDao {
     private final CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate;
     private final MapeoExamen mapeoExamen;
 
-    public ExamenDaoMariaDB(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate, MapeoExamen mapeoExamen) {
+    public ExamenDaoPostgres(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate, MapeoExamen mapeoExamen) {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
         this.mapeoExamen = mapeoExamen;
     }

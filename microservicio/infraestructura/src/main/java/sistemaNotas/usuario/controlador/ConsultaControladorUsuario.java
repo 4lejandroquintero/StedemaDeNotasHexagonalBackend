@@ -1,10 +1,13 @@
 package sistemaNotas.usuario.controlador;
 
 
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.DisabledException;
+import org.springframework.security.core.userdetails.UserDetails;
 import sistemaNotas.ComandoRespuesta;
+import sistemaNotas.configuracion.*;
 import sistemaNotas.usuario.comando.ComandoAutenticacion;
-import sistemaNotas.configuracion.JwtService;
-import sistemaNotas.configuracion.JwtTokenUtil;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,14 +39,13 @@ public class ConsultaControladorUsuario {
     private final ManejadorConsultarUsuarios manejadorConsultarUsuarios;
     private final JwtService jwtService;
 
-  public ConsultaControladorUsuario(ManejadorObtenerUsuario manejadorObtenerUsuario, ManejadorConsultarUsuarios manejadorConsultarUsuarios, JwtService jwtService) {
-    this.manejadorObtenerUsuario = manejadorObtenerUsuario;
-    this.manejadorConsultarUsuarios = manejadorConsultarUsuarios;
-    this.jwtService = jwtService;
-  }
+    public ConsultaControladorUsuario(ManejadorObtenerUsuario manejadorObtenerUsuario, ManejadorConsultarUsuarios manejadorConsultarUsuarios, JwtService jwtService) {
+        this.manejadorObtenerUsuario = manejadorObtenerUsuario;
+        this.manejadorConsultarUsuarios = manejadorConsultarUsuarios;
+        this.jwtService = jwtService;
+    }
 
-
-  @GetMapping()
+    @GetMapping()
     @Operation(summary = "Visualizar todos", description = "Metodo utilizado para consultar los datos de los usuarios")
     public List<UsuarioDatosPrincipalesDTO> obtenerUsuarios(){
         return manejadorConsultarUsuarios.ejecutar();
@@ -66,10 +68,10 @@ public class ConsultaControladorUsuario {
 
         Usuario usuario = (Usuario) authentication.getPrincipal();
         String accessToken = jwtUtil.generateAccessToken(usuario);
-        UsuarioAutenticadoDatos response = new UsuarioAutenticadoDatos(accessToken,
-          usuario.getUsername(), usuario.getPassword(), usuario.getNombre(), usuario.getApellido(),
-          usuario.getEmail(), usuario.getTelefono(), usuario.isEnabled(),
-          usuario.getRol().toString());
+        UsuarioAutenticadoDatos response = new UsuarioAutenticadoDatos(accessToken, usuario.getUsername(),
+                usuario.getPassword(), usuario.getNombre(), usuario.getApellido(), usuario.getEmail(),
+                usuario.getTelefono(), usuario.isEnabled(),
+                usuario.getRol().toString());
         return new ComandoRespuesta<>(response);
     }
 

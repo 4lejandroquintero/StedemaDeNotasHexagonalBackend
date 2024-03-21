@@ -1,5 +1,6 @@
 package sistemaNotas.examen.adaptador.repositorio;
 
+import sistemaNotas.categoria.puerto.CategoriaRepositorio;
 import sistemaNotas.examen.modelo.entidad.Examen;
 import sistemaNotas.infraestructura.jdbc.MapperResult;
 import sistemaNotas.pregunta.puerto.PreguntaRepositorio;
@@ -12,22 +13,23 @@ import java.sql.SQLException;
 
 @Component
 public class MapeoExamen implements RowMapper<Examen>, MapperResult {
-    private final PreguntaRepositorio preguntaRepositorio;
+    private final CategoriaRepositorio categoriaRepositorio;
 
-    public MapeoExamen(PreguntaRepositorio preguntaRepositorio) {
-        this.preguntaRepositorio = preguntaRepositorio;
+    public MapeoExamen(CategoriaRepositorio categoriaRepositorio) {
+        this.categoriaRepositorio = categoriaRepositorio;
     }
+
 
     @Override
     public Examen mapRow(ResultSet resultSet, int rowNum) throws SQLException {
         Long idExamen = resultSet.getLong("id");
-        Long idPregunta = resultSet.getLong("id_pregunta");
+        Long idCategoria = resultSet.getLong("categoriaId");
         String titulo = resultSet.getString("titulo");
         String descripcion = resultSet.getString("descripcion");
         String puntosMaximo = resultSet.getString("puntos_maximos");
-        String numeroDePreguntas = resultSet.getString("numero _de_preguntas");
+        String numeroDePreguntas = resultSet.getString("numero_de_preguntas");
         boolean activo = resultSet.getBoolean("activo");
-        return Examen.reconstruir(idExamen, preguntaRepositorio.obtener(idPregunta),titulo, descripcion, puntosMaximo, numeroDePreguntas,
+        return Examen.reconstruir(idExamen, categoriaRepositorio.obtener(idCategoria), titulo, descripcion, puntosMaximo, numeroDePreguntas,
           activo);
     }
 }

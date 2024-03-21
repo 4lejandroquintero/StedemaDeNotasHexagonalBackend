@@ -14,5 +14,5 @@ public class ManejadorConsultarCategoriaPorExamen {
     this.categoriaDao = categoriaDao;
   }
 
-  public List<Categoria> ejecutar(Long id) { return categoriaDao.obtenerCategoriaDeExamen(id); }
+  public Categoria ejecutar(Long id) { return categoriaDao.obtenerCategoria(id); }
 }

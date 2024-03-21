@@ -10,31 +10,42 @@ CREATE TABLE usuario (
     rol VARCHAR(50)
 );
 
-CREATE TABLE pregunta (
-    preguntaId SERIAL PRIMARY KEY,
-    contenido VARCHAR(5000) NOT NULL,
-    imagen VARCHAR(255),
-    opcion1 VARCHAR(255),
-    opcion2 VARCHAR(100),
-    opcion3 VARCHAR(100),
-    opcion4 VARCHAR(100),
-    respuestaDada VARCHAR(100),
-    respuesta VARCHAR(100)
+CREATE TABLE categoria (
+    id  SERIAL PRIMARY KEY,
+            descripcion varchar(255),
+            titulo varchar(255)
 );
 
 CREATE TABLE examen (
-    examenId SERIAL PRIMARY KEY,
-    titulo VARCHAR(100) NOT NULL,
-    descripcion VARCHAR(100) NOT NULL,
-    puntosMaximo VARCHAR(100) NOT NULL,
-    numeroDePreguntas VARCHAR(100) NOT NULL
+    id  SERIAL PRIMARY KEY,
+            categoriaId int8,
+            titulo varchar(255),
+            descripcion varchar(255),
+            puntos_maximos varchar(255),
+            numero_de_preguntas varchar(255),
+            activo boolean not null
+
+
+          );
+
+CREATE TABLE pregunta (
+    id  SERIAL PRIMARY KEY,
+    contenido varchar(5000),
+    imagen varchar(255),
+    opcion1 varchar(255),
+    opcion2 varchar(255),
+    opcion3 varchar(255),
+    opcion4 varchar(255),
+    respuesta varchar(255),
+    examenId int8
 );
 
-CREATE TABLE categoria (
-    categoriaId SERIAL PRIMARY KEY,
-    titulo VARCHAR(100) NOT NULL,
-    descripcion VARCHAR(50) NOT NULL,
-    examenId INT NOT NULL,
-    FOREIGN KEY (examenId) REFERENCES examen(examenId) ON UPDATE NO ACTION ON DELETE NO ACTION
-);
+alter table examen
+       add constraint FK9e3vkr595xf5ntcw0ih72lifw
+       foreign key (categoriaId)
+       references categoria;
 
+alter table pregunta
+       add constraint FK9g0sx7pv0vsvc4uksis4egp4j
+       foreign key (examenId)
+       references examen;

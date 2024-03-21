@@ -12,33 +12,27 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class CategoriaDaoMariaDB implements CategoriaDao {
+public class CategoriaDaoPostgres implements CategoriaDao {
 
     private final CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate;
     private final MapeoCategoria mapeoCategoria;
 
-    public CategoriaDaoMariaDB(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate, MapeoCategoria mapeoCategoria) {
+    public CategoriaDaoPostgres(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate, MapeoCategoria mapeoCategoria) {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
         this.mapeoCategoria = mapeoCategoria;
     }
     //region SQLSTATEMENTS
-    @SqlStatement(namespace = "categoria", value = "obtenercategoriasporexamen")
-    private static String sqlObtenerCategoriasPorExamen;
+
     @SqlStatement(namespace = "categoria", value = "obtenerporid")
     private static String sqlObtenerCategoria;
     //endregion
 
-  @Override
-  public List<Categoria> obtenerCategoriaDeExamen(Long idExamen) {
-    MapSqlParameterSource parameterSource = new MapSqlParameterSource();
-    parameterSource.addValue("examenId", idExamen);
-    return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().query(sqlObtenerCategoriasPorExamen, parameterSource, mapeoCategoria);
-  }
+
 
   @Override
   public Categoria obtenerCategoria(Long id) {
     MapSqlParameterSource parameterSource = new MapSqlParameterSource();
-    parameterSource.addValue("categoriaId", id);
+    parameterSource.addValue("id", id);
     return EjecucionBaseDeDatos.obtenerUnObjetoONull(() -> this.customNamedParameterJdbcTemplate
       .getNamedParameterJdbcTemplate().queryForObject(sqlObtenerCategoria, parameterSource, mapeoCategoria));
   }

@@ -1,2 +1,2 @@
-select examenId, preguntaId, titulo, descripcion, puntosMaximos, numeroDePreguntas, activo
+select id, categoriaId, titulo, descripcion, puntos_maximos, numero_de_preguntas, activo
 from examen

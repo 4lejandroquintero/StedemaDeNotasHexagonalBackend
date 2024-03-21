@@ -11,11 +11,11 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
-public class ExamenRepositorioMariaDB implements ExamenRepositorio {
+public class ExamenRepositorioPostgres implements ExamenRepositorio {
     private final CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate;
     private final MapeoExamen mapeoExamen;
 
-    public ExamenRepositorioMariaDB(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate, MapeoExamen mapeoExamen) {
+    public ExamenRepositorioPostgres(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate, MapeoExamen mapeoExamen) {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
         this.mapeoExamen = mapeoExamen;
     }
@@ -30,10 +30,10 @@ public class ExamenRepositorioMariaDB implements ExamenRepositorio {
     public Long crear(Examen examen) {
         MapSqlParameterSource parameterSource = new MapSqlParameterSource();
         parameterSource.addValue("id", examen.getExamenId());
-        parameterSource.addValue("id_pregunta", examen.getPregunta().getPreguntaId());
+        parameterSource.addValue("categoriaId", examen.getCategoria().getCategoriaId());
         parameterSource.addValue("titulo", examen.getTitulo());
         parameterSource.addValue("descripcion", examen.getDescripcion());
-        parameterSource.addValue("puntos_maximo", examen.getPuntosMaximos());
+        parameterSource.addValue("puntos_maximos", examen.getPuntosMaximos());
         parameterSource.addValue("numero_de_preguntas", examen.getNumeroDePreguntas());
         parameterSource.addValue("activo", examen.isActivo());
         return this.customNamedParameterJdbcTemplate.crear(parameterSource, sqlCrearExamen);

@@ -41,7 +41,7 @@ class ComandoControladorUsuarioTest {
 
     @Test
     void crearUsuarioExitoso() throws Exception {
-        var comandoSolicitudCrearUsuario = new ComandoControladorUsuarioTestDataBuilder().crearPorDefecto().build();
+        ComandoSolicitudCrearUsuario comandoSolicitudCrearUsuario = new ComandoControladorUsuarioTestDataBuilder().crearPorDefecto().build();
 
         MvcResult resultado = mocMvc.perform(post("/usuario")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -50,7 +50,7 @@ class ComandoControladorUsuarioTest {
 
         String jsonResult = resultado.getResponse().getContentAsString();
 
-        var respuesta = objectMapper.readValue(jsonResult, RespuestaCrearUsuario.class);
+        RespuestaCrearUsuario respuesta = objectMapper.readValue(jsonResult, RespuestaCrearUsuario.class);
 
         Usuario usuarioGuardado = usuarioRepositorio.obtener(respuesta.getValor());
 

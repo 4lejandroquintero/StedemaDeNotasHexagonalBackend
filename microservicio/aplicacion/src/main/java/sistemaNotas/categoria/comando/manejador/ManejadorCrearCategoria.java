@@ -20,6 +20,6 @@ public class ManejadorCrearCategoria implements ManejadorComandoRespuesta<Comand
 
   @Override
   public ComandoRespuesta<Long> ejecutar(ComandoSolicitudCrearCategoria comandoSolicitudCrearCategoria) {
-    return new ComandoRespuesta<>(servicioCrearCategoria.ejecutar(generarSolicitudCrearCategoria.crear(comandoSolicitudCrearCategoria)));
+    return new ComandoRespuesta<>(servicioCrearCategoria.ejecutar(generarSolicitudCrearCategoria.crearCategoria(comandoSolicitudCrearCategoria)));
   }
 }

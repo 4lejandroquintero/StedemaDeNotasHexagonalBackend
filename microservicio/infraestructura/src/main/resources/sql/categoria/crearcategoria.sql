@@ -1,2 +1,2 @@
-insert into categoria(categoriaId, titulo, descripcion, examenId)
-values (:categoriaId, :titulo, :descripcion, :examenId)
+insert into categoria(titulo, descripcion)
+values (:titulo, :descripcion)

@@ -9,12 +9,12 @@ import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class CategoriaRepositorioMariaDB implements CategoriaRepositorio {
+public class CategoriaRepoDB implements CategoriaRepositorio {
 
     private final CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate;
     private final MapeoCategoria mapeoCategoria;
 
-    public CategoriaRepositorioMariaDB(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate, MapeoCategoria mapeoCategoria) {
+    public CategoriaRepoDB(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate, MapeoCategoria mapeoCategoria) {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
         this.mapeoCategoria = mapeoCategoria;
     }
@@ -25,12 +25,11 @@ public class CategoriaRepositorioMariaDB implements CategoriaRepositorio {
     private static String sqlObtenerPorID;
 
     @Override
-    public Long crear(Categoria categoria) {
+    public Long crearCategoria(Categoria categoria) {
         MapSqlParameterSource parameterSource = new MapSqlParameterSource();
         parameterSource.addValue("id", categoria.getCategoriaId());
         parameterSource.addValue("titulo", categoria.getTitulo());
         parameterSource.addValue("descripcion", categoria.getDescripcion());
-        parameterSource.addValue("id_ecamen", categoria.getExamen().getExamenId());
         return this.customNamedParameterJdbcTemplate.crear(parameterSource, sqlCrearCategoria);
     }
 

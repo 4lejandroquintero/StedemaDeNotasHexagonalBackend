@@ -18,22 +18,16 @@ import java.util.List;
 public class ConsultaControladorCategoria {
 
     private final ManejadorConsultaCategoria manejadorConsultaCategoria;
-    private final ManejadorConsultarCategoriaPorExamen manejadorConsultarCategoriaPorExamen;
 
-  public ConsultaControladorCategoria(ManejadorConsultaCategoria manejadorConsultaCategoria, ManejadorConsultarCategoriaPorExamen manejadorConsultarCategoriaPorExamen) {
+  public ConsultaControladorCategoria(ManejadorConsultaCategoria manejadorConsultaCategoria) {
     this.manejadorConsultaCategoria = manejadorConsultaCategoria;
-    this.manejadorConsultarCategoriaPorExamen = manejadorConsultarCategoriaPorExamen;
   }
 
 
-  @GetMapping("/examen/{idExamen}")
-    @Operation(summary = "Obtener Caterias por Examen", description = "Metodo utilizado para consultar las categorias de un examen")
-    public List<Categoria> obtenerCategoriasDeExamen(@PathVariable("idExamen") Long id){
-        return manejadorConsultarCategoriaPorExamen.ejecutar(id);
-    }
+
 
     @GetMapping("/{id}")
-    public Categoria obtenerCategoria(@PathVariable("id") Long id){
+    public Categoria obtener(@PathVariable("id") Long id){
         return manejadorConsultaCategoria.ejecutar(id);
     }
 

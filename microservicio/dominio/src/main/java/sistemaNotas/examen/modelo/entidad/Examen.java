@@ -4,18 +4,23 @@ import sistemaNotas.categoria.entidad.Categoria;
 import sistemaNotas.dominio.ValidadorArgumento;
 import sistemaNotas.pregunta.entidad.Pregunta;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class Examen {
   private Long examenId;
-  private Pregunta pregunta;
+  private Categoria categoria;
   private String titulo;
   private String descripcion;
   private String puntosMaximos;
   private String numeroDePreguntas;
   private boolean activo = false;
 
-  public Examen(Long examenId, Pregunta pregunta, String titulo, String descripcion, String puntosMaximos, String numeroDePreguntas, boolean activo) {
+  private Set<Pregunta> preguntas = new HashSet<>();
+
+  public Examen(Long examenId, Categoria categoria, String titulo, String descripcion, String puntosMaximos, String numeroDePreguntas, boolean activo) {
     this.examenId = examenId;
-    this.pregunta = pregunta;
+    this.categoria = categoria;
     this.titulo = titulo;
     this.descripcion = descripcion;
     this.puntosMaximos = puntosMaximos;
@@ -23,8 +28,8 @@ public class Examen {
     this.activo = activo;
   }
 
-  public Examen(Pregunta pregunta, String titulo, String descripcion, String puntosMaximos, String numeroDePreguntas, boolean activo) {
-    this.pregunta = pregunta;
+  public Examen(Categoria categoria, String titulo, String descripcion, String puntosMaximos, String numeroDePreguntas, boolean activo) {
+    this.categoria = categoria;
     this.titulo = titulo;
     this.descripcion = descripcion;
     this.puntosMaximos = puntosMaximos;
@@ -32,33 +37,33 @@ public class Examen {
     this.activo = activo;
   }
 
-  public static Examen reconstruir(Long examenId,Pregunta pregunta, String titulo, String descripcion, String puntosMaximos, String numeroDePreguntas, boolean activo){
+  public static Examen reconstruir(Long examenId, Categoria categoria, String titulo, String descripcion, String puntosMaximos, String numeroDePreguntas, boolean activo){
     ValidadorArgumento.validarObligatorio(examenId, "El id del Examen es obligatorio");
-    ValidadorArgumento.validarObligatorio(pregunta, "Es necesario ingresar las preguntas");
+    ValidadorArgumento.validarObligatorio(categoria, "La categoria del examene s obligatoria");
     ValidadorArgumento.validarObligatorio(titulo, "El titulo del examen es obligatorio");
     ValidadorArgumento.validarObligatorio(descripcion, "La descripcion del examen es obligatoria");
     ValidadorArgumento.validarObligatorio(puntosMaximos, "Los puntos máximos del examen son obligatorios");
     ValidadorArgumento.validarObligatorio(numeroDePreguntas, "El numero de pregunta es obligatorio");
     ValidadorArgumento.validarObligatorio(activo, "El estado del examen es obligatorio");
-    return new Examen(examenId,pregunta,titulo,descripcion,puntosMaximos,numeroDePreguntas,activo);
+    return new Examen(examenId,categoria,titulo,descripcion,puntosMaximos,numeroDePreguntas,activo);
   }
 
-  public static Examen crear(Pregunta pregunta, String titulo, String descripcion, String puntosMaximos, String numeroDePreguntas, boolean activo){
-    ValidadorArgumento.validarObligatorio(pregunta, "Es necesario ingresar las preguntas");
+  public static Examen crear(Categoria categoria, String titulo, String descripcion, String puntosMaximos, String numeroDePreguntas, boolean activo){
+    ValidadorArgumento.validarObligatorio(categoria, "La categoria del examene s obligatoria");
     ValidadorArgumento.validarObligatorio(titulo, "El titulo del examen es obligatorio");
     ValidadorArgumento.validarObligatorio(descripcion, "La descripcion del examen es obligatoria");
     ValidadorArgumento.validarObligatorio(puntosMaximos, "Los puntos máximos del examen son obligatorios");
     ValidadorArgumento.validarObligatorio(numeroDePreguntas, "El numero de pregunta es obligatorio");
     ValidadorArgumento.validarObligatorio(activo, "El estado del examen es obligatorio");
-    return new Examen(pregunta,titulo,descripcion,puntosMaximos,numeroDePreguntas,activo);
+    return new Examen(categoria,titulo,descripcion,puntosMaximos,numeroDePreguntas,activo);
   }
 
   public Long getExamenId() {
     return examenId;
   }
 
-  public Pregunta getPregunta() {
-    return pregunta;
+  public Categoria getCategoria() {
+    return categoria;
   }
 
   public String getTitulo() {
@@ -80,4 +85,10 @@ public class Examen {
   public boolean isActivo() {
     return activo;
   }
+
+
+  public Set<Pregunta> getPreguntas() {
+    return preguntas;
+  }
+
 }

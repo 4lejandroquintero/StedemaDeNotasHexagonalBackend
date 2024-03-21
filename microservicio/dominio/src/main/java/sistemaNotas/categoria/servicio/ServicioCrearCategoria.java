@@ -12,6 +12,6 @@ public class ServicioCrearCategoria {
   }
 
   public Long ejecutar(Categoria categoria) {
-    return this.categoriaRepositorio.crear(categoria);
+    return this.categoriaRepositorio.crearCategoria(categoria);
   }
 }

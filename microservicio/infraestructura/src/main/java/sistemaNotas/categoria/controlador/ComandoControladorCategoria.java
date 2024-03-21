@@ -19,8 +19,8 @@ public class ComandoControladorCategoria {
     }
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
-    @Operation(summary = "Crear Categoria", description = "Metodo utilizado para crear un Examen")
-    public ComandoRespuesta<Long> crearExamen(@RequestBody ComandoSolicitudCrearCategoria comandoSolicitudCrearCategoria){
+    @Operation(summary = "Crear Categoria", description = "Metodo utilizado para crear una categoria")
+    public ComandoRespuesta<Long> guardarCategoria(@RequestBody ComandoSolicitudCrearCategoria comandoSolicitudCrearCategoria){
         return this.manejadorCrearCategoria.ejecutar(comandoSolicitudCrearCategoria);
     }
 

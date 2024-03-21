@@ -10,12 +10,12 @@ import sistemaNotas.pregunta.entidad.Pregunta;
 import sistemaNotas.pregunta.puerto.PreguntaRepositorio;
 
 @Repository
-public class PreguntaRepositorioMariaDB implements PreguntaRepositorio {
+public class PreguntaRepoDB implements PreguntaRepositorio {
     private final CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate;
     @Autowired
     private final MapeoPregunta mapeoPregunta;
 
-    public PreguntaRepositorioMariaDB(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate, MapeoPregunta mapeoPregunta) {
+    public PreguntaRepoDB(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate, MapeoPregunta mapeoPregunta) {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
         this.mapeoPregunta = mapeoPregunta;
     }

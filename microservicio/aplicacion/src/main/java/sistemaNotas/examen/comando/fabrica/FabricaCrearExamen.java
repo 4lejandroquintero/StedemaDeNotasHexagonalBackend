@@ -1,6 +1,8 @@
 package sistemaNotas.examen.comando.fabrica;
 
 import org.springframework.stereotype.Component;
+import sistemaNotas.categoria.entidad.Categoria;
+import sistemaNotas.categoria.puerto.CategoriaRepositorio;
 import sistemaNotas.examen.comando.ComandoCrearExamen;
 import sistemaNotas.examen.modelo.entidad.Examen;
 import sistemaNotas.pregunta.entidad.Pregunta;
@@ -8,16 +10,18 @@ import sistemaNotas.pregunta.puerto.PreguntaRepositorio;
 
 @Component
 public class FabricaCrearExamen {
-  private final PreguntaRepositorio preguntaRepositorio;
+  private final CategoriaRepositorio categoriaRepositorio;
 
-  public FabricaCrearExamen(PreguntaRepositorio preguntaRepositorio) {
-    this.preguntaRepositorio = preguntaRepositorio;
+  public FabricaCrearExamen(CategoriaRepositorio categoriaRepositorio) {
+    this.categoriaRepositorio = categoriaRepositorio;
   }
 
-  private Pregunta obtenerPregunta (Long id) { return preguntaRepositorio.obtener(id); }
+  private Categoria obtenerCategoria (Long id){
+    return categoriaRepositorio.obtener(id);
+  }
 
   public Examen crear(ComandoCrearExamen comandoCrearExamen) {
-    return Examen.crear(obtenerPregunta(comandoCrearExamen.getPreguntaId()), comandoCrearExamen.getTitulo(), comandoCrearExamen.getDescripcion(),
+    return Examen.crear(obtenerCategoria(comandoCrearExamen.getCategoriaId()), comandoCrearExamen.getTitulo(), comandoCrearExamen.getDescripcion(),
       comandoCrearExamen.getPuntosMaximos(), comandoCrearExamen.getNumeroDePreguntas(), comandoCrearExamen.isActivo());
   }
 }

@@ -6,6 +6,6 @@ public interface UsuarioRepositorio {
 
   Long crear(Usuario usuario);
 
-  Usuario consultar(String email);
+  Usuario consultar(String username);
   Usuario obtener(Long id);
 }

@@ -14,5 +14,4 @@ public class ComandoSolicitudCrearCategoria {
   private Long categoriaId;
   private String titulo;
   private String descripcion;
-  private Long examenId;
 }

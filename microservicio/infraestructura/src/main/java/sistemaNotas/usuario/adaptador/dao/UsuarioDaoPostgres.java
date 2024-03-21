@@ -14,7 +14,7 @@ import sistemaNotas.usuario.puerto.dao.UsuarioDao;
 import java.util.List;
 
 @Repository
-public class UsuarioDaoMariaDB implements UsuarioDao {
+public class UsuarioDaoPostgres implements UsuarioDao {
 
     private final CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate;
     private final MapeoUsuarioDatosPrincipales mapeoUsuarioDatosPrincipales;
@@ -27,7 +27,7 @@ public class UsuarioDaoMariaDB implements UsuarioDao {
     private static String sqlObtenerDatosPrincipalesPorId;
     @SqlStatement(namespace = "usuario", value = "obtenerporid")
     private static String sqlObtenerFullDatos;
-    public UsuarioDaoMariaDB(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate, MapeoUsuarioDatosPrincipales mapeoUsuarioDatosPrincipales, MapeoUsuarioCompleto mapeoUsuarioCompleto, MapeoDatosUsuario mapeoDatosUsuario) {
+    public UsuarioDaoPostgres(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate, MapeoUsuarioDatosPrincipales mapeoUsuarioDatosPrincipales, MapeoUsuarioCompleto mapeoUsuarioCompleto, MapeoDatosUsuario mapeoDatosUsuario) {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
         this.mapeoUsuarioDatosPrincipales = mapeoUsuarioDatosPrincipales;
         this.mapeoDatosUsuario = mapeoDatosUsuario;
@@ -53,4 +53,6 @@ public class UsuarioDaoMariaDB implements UsuarioDao {
         return EjecucionBaseDeDatos.obtenerUnObjetoONull(() -> this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlObtenerFullDatos,
                 parameterSource, mapeoDatosUsuario));
     }
+
+
 }

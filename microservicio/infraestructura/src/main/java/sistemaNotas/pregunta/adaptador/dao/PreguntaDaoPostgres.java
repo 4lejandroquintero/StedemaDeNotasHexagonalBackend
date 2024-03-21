@@ -13,10 +13,10 @@ import sistemaNotas.pregunta.puerto.dao.PreguntaDao;
 import java.util.List;
 
 @Repository
-public class PreguntaDaoMariaDB implements PreguntaDao {
+public class PreguntaDaoPostgres implements PreguntaDao {
     private final CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate;
     private final MapeoPreguntaDTO mapeoPreguntaDTO;
-    public PreguntaDaoMariaDB(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate, MapeoPreguntaDTO mapeoPreguntaDTO) {
+    public PreguntaDaoPostgres(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate, MapeoPreguntaDTO mapeoPreguntaDTO) {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
         this.mapeoPreguntaDTO = mapeoPreguntaDTO;
     }

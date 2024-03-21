@@ -3,38 +3,36 @@ package sistemaNotas.categoria.entidad;
 import sistemaNotas.dominio.ValidadorArgumento;
 import sistemaNotas.examen.modelo.entidad.Examen;
 
+import java.util.LinkedHashSet;
+import java.util.Set;
+
 public class Categoria {
   private Long categoriaId;
   private final String titulo;
   private final String descripcion;
-  private final Examen examen;
+  private  Set<Examen> examen = new LinkedHashSet<>();
 
-  public Categoria(Long categoriaId, String titulo, String descripcion, Examen examen) {
+  public Categoria(Long categoriaId, String titulo, String descripcion) {
     this.categoriaId = categoriaId;
     this.titulo = titulo;
     this.descripcion = descripcion;
-    this.examen = examen;
   }
 
-  public Categoria(String titulo, String descripcion, Examen examen) {
+  public Categoria(String titulo, String descripcion) {
     this.titulo = titulo;
     this.descripcion = descripcion;
-    this.examen = examen;
   }
 
-  public static Categoria reconstruir(Long categoriaId, String titulo, String descripcion, Examen examen) {
+  public static Categoria reconstruir(Long categoriaId, String titulo, String descripcion) {
     ValidadorArgumento.validarObligatorio(categoriaId, "El id de la categoria es obligatorio");
     ValidadorArgumento.validarObligatorio(titulo, "El titulo de la categoría es obligatorio");
-    ValidadorArgumento.validarObligatorio(descripcion, "La descripción de la categpria es obligatoria");
-    ValidadorArgumento.validarObligatorio(examen, "Es necesario ingresar el examen, es requerido");
-    return new Categoria(categoriaId, titulo, descripcion, examen);
+    return new Categoria(categoriaId, titulo, descripcion);
   }
 
-  public static Categoria crear(String titulo, String descripcion, Examen examen) {
+  public static Categoria crearCategoria(String titulo, String descripcion) {
     ValidadorArgumento.validarObligatorio(titulo, "El titulo de la categoría es obligatorio");
     ValidadorArgumento.validarObligatorio(descripcion, "La descripción de la categpria es obligatoria");
-    ValidadorArgumento.validarObligatorio(examen, "Es necesario ingresar el examen, es requerido");
-    return new Categoria(titulo, descripcion, examen);
+    return new Categoria(titulo, descripcion);
   }
 
   public Long getCategoriaId() {
@@ -49,7 +47,9 @@ public class Categoria {
     return descripcion;
   }
 
-  public Examen getExamen() {
+  public Set<Examen> getExamen() {
     return examen;
   }
+
+
 }

@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface UsuarioDao {
   List<UsuarioDatosPrincipalesDTO> obtenerDatosUsuarios();
+
   UsuarioDatosPrincipalesDTO obtenerDatosUsuarioID(Long id);
 
   UsuarioDatosCompletos obtenerFullDatosUsuarioID(Long id);
