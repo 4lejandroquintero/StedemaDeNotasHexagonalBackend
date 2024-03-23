@@ -1,21 +1,20 @@
 package sistemaNotas.pregunta.consulta;
 
 import org.springframework.stereotype.Component;
-import sistemaNotas.pregunta.entidad.Pregunta;
-import sistemaNotas.pregunta.entidad.dto.PreguntaDTO;
+import sistemaNotas.pregunta.modelo.entidad.Pregunta;
 import sistemaNotas.pregunta.puerto.dao.PreguntaDao;
 
 import java.util.List;
 
 @Component
-public class ManejadorObtenerPreguntas {
+public class ManejadorConsultarTodasPreguntas {
   private final PreguntaDao preguntaDao;
 
-  public ManejadorObtenerPreguntas(PreguntaDao preguntaDao) {
+  public ManejadorConsultarTodasPreguntas(PreguntaDao preguntaDao) {
     this.preguntaDao = preguntaDao;
   }
 
-  public List<PreguntaDTO> ejecutar(){
+  public List<Pregunta> ejecutar(){
     return preguntaDao.obtenerTodasPreguntas();
   }
 }

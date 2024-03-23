@@ -4,8 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import sistemaNotas.categoria.entidad.Categoria;
-import sistemaNotas.pregunta.entidad.Pregunta;
 
 @Getter
 @Setter

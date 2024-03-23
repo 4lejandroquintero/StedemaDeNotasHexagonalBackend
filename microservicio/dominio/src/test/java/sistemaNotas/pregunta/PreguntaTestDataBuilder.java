@@ -1,6 +1,6 @@
 package sistemaNotas.pregunta;
 
-import sistemaNotas.pregunta.entidad.Pregunta;
+import sistemaNotas.pregunta.modelo.entidad.Pregunta;
 import sistemaNotas.pregunta.entidad.dto.PreguntaDTO;
 
 public class PreguntaTestDataBuilder {

@@ -2,11 +2,7 @@ package sistemaNotas.examen;
 
 import sistemaNotas.examen.modelo.entidad.Examen;
 import sistemaNotas.pregunta.PreguntaTestDataBuilder;
-import sistemaNotas.pregunta.entidad.Pregunta;
-
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.time.LocalTime;
+import sistemaNotas.pregunta.modelo.entidad.Pregunta;
 
 public class ExamenTestDataBuilder {
     private Long examenId;

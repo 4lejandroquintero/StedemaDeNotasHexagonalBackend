@@ -1,2 +1,2 @@
-insert into pregunta(preguntaId, contenido, imagen, opcion1, opcion2, opcion3, opcion4, respuestaDada, respuesta)
-values (:preguntaId, :contenido, :imagen, :opcion1, :opcion2, :opcion3, :opcion4, :respuestaDada, :respuesta)
+insert into pregunta(examenId, contenido, imagen, opcion1, opcion2, opcion3, opcion4, respuesta_dada, respuesta)
+values (:examenId, :contenido, :imagen, :opcion1, :opcion2, :opcion3, :opcion4, :respuesta_dada, :respuesta)

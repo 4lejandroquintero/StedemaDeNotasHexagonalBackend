@@ -1,6 +1,6 @@
 package sistemaNotas.pregunta.servicio;
 
-import sistemaNotas.pregunta.entidad.Pregunta;
+import sistemaNotas.pregunta.modelo.entidad.Pregunta;
 import sistemaNotas.pregunta.puerto.PreguntaRepositorio;
 
 public class ServicioCrearPregunta {

@@ -5,8 +5,6 @@ import sistemaNotas.categoria.entidad.Categoria;
 import sistemaNotas.categoria.puerto.CategoriaRepositorio;
 import sistemaNotas.examen.comando.ComandoCrearExamen;
 import sistemaNotas.examen.modelo.entidad.Examen;
-import sistemaNotas.pregunta.entidad.Pregunta;
-import sistemaNotas.pregunta.puerto.PreguntaRepositorio;
 
 @Component
 public class FabricaCrearExamen {

@@ -6,8 +6,7 @@ import sistemaNotas.infraestructura.jdbc.sqlstatement.SqlStatement;
 import sistemaNotas.pregunta.adaptador.repositorio.MapeoPregunta;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.stereotype.Repository;
-import sistemaNotas.pregunta.entidad.Pregunta;
-import sistemaNotas.pregunta.entidad.dto.PreguntaDTO;
+import sistemaNotas.pregunta.modelo.entidad.Pregunta;
 import sistemaNotas.pregunta.puerto.dao.PreguntaDao;
 
 import java.util.List;
@@ -15,29 +14,30 @@ import java.util.List;
 @Repository
 public class PreguntaDaoPostgres implements PreguntaDao {
     private final CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate;
-    private final MapeoPreguntaDTO mapeoPreguntaDTO;
-    public PreguntaDaoPostgres(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate, MapeoPreguntaDTO mapeoPreguntaDTO) {
+    private final MapeoPregunta mapeoPregunta;
+
+    public PreguntaDaoPostgres(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate, MapeoPregunta mapeoPregunta) {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
-        this.mapeoPreguntaDTO = mapeoPreguntaDTO;
+        this.mapeoPregunta = mapeoPregunta;
     }
 
     //SQLSTATEMENTS
-    @SqlStatement(namespace = "pregunta", value = "obtenerporid")
-    private static String sqlObtenerPreguntaPorID;
-
-    @SqlStatement(namespace = "pregunta", value = "obtenerpreguntas")
+    @SqlStatement(namespace = "pregunta", value = "obtenertodaspreguntas")
     private static String sqlObtenerTodasLasPreguntas;
 
+    @SqlStatement(namespace = "pregunta", value = "obtenerporid")
+    private static String sqlObtenerPregunta;
+
     @Override
-    public List<PreguntaDTO> obtenerTodasPreguntas() {
-        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().query(sqlObtenerTodasLasPreguntas, mapeoPreguntaDTO);
+    public List<Pregunta> obtenerTodasPreguntas() {
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().query(sqlObtenerTodasLasPreguntas, mapeoPregunta);
     }
 
     @Override
-    public Pregunta obtenerPreguntaPorID(Long id) {
+    public Pregunta obtenerPregunta(Long id) {
         MapSqlParameterSource parameterSource = new MapSqlParameterSource();
         parameterSource.addValue("id", id);
-        return EjecucionBaseDeDatos.obtenerUnObjetoONull(() -> this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlObtenerPreguntaPorID,
-                parameterSource, new MapeoPregunta()));
+        return EjecucionBaseDeDatos.obtenerUnObjetoONull(() -> this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate()
+                .queryForObject(sqlObtenerPregunta, parameterSource, mapeoPregunta));
     }
 }

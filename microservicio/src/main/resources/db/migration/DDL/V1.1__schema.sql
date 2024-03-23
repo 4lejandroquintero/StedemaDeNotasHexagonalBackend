@@ -36,6 +36,7 @@ CREATE TABLE pregunta (
     opcion2 varchar(255),
     opcion3 varchar(255),
     opcion4 varchar(255),
+    respuesta_dada varchar(255),
     respuesta varchar(255),
     examenId int8
 );

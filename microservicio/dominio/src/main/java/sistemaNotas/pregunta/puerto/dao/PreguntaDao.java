@@ -1,11 +1,10 @@
 package sistemaNotas.pregunta.puerto.dao;
 
-import sistemaNotas.pregunta.entidad.Pregunta;
-import sistemaNotas.pregunta.entidad.dto.PreguntaDTO;
+import sistemaNotas.pregunta.modelo.entidad.Pregunta;
 
 import java.util.List;
 
 public interface PreguntaDao {
-  List<PreguntaDTO> obtenerTodasPreguntas();
-  Pregunta obtenerPreguntaPorID(Long id);
+  List<Pregunta> obtenerTodasPreguntas();
+  Pregunta obtenerPregunta(Long id);
 }

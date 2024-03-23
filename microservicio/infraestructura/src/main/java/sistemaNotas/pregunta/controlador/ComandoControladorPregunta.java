@@ -5,7 +5,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import sistemaNotas.pregunta.comando.ComandoSolicitudCrearPregunta;
+import sistemaNotas.pregunta.comando.ComandoCrearPregunta;
 import sistemaNotas.pregunta.comando.manejador.ManejadorCrearPregunta;
 
 @RestController
@@ -22,7 +22,7 @@ public class ComandoControladorPregunta {
   @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     @Operation(summary = "Crear pregunta", description = "Metodo para crear una pregunta")
-    public ComandoRespuesta<Long> crear(@RequestBody ComandoSolicitudCrearPregunta comandoSolicitudCrearPregunta){
-        return this.manejadorCrearPregunta.ejecutar(comandoSolicitudCrearPregunta);
+    public ComandoRespuesta<Long> crearPregunta(@RequestBody ComandoCrearPregunta comandoCrearPregunta){
+        return this.manejadorCrearPregunta.ejecutar(comandoCrearPregunta);
     }
 }

@@ -4,7 +4,7 @@ import sistemaNotas.core.BasePrueba;
 import sistemaNotas.dominio.excepcion.ExcepcionValorObligatorio;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import sistemaNotas.pregunta.entidad.Pregunta;
+import sistemaNotas.pregunta.modelo.entidad.Pregunta;
 
 class PreguntaTest {
     @Test

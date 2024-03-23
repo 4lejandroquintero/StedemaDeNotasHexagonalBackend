@@ -2,7 +2,7 @@ package sistemaNotas.examen.modelo.entidad;
 
 import sistemaNotas.categoria.entidad.Categoria;
 import sistemaNotas.dominio.ValidadorArgumento;
-import sistemaNotas.pregunta.entidad.Pregunta;
+import sistemaNotas.pregunta.modelo.entidad.Pregunta;
 
 import java.util.HashSet;
 import java.util.Set;

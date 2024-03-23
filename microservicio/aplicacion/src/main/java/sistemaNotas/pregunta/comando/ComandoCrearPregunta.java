@@ -9,8 +9,8 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ComandoSolicitudCrearPregunta {
-  private Long preguntaId;
+public class ComandoCrearPregunta {
+  private Long examenId;
   private String contenido;
   private String imagen;
   private String opcion1;

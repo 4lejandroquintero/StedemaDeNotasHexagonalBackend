@@ -6,7 +6,7 @@ import sistemaNotas.examen.modelo.entidad.Examen;
 import sistemaNotas.pregunta.PreguntaTestDataBuilder;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import sistemaNotas.pregunta.entidad.Pregunta;
+import sistemaNotas.pregunta.modelo.entidad.Pregunta;
 
 
 class ExamenTest {
